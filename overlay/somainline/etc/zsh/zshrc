@@ -1,0 +1,53 @@
+# Keybinds
+###########
+
+# Fix Home, End & Delete
+bindkey '^[[H' beginning-of-line
+bindkey '^[[F' end-of-line
+bindkey '^[[3~' delete-char
+
+# Ctrl + Arrows
+bindkey '^[[1;5D' backward-word
+bindkey '^[[1;5C' forward-word
+
+# Ctrl + (Backspace/Delete)
+bindkey '^H' backward-kill-word
+bindkey '^[[3;5~' kill-word
+
+# Shift + Tab reverse completion
+bindkey '^[[Z' reverse-menu-complete
+
+# History
+##########
+HISTFILE="$HOME/.cache/zsh_history"
+HISTSIZE=4096
+SAVEHIST=4096
+setopt hist_ignore_dups  # ignore duplicated commands
+setopt hist_ignore_space # ignore commands that start with space
+
+# Aliases
+##########
+alias \
+	ip='ip -c' \
+	diff='diff --color' \
+	grep='grep --color' \
+	egrep='grep -E' \
+	'..'='cd ..'
+
+# Prompt
+#########
+[ $EUID -eq 0 ] && PROMPT_COLOR='red' || PROMPT_COLOR='cyan'
+PROMPT="%F{$PROMPT_COLOR}%n%f %F{yellow}%1~%f %(!.#.$) "
+if [[ "$TTY" = "/dev/tty"* ]]; then
+	RPROMPT='%(?.%F{green}OK.%F{red}%?)%f'
+else
+	RPROMPT='%(?.%F{green}√.%F{red}%?)%f'
+fi
+
+# Completions + suggestions
+############################
+[ -e /usr/share/zsh/site-functions ] && fpath=(/usr/share/zsh/site-functions $fpath)
+
+autoload -Uz compinit
+compinit
+zstyle ':completion:*' menu select
