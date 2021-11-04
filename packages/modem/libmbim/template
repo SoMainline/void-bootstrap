@@ -1,0 +1,39 @@
+# Template file for 'libmbim'
+_githash=fdb7546d04655562a3915af44b9e5a579bad8591 # tip of master branch as of 2021-11-04
+_gitshort=${_githash:0:7}
+
+pkgname=libmbim
+version=1.27.3
+revision=1
+build_style=meson
+build_helper=gir
+configure_args="$(vopt_bool doc gtk_doc)"
+hostmakedepends="pkg-config $(vopt_if doc gtk-doc)"
+makedepends="glib-devel libgudev-devel bash-completion"
+short_desc="MBIM modem protocol helper library [git ${_gitshort}]"
+maintainer="Jami Kettunen <jami.kettunen@protonmail.com>"
+license="GPL-2.0-or-later, LGPL-2.1-or-later"
+homepage="https://www.freedesktop.org/wiki/Software/libmbim/"
+distfiles="https://gitlab.freedesktop.org/mobile-broadband/$pkgname/-/archive/${_githash}/$pkgname-${_githash}.tar.gz>$pkgname-${_gitshort}.tar.gz"
+wrksrc="$pkgname-${_githash}"
+checksum=7a25444888c78330415e3310327e8b8ce26f4ca7df60934e60c50523e9a8cd3d
+
+build_options="gir doc"
+build_options_default="gir"
+# FIXME: cross-compile fails with doc enabled!
+
+libmbim-devel_package() {
+	depends="${sourcepkg}-${version}_${revision}"
+	short_desc+=" - development files"
+	pkg_install() {
+		vmove usr/include
+		vmove usr/lib/pkgconfig
+		vmove "usr/lib/*.so"
+		if [ "$build_option_gir" ]; then
+			vmove usr/share/gir-1.0
+		fi
+		if [ "$build_option_doc" ]; then
+			vmove usr/share/gtk-doc
+		fi
+	}
+}
