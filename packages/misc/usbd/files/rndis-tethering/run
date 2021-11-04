@@ -1,0 +1,5 @@
+#!/bin/sh
+# Enable USB reverse RNDIS tethering
+[ -r conf ] && . conf
+ip route add default via ${IP_HOST:-172.16.42.2} dev ${IFACE:-usb0}
+exec chpst -b rndis-tethering pause

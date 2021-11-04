@@ -1,0 +1,18 @@
+# Template file for 'usbd'
+pkgname=usbd
+version=1.0
+revision=1
+build_style=meta
+depends="dhcp" # bash iproute2
+short_desc="Setup USB ConfigFS gadget for different modes such as RNDIS"
+maintainer="Jami Kettunen <jami.kettunen@protonmail.com>"
+license="GPL3"
+homepage="https://www.kernel.org/doc/html/latest/usb/gadget_configfs.html"
+#homepage="https://github.com/JamiKettunen/usbd"
+
+do_install() {
+	vbin ${FILESDIR}/setup-usb
+	vconf ${FILESDIR}/dhcpd-usb0.conf
+	vsv $pkgname
+	vsv rndis-tethering
+}

@@ -1,0 +1,4 @@
+#!/bin/sh
+# Disable USB reverse RNDIS tethering
+[ -r conf ] && . conf
+exec ip route del default via ${IP_HOST:-172.16.42.2}

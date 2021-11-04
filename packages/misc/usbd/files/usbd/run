@@ -1,0 +1,4 @@
+#!/bin/sh
+# Setup USB ConfigFS gadget for RNDIS
+setup-usb rndis
+exec chpst -b usbd pause
