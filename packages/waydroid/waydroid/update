@@ -1,0 +1,4 @@
+git=true
+version="${_githash}"
+site="$homepage/commits/bullseye.atom"
+pattern='<id>\K.*commit\/\K.*(?=<\/id>)'

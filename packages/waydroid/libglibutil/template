@@ -1,0 +1,36 @@
+# Template file for 'libglibutil'
+pkgname=libglibutil
+version=1.0.56
+revision=1
+build_style=gnu-makefile
+make_install_target="install-dev"
+make_build_args="KEEP_SYMBOLS=1 release pkgconfig"
+hostmakedepends="pkg-config glib-devel"
+short_desc="Library of glib utilities"
+maintainer="Jami Kettunen <jami.kettunen@somainline.org>"
+license="BSD-3-Clause"
+homepage="https://github.com/sailfishos/libglibutil"
+distfiles="${homepage}/archive/refs/tags/${version}.tar.gz"
+checksum=e3ee18c0232eba815a9f90b6193c511501b2f2bc24dab22cd5405a3a01388331
+
+if [ $CROSS_BUILD ]; then
+	makedepends="glib-devel"
+fi
+
+pre_build() {
+	LD=$CC
+}
+
+post_install() {
+	vlicense LICENSE
+}
+
+libglibutil-devel_package() {
+	depends="libglibutil>=${version}_${revision} glib-devel"
+	short_desc+=" - development files"
+	pkg_install() {
+		vmove usr/include
+		vmove usr/lib/pkgconfig
+		vmove "usr/lib/*.so"
+	}
+}

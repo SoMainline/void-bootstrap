@@ -1,0 +1,55 @@
+# Template file for 'waydroid'
+_githash=d03e10c132de8e03dff781868b3e37b7f7c7128a # tip of bullseye branch as of 2021-11-04
+_gitshort=${_githash:0:7}
+_gitrev=80
+
+pkgname=waydroid
+version=1.2.0r${_gitrev}
+revision=1
+_imgver=${version}-20211021
+wrksrc="waydroid-${_githash}"
+build_style=meta
+depends="python3 python3-requests python3-gbinder lxc dnsmasq" # nftables?
+short_desc="A container-based approach to boot a full Android system [git ${_gitshort}]"
+maintainer="Jami Kettunen <jami.kettunen@somainline.org>"
+license="GPL-3.0-or-later"
+homepage="https://github.com/waydroid/waydroid"
+distfiles="${homepage}/archive/${_githash}.tar.gz"
+checksum=7a4a477e50ba6c002f4fb27239d60a5c024b4423505ae86dc651a1bf14089e11
+python_version=3
+pycompile_dirs="usr/lib/waydroid"
+
+case "${XBPS_TARGET_MACHINE}" in
+	aarch64*) _imgarch="arm64" ;;
+	armv7*) _imgarch="arm" ;;
+	x86*) _imgarch="${XBPS_TARGET_MACHINE%-*}" ;;
+	*) broken="Upstream only supports running Waydroid on arm64/armv7/x86/x86_64!"
+esac
+
+# TODO:
+#distfiles+=" "
+# https://sourceforge.net/projects/waydroid/files/images/vendor/waydroid_${_imgarch}/lineage-{_imgver}-MAINLINE-waydroid_${_imgarch}-vendor.zip
+# https://sourceforge.net/projects/waydroid/files/images/system/lineage/waydroid_${_imgarch}/lineage-${_imgver}-VANILLA-waydroid_${_imgarch}-system.zip
+
+post_install() {
+	vmkdir usr/lib/waydroid
+	vcopy data usr/lib/waydroid
+	vcopy tools usr/lib/waydroid
+	# FIXME: mkdir /var/lib/misc?
+
+	# main script
+	vinstall waydroid.py 755 usr/lib/waydroid
+	vmkdir usr/bin
+	ln -s ../lib/waydroid/waydroid.py ${DESTDIR}/usr/bin/waydroid
+
+	# gbinder conf
+	vinstall gbinder/anbox.conf 644 etc/gbinder.d/
+	vinstall ${FILESDIR}/gbinder.conf 644 etc/
+
+	# desktop launcher
+	vmkdir usr/share/applications
+	ln -s ../../lib/waydroid/data/Waydroid.desktop ${DESTDIR}/usr/share/applications
+
+	vsv waydroid
+	vlicense LICENSE
+}

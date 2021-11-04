@@ -1,0 +1,3 @@
+#!/bin/sh -e
+[ -e /var/lib/waydroid/images/system.img ] || waydroid init
+waydroid container start
