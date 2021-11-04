@@ -1,0 +1,40 @@
+From 53642a2740d21b3cd41a4577abda117b6c1b7c25 Mon Sep 17 00:00:00 2001
+From: Jami Kettunen <jami.kettunen@protonmail.com>
+Date: Tue, 31 Aug 2021 00:15:58 +0300
+Subject: [PATCH] freedreno: pm4: include sys/types.h for musl libc
+
+  In file included from ../src/freedreno/decode/crashdec.c:50:
+  ../src/freedreno/common/freedreno_pm4.h:103:15: error: unknown type name 'uint'
+    103 | static inline uint
+        |               ^~~~
+  ../src/freedreno/common/freedreno_pm4.h:104:25: error: unknown type name 'uint'; did you mean 'int'?
+    104 | pm4_calc_odd_parity_bit(uint val)
+        |                         ^~~~
+        |                         int
+  ../src/freedreno/decode/crashdec.c: In function 'valid_header':
+  ../src/freedreno/common/freedreno_pm4.h:115:6: error: implicit declaration of function 'pm4_calc_odd_parity_bit'; did you mean 'pm4_odd_parity_bit'? [-Werror=implicit-function-declaration]
+    115 |      pm4_calc_odd_parity_bit(type4_pkt_offset(pkt))) &&                        \
+        |      ^~~~~~~~~~~~~~~~~~~~~~~
+  ../src/freedreno/decode/crashdec.c:289:14: note: in expansion of macro 'pkt_is_type4'
+    289 |       return pkt_is_type4(pkt) || pkt_is_type7(pkt);
+        |              ^~~~~~~~~~~~
+  cc1: some warnings being treated as errors
+---
+ src/freedreno/common/freedreno_pm4.h | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/freedreno/common/freedreno_pm4.h b/src/freedreno/common/freedreno_pm4.h
+index 4320a5c..560f874 100644
+--- a/src/freedreno/common/freedreno_pm4.h
++++ b/src/freedreno/common/freedreno_pm4.h
+@@ -28,6 +28,7 @@
+ #define FREEDRENO_PM4_H_
+ 
+ #include <stdint.h>
++#include <sys/types.h>
+ 
+ #ifdef __cplusplus
+ extern "C" {
+-- 
+2.33.0
+
