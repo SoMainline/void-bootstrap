@@ -1,0 +1,20 @@
+# Template file for 'portfolio'
+_githash=210bc64eb9ae2db682026ba65dae7b8a8045962c # tip of master branch as of 2021-10-01
+_gitshort=${_githash:0:7}
+
+pkgname=portfolio
+version=0.9.12
+revision=1
+build_style=meson
+hostmakedepends="gettext-devel glib-devel"
+short_desc="Minimalist file manager for mobile Linux [git ${_gitshort}]"
+maintainer="Jami Kettunen <jami.kettunen@protonmail.com>"
+license="GPL-3.0-or-later"
+homepage="https://github.com/tchx84/Portfolio"
+distfiles="${homepage}/archive/${_githash}.tar.gz>$pkgname-${_gitshort}.tar.gz"
+checksum=25bbedf8237441a4ef3355931ca3176b4b39c9d73641ee9f359370b9ed0db401
+wrksrc="Portfolio-${_githash}"
+
+post_install() {
+	vlicense COPYING
+}
