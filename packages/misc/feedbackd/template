@@ -1,0 +1,44 @@
+# Template file for 'feedbackd'
+_githash=b2a8061cdc7be4fa76f7fa976c67bac4f5a0055c # tip of master branch as of 2021-11-04
+_gitshort=${_githash:0:7}
+_gitrev=163
+
+pkgname=feedbackd
+version=0.0.0r${_gitrev}
+revision=1
+build_style=meson
+build_helper=gir
+hostmakedepends="vala glib-devel pkg-config"
+makedepends="gsound-devel libgudev-devel json-glib-devel"
+depends="dbus"
+checkdepends="dbus"
+short_desc="Daemon to provide haptic feedback on events [git ${_gitshort}]"
+maintainer="Jami Kettunen <jami.kettunen@somainline.org>"
+license="GPL-3.0-or-later"
+homepage="https://source.puri.sm/Librem5/feedbackd"
+distfiles="$homepage/-/archive/${_githash}/$pkgname-${_githash}.tar.gz>$pkgname-${_gitshort}.tar.gz"
+wrksrc="$pkgname-${_githash}"
+checksum=39c65e958e55c6ee764712ec3dc8d3a238befb6c93aca19a7bd307bf75135439
+
+system_groups="feedbackd"
+
+post_install() {
+	vinstall debian/feedbackd.udev 0644 usr/lib/udev/rules.d 90-feedbackd.rules
+}
+
+libfeedback_package() {
+	short_desc+=" - shared libraries"
+	pkg_install() {
+		vmove "usr/lib/*.so.*"
+	}
+}
+
+libfeedback-devel_package() {
+	depends="${sourcepkg}>=${version}_${revision}"
+	short_desc+=" - development files"
+	pkg_install() {
+		vmove usr/include
+		vmove usr/lib/pkgconfig
+		vmove "usr/lib/*.so"
+	}
+}
