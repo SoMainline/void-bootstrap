@@ -1,0 +1,47 @@
+# Template file for 'pmos-tweaks'
+pkgname=pmos-tweaks
+version=0.8.1
+revision=1
+build_style=meson
+makedepends="libhandy1-devel"
+hostmakedepends="pkg-config"
+depends="python3-yaml"
+short_desc="Application for exposing extra settings easily on mobile platforms"
+maintainer="Jami Kettunen <jami.kettunen@protonmail.com>"
+license="GPL-3.0-or-later"
+homepage="https://gitlab.com/postmarketOS/postmarketos-tweaks"
+distfiles="${homepage}/-/archive/${version}/postmarketos-tweaks-${version}.tar.gz"
+wrksrc="postmarketos-tweaks-${version}"
+checksum=a689626efea7adacc10970074a4cd049f582061ee925ff9f28901ec95208b680
+_ymldir="usr/share/postmarketos-tweaks"
+
+post_install() {
+	# unused OpenRC service file(s)
+	rm -r "$DESTDIR"/etc/init.d
+
+	# unused pmOS initramfs osk-sdl menu
+	rm "$DESTDIR/${_ymldir}"/unlocker.yml
+
+	vlicense LICENSE
+	vsv pmos-tweakd
+}
+
+_vmove_yml() {
+	vmove ${_ymldir}/$1.yml
+}
+
+pmos-tweaks-phosh_package() {
+	short_desc+=" - Phosh entries"
+	depends="${sourcepkg}>=${version}_${revision}"
+	pkg_install() {
+		_vmove_yml phosh
+	}
+}
+
+pmos-tweaks-pinephone_package() {
+	short_desc+=" - PinePhone entries"
+	depends="${sourcepkg}>=${version}_${revision}"
+	pkg_install() {
+		_vmove_yml pinephone
+	}
+}

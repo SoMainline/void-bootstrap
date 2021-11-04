@@ -1,0 +1,2 @@
+site="$homepage/-/tags?format=atom"
+pattern='<id>\K.*tags\/\K.*(?=<\/id>)'

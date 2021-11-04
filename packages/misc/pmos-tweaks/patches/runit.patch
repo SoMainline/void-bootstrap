@@ -1,0 +1,12 @@
+diff --git a/pmos_tweaks/pk-tweaks-action.sh b/pmos_tweaks/pk-tweaks-action.sh
+index bcc7e12..7cc22b4 100755
+--- a/pmos_tweaks/pk-tweaks-action.sh
++++ b/pmos_tweaks/pk-tweaks-action.sh
+@@ -8,4 +8,4 @@
+ 
+ mkdir -p "/etc/postmarketos-tweaks"
+ mv "$1" "/etc/postmarketos-tweaks/tweakd.conf"
+-service postmarketos-tweakd restart
+\ No newline at end of file
++sv restart pmos-tweakd
+\ No newline at end of file
