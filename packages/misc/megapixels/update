@@ -1,0 +1,2 @@
+site="$homepage/refs"
+pattern='archive/\K1\..*(?=\.tar.gz")'
