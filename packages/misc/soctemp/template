@@ -1,0 +1,14 @@
+# Template file for 'soctemp'
+pkgname=soctemp
+version=1.0
+revision=1
+build_style=meta
+depends="python3"
+short_desc="Python 3 program to read embedded SoC temperature sensors"
+maintainer="Jami Kettunen <jami.kettunen@protonmail.com>"
+license="GPL3"
+homepage="https://github.com/JamiKettunen/soctemp"
+
+do_install() {
+	vbin ${FILESDIR}/$pkgname
+}

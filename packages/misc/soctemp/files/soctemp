@@ -1,0 +1,75 @@
+#!/usr/bin/env python3
+from glob import glob
+from time import sleep
+
+# Config
+#########
+autorefresh = True
+autorefresh_interval = 1.0 # autorefresh interval (if enabled) in seconds
+sort_by_temp = True        # sort thermal zones in descending order by temperatures?
+temp_imperial = False      # show temperatures in fahrenheit?
+max_zone_length = 14       # maximum character width in the "thermal zone" clumn
+
+# Runtime vars
+###############
+temp_unit = "°" + ("F" if temp_imperial else "C")
+zone_count = len(glob("/sys/class/thermal/thermal_zone*")) # e.g. 20 (0-19)
+table_separator = "+-" + (max_zone_length * "-") + "-+----------+"
+table_header = "| thermal zone" + ((max_zone_length - 12) * " ") + " | temp     |"
+
+# Functions
+############
+def read(file_path: str) -> str:
+	return open(file_path, "r").read().rstrip()
+
+def celsius_to_fahrenheit(temp: float) -> float:
+	return temp * 1.8 + 32 # 9/5 = 1.8
+
+def fetch_zone_data() -> dict:
+	zone_data = {} # e.g. {'cpu0': 29.5, 'cpu1': 29.5, ...}
+	for i in range(0, zone_count):
+		zone = f"thermal_zone{i}" # e.g. 'thermal_zone0'
+		zone_path = f"/sys/class/thermal/{zone}"
+
+		zone_type = read(f"{zone_path}/type") # e.g. 'cpu0-thermal'
+		zone_type = zone_type.replace("-thermal", "") # e.g. 'cpu0-thermal' -> 'cpu0'
+
+		zone_temp = float(read(f"{zone_path}/temp")) / 1000 # e.g. 27.891
+		if temp_imperial:
+			zone_temp = celsius_to_fahrenheit(zone_temp)
+
+		zone_data[zone_type] = str(round(zone_temp, 2)) # e.g. '27.89'
+	return zone_data
+
+def print_table():
+	print(table_separator)
+	print(table_header)
+	print(table_separator)
+	for zone_type in zone_data: # e.g. 'cpu0'
+		zone_temp = zone_data[zone_type] + temp_unit # e.g. '27.89°C'
+		print(f"| {(zone_type.ljust(max_zone_length))} | {(zone_temp.ljust(8))} |")
+	print(table_separator)
+
+# Script
+#########
+while True:
+	if zone_count < 1:
+		print("ERROR: No thermal zones found under /sys/class/thermal!")
+		exit(1)
+
+	# gather thermal zone data
+	zone_data = fetch_zone_data()
+
+	if sort_by_temp:
+		zone_data = dict(sorted(zone_data.items(), key=lambda x: x[1], reverse=True))
+
+	# output a nice table
+	if autorefresh:
+		print("\033[H\033[2J", end="") # clear the terminal (+ "\033[3J" to clear buffer)
+
+	print_table()
+
+	if autorefresh:
+		sleep(autorefresh_interval)
+	else:
+		break
