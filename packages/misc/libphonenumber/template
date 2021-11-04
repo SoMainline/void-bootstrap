@@ -1,0 +1,34 @@
+# Template file for 'libphonenumber'
+pkgname=libphonenumber
+version=8.12.36
+revision=1
+build_style=cmake
+configure_args="-DREGENERATE_METADATA=OFF"
+makedepends="boost-devel gtest-devel protobuf protobuf-devel icu-devel"
+hostmakedepends="pkg-config"
+short_desc="Library for parsing, formatting, and validating international phone numbers"
+maintainer="Jami Kettunen <jami.kettunen@somainline.org>"
+license="Apache-2.0"
+homepage="https://github.com/google/libphonenumber"
+distfiles="${homepage}/archive/refs/tags/v${version}.tar.gz"
+build_wrksrc="cpp"
+checksum=0f8d3dbfd02262477cb05450cd4442b1d39ac2d865c530e063d622eff5cd22f5
+#nocross="cross build fails due to generate_geocoding_data compiling for target instead of host!"
+# HACK: figure out cross-compiling instead of using qemu!
+if [ ${CROSS_BUILD} ]; then
+	build_helper=qemu
+fi
+
+post_install() {
+	vlicense LICENSE
+}
+
+libphonenumber-devel_package() {
+	depends="${sourcepkg}>=${version}_${revision}"
+	short_desc+=" - development files"
+	pkg_install() {
+		vmove usr/include
+		vmove "usr/lib/*.a"
+		vmove "usr/lib/*.so"
+	}
+}
