@@ -1,0 +1,25 @@
+# Template file for 'pd-mapper'
+_githash=d7fe25fa6eff2e62cf264544adee9e8ca830dc78 # tip of master branch as of 2021-05-30
+_gitshort=${_githash:0:7}
+_gitrev=13
+
+pkgname=pd-mapper
+version=1.0r${_gitrev}
+revision=1
+build_style=gnu-makefile
+make_install_args="prefix=/usr"
+makedepends="qrtr-ns-devel"
+short_desc="Qualcomm Protection Domain mapper [git ${_gitshort}]"
+maintainer="Jami Kettunen <jami.kettunen@protonmail.com>"
+license="BSD-3-Clause"
+homepage="https://github.com/andersson/pd-mapper"
+distfiles="https://github.com/andersson/$pkgname/archive/${_githash}.tar.gz>$pkgname-${_gitshort}.tar.gz"
+wrksrc="$pkgname-${_githash}"
+checksum=f7a77b344307842365954ff995a2e979e791ec1f433d7cc4a3e28642ab324a65
+LDFLAGS="-lqrtr" # these get lost from the Makefile somehow
+
+post_install() {
+	rm -rf $DESTDIR/usr/lib/systemd/
+	vsv $pkgname
+	vlicense LICENSE
+}

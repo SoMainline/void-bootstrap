@@ -1,0 +1,27 @@
+# Template file for 'diag-router'
+_githash=d06e599d197790c9e84ac41a51bf124a69768c4f # tip of master branch as of 2021-05-30
+_gitshort=${_githash:0:7}
+_gitrev=120
+
+pkgname=diag-router
+version=1.0r${_gitrev}
+revision=1
+build_style=gnu-makefile
+make_install_args="prefix=/usr"
+makedepends="qrtr-ns-devel eudev-libudev-devel"
+short_desc="Diagnostic message routing between Qualcomm host and subsystems [git ${_gitshort}]"
+maintainer="Jami Kettunen <jami.kettunen@protonmail.com>"
+license="BSD-3-Clause"
+homepage="https://github.com/andersson/diag"
+distfiles="https://github.com/andersson/diag/archive/${_githash}.tar.gz>diag-${_gitshort}.tar.gz"
+wrksrc="diag-${_githash}"
+checksum=7e128c481160c25eccaf64449f129224f6657ee3846a74309481259861f9384e
+# these get lost from the Makefile somehow
+CFLAGS+="-DHAS_LIBQRTR=1 -DHAS_LIBUDEV=1"
+LDFLAGS="-lqrtr -ludev"
+
+post_install() {
+	rm -rf $DESTDIR/usr/lib/systemd/
+	vsv $pkgname
+	vlicense LICENSE
+}

@@ -1,0 +1,3 @@
+#!/bin/sh
+# TODO: soft dependency on qrtr-ns!
+exec pd-mapper

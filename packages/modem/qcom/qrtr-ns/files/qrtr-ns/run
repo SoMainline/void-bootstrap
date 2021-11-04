@@ -1,0 +1,3 @@
+#!/bin/sh
+# QIPCRTR Name Service
+exec qrtr-ns -f 1

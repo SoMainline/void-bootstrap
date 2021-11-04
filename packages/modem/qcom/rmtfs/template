@@ -1,0 +1,25 @@
+# Template file for 'rmtfs'
+_githash=b08ef6f98ec567876d7d45f15c85c6ed00d7c463 # tip of master branch as of 2021-08-31
+_gitshort=${_githash:0:7}
+_gitrev=57
+
+pkgname=rmtfs
+version=1.0r${_gitrev}
+revision=1
+build_style=gnu-makefile
+make_install_args="prefix=/usr"
+makedepends="qrtr-ns-devel eudev-libudev-devel"
+short_desc="Qualcomm Remote Filesystem Service Implementation [git ${_gitshort}]"
+maintainer="Jami Kettunen <jami.kettunen@protonmail.com>"
+license="BSD-3-Clause"
+homepage="https://github.com/andersson/rmtfs"
+distfiles="https://github.com/andersson/$pkgname/archive/${_githash}.tar.gz>$pkgname-${_gitshort}.tar.gz"
+wrksrc="$pkgname-${_githash}"
+checksum=73616dca582d8e3de291342f96d1612a3f3a2d33157ea7f73efc9399a473067b
+LDFLAGS="-lqrtr -ludev -lpthread" # these get lost from the Makefile somehow
+
+post_install() {
+	rm -rf $DESTDIR/usr/lib/systemd/
+	vsv $pkgname
+	vlicense LICENSE
+}

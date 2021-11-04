@@ -1,0 +1,4 @@
+#!/bin/sh
+# TODO: soft dependency on qrtr-ns?
+exec 2>&1
+exec diag-router
