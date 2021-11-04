@@ -1,0 +1,39 @@
+# Template file for 'sofia-sip'
+pkgname=sofia-sip
+version=1.13.6
+revision=1
+build_style=gnu-configure
+makedepends="openssl-devel glib-devel"
+hostmakedepends="automake autoconf libtool pkg-config"
+short_desc="Open-source SIP User-Agent library"
+maintainer="Jami Kettunen <jami.kettunen@somainline.org>"
+license="LGPL-2.1-or-later"
+homepage="https://github.com/freeswitch/sofia-sip"
+distfiles="$homepage/archive/refs/tags/v${version}.tar.gz"
+checksum=6f3cb48a35929abd3454087b32ad4c75fa5fe50fab8a9cc6f98559e6fd1bd64b
+
+pre_configure() {
+	NOCONFIGURE=1 ./autogen.sh
+}
+
+post_install() {
+	vlicense COPYING
+}
+
+sofia-sip-devel_package() {
+	#depends="${sourcepkg}>=${version}_${revision}"
+	short_desc+=" - development files"
+	pkg_install() {
+		vmove usr/include
+		vmove usr/lib/pkgconfig
+		vmove "usr/lib/*.a"
+		vmove "usr/lib/*.so"
+	}
+}
+
+libsofia-sip_package() {
+	short_desc+=" - shared libraries"
+	pkg_install() {
+		vmove "usr/lib/*.so.*"
+	}
+}
