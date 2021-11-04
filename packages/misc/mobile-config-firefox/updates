@@ -1,0 +1,3 @@
+site="$homepage/-/tags?format=atom"
+# FIXME: sorted in incorrect order :(
+pattern='<id>.*tags/\K.*(?=</id>)'
