@@ -1,0 +1,39 @@
+# Template file for 'libqrtr-glib'
+_githash=524628b3abafcd007433978efc293a57e9f39c6c # tip of master branch as of 2021-11-04
+_gitshort=${_githash:0:7}
+
+pkgname=libqrtr-glib
+version=1.1.0
+revision=1
+build_style=meson
+configure_args="$(vopt_bool doc gtk_doc)"
+build_helper=gir
+hostmakedepends="pkg-config $(vopt_if doc gtk-doc)"
+makedepends="glib-devel"
+short_desc="Qualcomm IPC Router protocol helper library [git ${_gitshort}]"
+maintainer="Jami Kettunen <jami.kettunen@somainline.org>"
+license="LGPL-2.1-or-later"
+homepage="https://gitlab.freedesktop.org/mobile-broadband/libqrtr-glib"
+distfiles="https://gitlab.freedesktop.org/mobile-broadband/$pkgname/-/archive/${_githash}/$pkgname-${_githash}.tar.gz>$pkgname-${_gitshort}.tar.gz"
+wrksrc="$pkgname-${_githash}"
+checksum=ecdb282d7ee0bdaa0acc00854cb4df7258bc146e6405a34dcfb842f3d5800bf2
+
+build_options="gir doc"
+build_options_default="gir"
+# FIXME: cross-compile fails with doc enabled!
+
+libqrtr-glib-devel_package() {
+	depends="$makedepends $sourcepkg-${version}_$revision"
+	short_desc+=" - development files"
+	pkg_install() {
+		vmove usr/include
+		vmove usr/lib/pkgconfig
+		vmove "usr/lib/*.so"
+		if [ "$build_option_gir" ]; then
+			vmove usr/share/gir-1.0
+		fi
+		if [ "$build_option_doc" ]; then
+			vmove usr/share/gtk-doc
+		fi
+	}
+}
