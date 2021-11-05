@@ -124,6 +124,7 @@ overlays=(
 	resize-root
 
 	# SoMainline user configs etc.
+	# NOTE: Make sure this is the last one or else config.gnome.sh breaks!
 	somainline
 )
 
