@@ -1,0 +1,60 @@
+From 52c8f28955fed8de2c76692e60e2fb8ce68a7a51 Mon Sep 17 00:00:00 2001
+From: Jami Kettunen <jami.kettunen@protonmail.com>
+Date: Mon, 31 May 2021 01:02:35 +0300
+Subject: [PATCH 1/2] update-check: add support for git packages.
+
+Packages can optionally declare git=true in their update files to check
+against the latest commit in e.g. an atom feed.
+---
+ common/xbps-src/shutils/update_check.sh | 20 ++++++++++++++++----
+ 1 file changed, 16 insertions(+), 4 deletions(-)
+
+diff --git a/common/xbps-src/shutils/update_check.sh b/common/xbps-src/shutils/update_check.sh
+index 0a624274f5..ab66507a29 100644
+--- a/common/xbps-src/shutils/update_check.sh
++++ b/common/xbps-src/shutils/update_check.sh
+@@ -2,6 +2,7 @@
+ 
+ update_check() {
+     local i p url pkgurlname rx found_version consider
++    local git=false
+     local update_override=$XBPS_SRCPKGDIR/$XBPS_TARGET_PKG/update
+     local original_pkgname=$pkgname
+     local urlpfx urlsfx
+@@ -178,7 +179,13 @@ update_check() {
+         fetchedurls[$url]=yes
+     done |
+     tr _ . |
+-    sort -Vu |
++    {
++        if $git; then
++            head -1
++        else
++            sort -Vu
++        fi
++    } |
+     {
+         grep . || echo "NO VERSION found for $original_pkgname" 1>&2
+     } |
+@@ -200,10 +207,15 @@ update_check() {
+             esac
+         done
+         if $consider; then
+-            xbps-uhelper cmpver "$original_pkgname-${version}_1" \
+-                "$original_pkgname-$(printf %s "$found_version" | tr - .)_1"
+-            if [ $? = 255 ]; then
++            if $git; then
++                [ "$version" = "$found_version" ] && return
+                 echo "${original_pkgname}-${version} -> ${original_pkgname}-${found_version}"
++            else
++                xbps-uhelper cmpver "$original_pkgname-${version}_1" \
++                    "$original_pkgname-$(printf %s "$found_version" | tr - .)_1"
++                if [ $? = 255 ]; then
++                    echo "${original_pkgname}-${version} -> ${original_pkgname}-${found_version}"
++                fi
+             fi
+         fi
+     done
+-- 
+2.33.1
+

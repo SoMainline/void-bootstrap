@@ -1,0 +1,29 @@
+From 10bfd5f1c4b4af5337b2e3c39a413bd69857898b Mon Sep 17 00:00:00 2001
+From: Jami Kettunen <jami.kettunen@protonmail.com>
+Date: Mon, 31 May 2021 01:07:27 +0300
+Subject: [PATCH 2/2] Manual.md: document addition of update-check's git
+ boolean.
+
+---
+ Manual.md | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/Manual.md b/Manual.md
+index 0f268fa79e..52d98d7998 100644
+--- a/Manual.md
++++ b/Manual.md
+@@ -857,6 +857,11 @@ versions.  Example: `ignore="*b*"`
+ - `version` is the version number used to compare against
+ upstream versions. Example: `version=${version//./_}`
+ 
++- `git` is a boolean representing whether the `site` should be treated
++as feed of commits for the project; in this case results aren't sorted
++(by version) and only the first match is compared with the current
++`version`. Defaults to `false`.
++
+ - `single_directory` can be set to disable
+ detecting directory containing one version of sources in url,
+ then searching new version in adjacent directories.
+-- 
+2.33.1
+
