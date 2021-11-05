@@ -24,16 +24,21 @@ After that call `merge.sh` to merge `custom-shlibs` with void-packages' `common/
 Based on the idea of [`nvoid`](https://github.com/not-void/nvoid) alternative `xbps-src` repo.
 
 ## SoMainline tweaks
-* [`gpsd-pds`](modem/gpsd-pds): GPSD with [PDS patch for Qualcomm SoCs](https://gitlab.com/gpsd/gpsd/-/merge_requests/139)
+### Patches
+* Add support for [checking updates to git packages](patches/0001-update-check-add-support-for-git-packages.patch)
+### Modem
 * [`libqrtr-glib`](modem/libqrtr-glib): Git version of [libqrtr-glib](https://gitlab.freedesktop.org/mobile-broadband/libqrtr-glib)
 * [`libqmi`](modem/libqmi): Git version of [libqmi](https://gitlab.freedesktop.org/mobile-broadband/libqmi)
 * [`libmbim`](modem/libmbim): Git version of [libmbim](https://gitlab.freedesktop.org/mobile-broadband/libmbim)
 * [`ModemManager`](modem/ModemManager): Git version of [ModemManager](https://gitlab.freedesktop.org/mobile-broadband/ModemManager)
+#### Qualcomm modem
 * [`qrtr-ns`](modem/qcom/qrtr-ns): Git version of [andersson/qrtr](https://github.com/andersson/qrtr)
 * [`rmtfs`](modem/qcom/rmtfs): Git version of [andersson/rmtfs](https://github.com/andersson/rmtfs)
 * [`pd-mapper`](modem/qcom/pd-mapper): Git version of [andersson/pd-mapper](https://github.com/andersson/pd-mapper)
 * [`tqftpserv`](modem/qcom/tqftpserv): Git version of [andersson/tqftpserv](https://github.com/andersson/tqftpserv)
 * [`diag-router`](modem/qcom/diag-router): Git version of [andersson/diag](https://github.com/andersson/diag)
+* [`gpsd-pds`](modem/gpsd-pds): GPSD with [PDS patch for Qualcomm SoCs](https://gitlab.com/gpsd/gpsd/-/merge_requests/139)
+### Miscellaneous
 * [`reboot-mode`](misc/reboot-mode): Latest release of [postmarketOS/reboot-mode](https://gitlab.com/postmarketOS/reboot-mode)
 * [`soctemp`](misc/soctemp): Standalone Python testing tool for [Qualcomm TSENS](https://cateee.net/lkddb/web-lkddb/QCOM_TSENS.html)
 * [`usbd`](misc/usbd): Standalone daemon for configuring USB modes via [ConfigFS](https://www.kernel.org/doc/html/latest/usb/gadget_configfs.html) & starting `dhcpd` for an [RNDIS connection](https://cateee.net/lkddb/web-lkddb/USB_CONFIGFS_RNDIS.html) to the device
@@ -48,6 +53,7 @@ Based on the idea of [`nvoid`](https://github.com/not-void/nvoid) alternative `x
 * [`gnome-calls`](misc/gnome-calls): Latest release of [GNOME/calls](https://gitlab.gnome.org/GNOME/calls)
 * [`libphonenumber`](misc/libphonenumber): Latest release of [google/libphonenumber](https://github.com/google/libphonenumber)
 * [`purism-chatty`](misc/purism-chatty): Git version of [Librem5/chatty](https://source.puri.sm/Librem5/chatty)
+### Waydroid
 * [`libglibutil`](waydroid/libglibutil): Latest release of [sailfishos/libglibutil](https://github.com/sailfishos/libglibutil)
 * [`libgbinder`](waydroid/libgbinder): Latest release of [mer-hybris/libgbinder](https://github.com/mer-hybris/libgbinder)
 * [`python3-gbinder`](waydroid/python3-gbinder): Latest release of [erfanoabdi/gbinder-python](https://github.com/erfanoabdi/gbinder-python)
