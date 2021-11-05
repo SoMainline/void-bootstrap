@@ -22,3 +22,37 @@ packages
 After that call `merge.sh` to merge `custom-shlibs` with void-packages' `common/custom-shlibs` and copy all package directories to `srcpkgs`.
 
 Based on the idea of [`nvoid`](https://github.com/not-void/nvoid) alternative `xbps-src` repo.
+
+## SoMainline tweaks
+* [`gpsd-pds`](modem/gpsd-pds): GPSD with [PDS patch for Qualcomm SoCs](https://gitlab.com/gpsd/gpsd/-/merge_requests/139)
+* [`libqrtr-glib`](modem/libqrtr-glib): Git version of [libqrtr-glib](https://gitlab.freedesktop.org/mobile-broadband/libqrtr-glib)
+* [`libqmi`](modem/libqmi): Git version of [libqmi](https://gitlab.freedesktop.org/mobile-broadband/libqmi)
+* [`libmbim`](modem/libmbim): Git version of [libmbim](https://gitlab.freedesktop.org/mobile-broadband/libmbim)
+* [`ModemManager`](modem/ModemManager): Git version of [ModemManager](https://gitlab.freedesktop.org/mobile-broadband/ModemManager)
+* [`qrtr-ns`](modem/qcom/qrtr-ns): Git version of [andersson/qrtr](https://github.com/andersson/qrtr)
+* [`rmtfs`](modem/qcom/rmtfs): Git version of [andersson/rmtfs](https://github.com/andersson/rmtfs)
+* [`pd-mapper`](modem/qcom/pd-mapper): Git version of [andersson/pd-mapper](https://github.com/andersson/pd-mapper)
+* [`tqftpserv`](modem/qcom/tqftpserv): Git version of [andersson/tqftpserv](https://github.com/andersson/tqftpserv)
+* [`diag-router`](modem/qcom/diag-router): Git version of [andersson/diag](https://github.com/andersson/diag)
+* [`reboot-mode`](misc/reboot-mode): Latest release of [postmarketOS/reboot-mode](https://gitlab.com/postmarketOS/reboot-mode)
+* [`soctemp`](misc/soctemp): Standalone Python testing tool for [Qualcomm TSENS](https://cateee.net/lkddb/web-lkddb/QCOM_TSENS.html)
+* [`usbd`](misc/usbd): Standalone daemon for configuring USB modes via [ConfigFS](https://www.kernel.org/doc/html/latest/usb/gadget_configfs.html) & starting `dhcpd` for an [RNDIS connection](https://cateee.net/lkddb/web-lkddb/USB_CONFIGFS_RNDIS.html) to the device
+* [`pmos-tweaks`](misc/pmos-tweaks): Latest release of [postmarketOS/postmarketos-tweaks](https://gitlab.com/postmarketOS/postmarketos-tweaks)
+* [`portfolio`](misc/portfolio): Git version of [tchx84/Portfolio](https://github.com/tchx84/Portfolio)
+* [`mesa`](misc/mesa): Git version of [SoMainline/mesa](https://github.com/SoMainline/mesa) with full support for `freedreno`
+* [`megapixels`](misc/megapixels): Latest release of [martijnbraam/megapixels](https://git.sr.ht/~martijnbraam/megapixels)
+* [`mobile-config-firefox`](misc/mobile-config-firefox): Latest release of [postmarketOS/mobile-config-firefox](https://gitlab.com/postmarketOS/mobile-config-firefox)
+* [`callaudiod`](misc/callaudiod): Git version of [mobian1/callaudiod](https://gitlab.com/mobian1/callaudiod)
+* [`sofia-sip`](misc/sofia-sip): Latest release of [freeswitch/sofia-sip](https://github.com/freeswitch/sofia-sip)
+* [`feedbackd`](misc/feedbackd): Git version of [Librem5/feedbackd](https://source.puri.sm/Librem5/feedbackd)
+* [`gnome-calls`](misc/gnome-calls): Latest release of [GNOME/calls](https://gitlab.gnome.org/GNOME/calls)
+* [`libphonenumber`](misc/libphonenumber): Latest release of [google/libphonenumber](https://github.com/google/libphonenumber)
+* [`purism-chatty`](misc/purism-chatty): Git version of [Librem5/chatty](https://source.puri.sm/Librem5/chatty)
+* [`libglibutil`](waydroid/libglibutil): Latest release of [sailfishos/libglibutil](https://github.com/sailfishos/libglibutil)
+* [`libgbinder`](waydroid/libgbinder): Latest release of [mer-hybris/libgbinder](https://github.com/mer-hybris/libgbinder)
+* [`python3-gbinder`](waydroid/python3-gbinder): Latest release of [erfanoabdi/gbinder-python](https://github.com/erfanoabdi/gbinder-python)
+* [`waydroid`](waydroid/waydroid): Git version of [waydroid](https://github.com/waydroid/waydroid)
+
+## To-Do
+* Rename `mesa` to `mesa-somainline`
+* Fix `lm-sensors` and drop `soctemp`
