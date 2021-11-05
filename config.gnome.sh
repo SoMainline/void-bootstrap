@@ -13,5 +13,6 @@ extra_install_pkgs+=(
 	portfolio pmos-tweaks mobile-config-firefox
 	megapixels gnome-calls purism-chatty
 )
-overlays+=(ui-gnome pipewire-audio)
+unset overlays[-1] # drop somainline overlay to apply it after others
+overlays+=(ui-gnome pipewire-audio somainline)
 img_name_format="${img_name_format/-base/-gnome}"
