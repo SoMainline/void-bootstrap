@@ -1,0 +1,40 @@
+# Template file for 'libqmi'
+_githash=4210314cbd37142ceb5328ed14007b36338b3658 # tip of master branch as of 2021-11-04
+_gitshort=${_githash:0:7}
+
+pkgname=libqmi
+version=1.31.1
+revision=1
+build_style=meson
+configure_args="$(vopt_bool doc gtk_doc)"
+build_helper=gir
+hostmakedepends="pkg-config $(vopt_if doc gtk-doc)"
+makedepends="glib-devel libgudev-devel bash-completion
+ $(vopt_if mbim libmbim-devel) $(vopt_if qrtr libqrtr-glib-devel)"
+short_desc="QMI modem protocol helper library (with QRTR support [git ${_gitshort}])"
+maintainer="Jami Kettunen <jami.kettunen@somainline.org>"
+license="GPL-2.0-or-later, LGPL-2.1-or-later"
+homepage="http://www.freedesktop.org/wiki/Software/libqmi/"
+distfiles="https://gitlab.freedesktop.org/mobile-broadband/$pkgname/-/archive/${_githash}/$pkgname-${_githash}.tar.gz>$pkgname-${_gitshort}.tar.gz"
+wrksrc="$pkgname-${_githash}"
+checksum=01e7c4308cbcd01a86f0ac4cb03ede937042ed1c57730d55febfba15e91ab7ae
+
+build_options="gir doc mbim qrtr"
+build_options_default="gir mbim qrtr"
+# FIXME: cross-compile fails with doc enabled!
+
+libqmi-devel_package() {
+	depends="${makedepends} ${sourcepkg}-${version}_${revision}"
+	short_desc+=" - development files"
+	pkg_install() {
+		vmove usr/include
+		vmove usr/lib/pkgconfig
+		vmove "usr/lib/*.so"
+		if [ "$build_option_gir" ]; then
+			vmove usr/share/gir-1.0
+		fi
+		if [ "$build_option_doc" ]; then
+			vmove usr/share/gtk-doc
+		fi
+	}
+}
