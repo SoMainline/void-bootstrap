@@ -28,9 +28,9 @@ CONFIG_STRINGS="$CONFIG_DIR/strings/0x409"
 ############
 usage() { echo "usage: $0 [rndis|reset]"; }
 setup_boot() {
-	if [[ -r $GADGET_STRINGS/serialnumber && \
-	      "$(<$GADGET_STRINGS/serialnumber)" = "$SERIALNUMBER" ]]; then
-		echo "Boot setup done"
+	if [ -r $GADGET_STRINGS/serialnumber ] && \
+	   [ "$(cat $GADGET_STRINGS/serialnumber)" = "$SERIALNUMBER" ]; then
+		# Boot setup done
 		return
 	fi
 
@@ -63,7 +63,7 @@ usb_reset() {
 		ip link set $IFACE down
 	fi
 
-	rm -f $CONFIG_DIR/f*
+	find $CONFIG_DIR -type l -exec rm -f {} +
 }
 usb_rndis() {
 	usb_reset

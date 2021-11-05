@@ -1,7 +1,7 @@
 # Template file for 'usbd'
 pkgname=usbd
 version=1.0
-revision=1
+revision=2
 build_style=meta
 depends="dhcp" # bash iproute2
 short_desc="Setup USB ConfigFS gadget for different modes such as RNDIS"
