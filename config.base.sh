@@ -77,6 +77,7 @@ extra_build_pkgs=(
 	libmbim libqrtr-glib libqmi ModemManager # Cellular
 	qrtr-ns pd-mapper rmtfs tqftpserv diag-router # Modem/WLAN
 	gpsd-pds # GPS
+	neard # NFC
 
 	reboot-mode soctemp # Extra tools
 	#linuxconsoletools # (e.g. fftest)
@@ -86,6 +87,7 @@ extra_install_pkgs=(
 	libqmi ModemManager
 	qrtr-ns pd-mapper rmtfs tqftpserv diag-router
 	gpsd-pds
+	neard neard-tests
 
 	reboot-mode soctemp
 	#linuxconsoletools
@@ -103,6 +105,7 @@ enable_sv=(
 	pd-mapper rmtfs tqftpserv diag-router # Modem/WLAN
 	NetworkManager # Networking
 	gpsd-pds # GPS
+	neard # NFC
 )
 disable_sv=(
 	agetty-tty{2..6} # We don't need more than 1 active tty on embedded devices
