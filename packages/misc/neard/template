@@ -1,0 +1,48 @@
+# Template file for 'neard'
+pkgname=neard
+version=0.17
+revision=1
+build_style=gnu-configure
+configure_args="--disable-systemd --enable-tools"
+makedepends="glib-devel libnl-devel"
+hostmakedepends="autoconf autoconf-archive automake libtool pkg-config"
+short_desc="Near Field Communication manager"
+maintainer="Jami Kettunen <jami.kettunen@protonmail.com>"
+license="GPL-2.0-or-later"
+homepage="https://github.com/linux-nfc/neard"
+distfiles="${homepage}/archive/refs/tags/v${version}.tar.gz"
+checksum=6e3cd3d0f3dd59797cc49b4a9207cc51c1a181c33f39b82a8d26aaca16e1e0a4
+
+pre_configure() {
+	# Generate configure script
+	./bootstrap
+}
+
+post_install() {
+	vsv neard
+	vlicense COPYING
+	for f in $wrksrc/test/*; do
+		vinstall $f 755 usr/libexec/nfc
+	done
+}
+
+neard-devel_package() {
+	depends="neard>=${version}_${revision}"
+	short_desc+=" - development files"
+	pkg_install() {
+		vmove usr/include
+		mv ${PKGDESTDIR}/usr/include/version.h \
+			${PKGDESTDIR}/usr/include/near
+		vmove usr/lib/pkgconfig
+	}
+}
+
+neard-tests_package() {
+	depends="neard>=${version}_${revision}"
+	short_desc+=" - test scripts"
+	depends="python-dbus python-gobject" # pygtk
+	python_version=2
+	pkg_install() {
+		vmove usr/libexec/nfc/*
+	}
+}
