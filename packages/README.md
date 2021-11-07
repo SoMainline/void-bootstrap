@@ -59,7 +59,7 @@ Based on the idea of [`nvoid`](https://github.com/not-void/nvoid) alternative `x
 * [`libgbinder`](waydroid/libgbinder): Latest release of [mer-hybris/libgbinder](https://github.com/mer-hybris/libgbinder)
 * [`python3-gbinder`](waydroid/python3-gbinder): Latest release of [erfanoabdi/gbinder-python](https://github.com/erfanoabdi/gbinder-python)
 * [`waydroid`](waydroid/waydroid): Git version of [waydroid](https://github.com/waydroid/waydroid)
-* [`mutter-waydroid`](waydroid/mutter-waydroid): [GNOME/mutter](https://gitlab.gnome.org/GNOME/mutter) with [support for ABGR/XBGR](https://github.com/waydroid/mutter/commit/b389361)
+* [`mutter-bgr`](waydroid/mutter-bgr): [GNOME/mutter](https://gitlab.gnome.org/GNOME/mutter) with [support for ABGR/XBGR](https://github.com/waydroid/mutter/commit/b389361)
 
 ## To-Do
 * Rename `mesa` to `mesa-somainline`
