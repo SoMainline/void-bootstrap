@@ -1,5 +1,5 @@
-# Template file for 'mutter-waydroid'
-pkgname=mutter-waydroid
+# Template file for 'mutter-bgr'
+pkgname=mutter-bgr
 version=40.4
 revision=1
 build_helper="gir"
@@ -42,9 +42,9 @@ post_install() {
 		 -i ${DESTDIR}/usr/lib/pkgconfig/libmutter-8.pc
 }
 
-mutter-waydroid-devel_package() {
+mutter-bgr-devel_package() {
 	depends="gtk+3-devel graphene-devel clutter-devel
-	 libX11-devel libXtst-devel mutter-waydroid-${version}_${revision}"
+	 libX11-devel libXtst-devel mutter-bgr-${version}_${revision}"
 	short_desc+=" - development files"
 	pkg_install() {
 		vmove usr/include
