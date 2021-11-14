@@ -1,15 +1,15 @@
 # Template file for 'ModemManager'
-_githash=88de20689c912f858c8e92c06cee9feef6814549 # tip of master branch as of 2021-11-04
+_githash=eae2e28577c53e8deaa25d46d6032d5132be6b58 # tip of master branch as of 2021-11-14
 _gitshort=${_githash:0:7}
 
 pkgname=ModemManager
 version=1.19.0
-revision=1
+revision=2
 build_style=gnu-configure
 build_helper="gir"
 configure_args="--disable-static --with-polkit=permissive
  --with-udev-base-dir=/usr/lib/udev --enable-plugin-qcom-soc
- $(vopt_enable gir introspection) $(vopt_enable gir vala)"
+ $(vopt_enable gir introspection) $(vopt_enable gir vala) --without-mbim"
 hostmakedepends="pkg-config autoconf $(vopt_if gir vala-devel)
  glib-devel libxslt-devel gettext-devel gettext-devel-tools tar
  automake autoconf-archive libtool"
@@ -24,7 +24,7 @@ license="GPL-2.0-or-later"
 homepage="https://www.freedesktop.org/wiki/Software/ModemManager/"
 distfiles="https://gitlab.freedesktop.org/mobile-broadband/$pkgname/-/archive/${_githash}/$pkgname-${_githash}.tar.gz>$pkgname-${_gitshort}.tar.gz"
 wrksrc="$pkgname-${_githash}"
-checksum=bb9ca3e8c59c7804a1740bafbdf6df5c1e41a7f880a10ab132b66ebf8217bcc6
+checksum=0f0312b6026420a44bb529fa1d0d35c3ab3684eda689d3c020439949f232d0d6
 
 build_options="gir"
 build_options_default="gir"
