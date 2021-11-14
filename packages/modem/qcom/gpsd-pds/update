@@ -1,1 +1,2 @@
+pkgname=gpsd
 ignore="*~dev"
