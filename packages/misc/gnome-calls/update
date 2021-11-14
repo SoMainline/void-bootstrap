@@ -1,4 +1,2 @@
-git=true
-version=${_githash}
-site="$homepage/commits/master.atom"
-pattern='<id>\K.*commit\/\K.*(?=<\/id>)'
+site="$homepage/-/tags?format=atom"
+pattern='<id>\K.*tags\/\K.*(?=<\/id>)'
