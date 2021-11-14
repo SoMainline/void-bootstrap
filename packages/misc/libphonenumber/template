@@ -1,6 +1,6 @@
 # Template file for 'libphonenumber'
 pkgname=libphonenumber
-version=8.12.36
+version=8.12.37
 revision=1
 build_style=cmake
 configure_args="-DREGENERATE_METADATA=OFF"
@@ -12,7 +12,7 @@ license="Apache-2.0"
 homepage="https://github.com/google/libphonenumber"
 distfiles="${homepage}/archive/refs/tags/v${version}.tar.gz"
 build_wrksrc="cpp"
-checksum=0f8d3dbfd02262477cb05450cd4442b1d39ac2d865c530e063d622eff5cd22f5
+checksum=e95c210b446ed7503b5bb46c6010e33dbd0e33348be89365d6fd630b9b8a0b68
 #nocross="cross build fails due to generate_geocoding_data compiling for target instead of host!"
 # HACK: figure out cross-compiling instead of using qemu!
 if [ ${CROSS_BUILD} ]; then
