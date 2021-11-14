@@ -1,10 +1,10 @@
 # Template file for 'mesa'
-_githash=180320aa5f6ce054559a5792a1c57a1fc73f4f1b # tip of main branch as of 2021-11-04
+_githash=9d9de15a020d317d4486124f97b2cf06b98ee8b6 # tip of main branch as of 2021-11-15
 _gitshort=${_githash:0:7}
 
 pkgname=mesa
 version=22.0.0
-revision=1
+revision=2
 wrksrc="mesa-${_githash}"
 build_style=meson
 configure_args="-Dglvnd=true -Dshared-glapi=enabled -Dgbm=enabled -Degl=enabled
@@ -26,7 +26,7 @@ license="MIT, LGPL-2.1-or-later"
 homepage="https://www.mesa3d.org/"
 #changelog="https://docs.mesa3d.org/relnotes/${version}.html"
 distfiles="https://github.com/SoMainline/mesa/archive/${_githash}/${_githash}.tar.gz>$pkgname-${_gitshort}.tar.gz"
-checksum=f5614063ef79f5a32cd5727293f585cb242e74cf18bc387c61b19fec5c4efa14
+checksum=173fd62cf5ba6940839f2d383fe7e5a528873ba5cf873548af8ae40fc8b6d9e3
 
 if [ "$XBPS_TARGET_LIBC" = "musl" ]; then
 	configure_args+=" -Duse-elf-tls=false"
