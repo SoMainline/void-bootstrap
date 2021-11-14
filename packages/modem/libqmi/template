@@ -1,9 +1,9 @@
 # Template file for 'libqmi'
-_githash=4210314cbd37142ceb5328ed14007b36338b3658 # tip of master branch as of 2021-11-04
+_githash=430b678d0356d01fc6b001ee8bdfbe8960e01c2d # tip of master branch as of 2021-11-14
 _gitshort=${_githash:0:7}
 
 pkgname=libqmi
-version=1.31.1
+version=1.31.2
 revision=1
 build_style=meson
 configure_args="$(vopt_bool doc gtk_doc)"
@@ -17,7 +17,7 @@ license="GPL-2.0-or-later, LGPL-2.1-or-later"
 homepage="http://www.freedesktop.org/wiki/Software/libqmi/"
 distfiles="https://gitlab.freedesktop.org/mobile-broadband/$pkgname/-/archive/${_githash}/$pkgname-${_githash}.tar.gz>$pkgname-${_gitshort}.tar.gz"
 wrksrc="$pkgname-${_githash}"
-checksum=01e7c4308cbcd01a86f0ac4cb03ede937042ed1c57730d55febfba15e91ab7ae
+checksum=7a94423e3c1670d726526b3895299c3fd1d697832390c690840c76a60b732284
 
 build_options="gir doc mbim qrtr"
 build_options_default="gir mbim qrtr"
