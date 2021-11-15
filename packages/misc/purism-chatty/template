@@ -1,7 +1,7 @@
 # Template file for 'purism-chatty'
-_githash=ff465b643e99d75f30d8ec4df4923abfd62a73b0 # tip of master branch as of 2021-11-04
+_githash=71aaddf1bec32a895ba7fbb37da3f42f04d74627 # tip of master branch as of 2021-11-15
 _gitshort=${_githash:0:7}
-_gitrev=2591
+_gitrev=2628
 _githash_libgd=c7c7ff4e05d3fe82854219091cf116cce6b19de0
 
 pkgname=purism-chatty
@@ -22,7 +22,7 @@ distfiles="
 "
 wrksrc="chatty-${_githash}"
 checksum="
-	a3dd342615bb131932f0a651fb7c7449e490a32b2a0de0ec13c704be5a0e7948
+	a099fb743a830fceeae853be33536715f7f3d516b171d6636e166d6c6fa0406f
 	7e6389d73ce06b195381cff2cfb17e986e8e9f60a725581e769e5e4d6cac5209
 "
 
@@ -30,7 +30,6 @@ pre_configure() {
 	cp -r ../libgd-${_githash_libgd}/. subprojects/libgd
 
 	if [ "$CROSS_BUILD" ]; then
-		vsed -i src/meson.build -e "s/purple_plugdir =.*/purple_plugdir = '\/usr\/${XBPS_CROSS_TRIPLET}\/usr\/lib\/purple-2'/g"
-		grep ${XBPS_CROSS_TRIPLET} src/meson.build
+		vsed -i src/purple/meson.build -e "s/purple_plugdir =.*/purple_plugdir = '\/usr\/${XBPS_CROSS_TRIPLET}\/usr\/lib\/purple-2'/"
 	fi
 }
