@@ -12,7 +12,7 @@ diff --git a/Manual.md b/Manual.md
 index 0f268fa79e..52d98d7998 100644
 --- a/Manual.md
 +++ b/Manual.md
-@@ -857,6 +857,11 @@ versions.  Example: `ignore="*b*"`
+@@ -858,6 +858,11 @@ versions.  Example: `ignore="*b*"`
  - `version` is the version number used to compare against
  upstream versions. Example: `version=${version//./_}`
  
