@@ -1,4 +1,4 @@
 git=true
 version="${_githash}"
-site="https://gitlab.freedesktop.org/mesa/mesa/-/commits/main?format=atom"
+site='https://github.com/SoMainline/mesa/commits/main.atom'
 pattern='<id>\K.*commit\/\K.*(?=<\/id>)'
