@@ -24,7 +24,7 @@ dns=(
 	2606:4700:4700::1001
 )
 #mirror="???"
-img_name_format="%a-base-rootfs-$(date +'%Y-%m-%d--%H-%M').img"
+img_name_format="somainline-%a-base-rootfs-$(date +'%Y-%m-%d--%H-%M').img"
 img_size="3G"
 img_compress="xz"
 work_dir="work"
