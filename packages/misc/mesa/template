@@ -1,10 +1,11 @@
 # Template file for 'mesa'
-_githash=8d742d2e64d42445694b4d8ca087d1aa87855a9e # tip of main branch as of 2021-11-16
+# NOTE: Keep 2 commits behind tip!
+_githash=015820d9388fd3af78a1e23e6372a2cb64c1694f # tip of main branch as of 2021-11-23
 _gitshort=${_githash:0:7}
 
 pkgname=mesa
 version=22.0.0
-revision=3
+revision=4
 wrksrc="mesa-${_githash}"
 build_style=meson
 configure_args="-Dglvnd=true -Dshared-glapi=enabled -Dgbm=enabled -Degl=enabled
@@ -26,11 +27,7 @@ license="MIT, LGPL-2.1-or-later"
 homepage="https://www.mesa3d.org/"
 #changelog="https://docs.mesa3d.org/relnotes/${version}.html"
 distfiles="https://github.com/SoMainline/mesa/archive/${_githash}/${_githash}.tar.gz>$pkgname-${_gitshort}.tar.gz"
-checksum=4b346c057fea2810f6c624afb19959d9032b82e91d58e4ff0ed0b0707daa1afb
-
-if [ "$XBPS_TARGET_LIBC" = "musl" ]; then
-	configure_args+=" -Duse-elf-tls=false"
-fi
+checksum=ae3255662a5fd0ff38fd1a0652556d3b0c7a26cce7a758482be3fdad9133d906
 
 # only use llvmpipe on targets where it's supported and reliable
 # especially on big endian it's all kinds of broken, and e.g. on
@@ -123,6 +120,8 @@ if [ "$_have_qcom" ]; then
 	_vulkan_drivers+=",freedreno"
 	_tools+=",freedreno"
 	subpackages+=" mesa-vulkan-freedreno mesa-tools"
+	# TODO: enable clover OCL stuff?
+	# https://gitlab.freedesktop.org/mesa/mesa/-/merge_requests/12500
 fi
 
 if [ "$_have_virgl" ]; then
