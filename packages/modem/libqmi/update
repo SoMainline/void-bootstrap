@@ -1,4 +1,4 @@
 git=true
 version="${_githash}"
-site='https://gitlab.freedesktop.org/mobile-broadband/libqmi/-/commits/master?format=atom'
+site='https://gitlab.freedesktop.org/mobile-broadband/libqmi/-/commits/main?format=atom'
 pattern='<id>\K.*commit\/\K.*(?=<\/id>)'
