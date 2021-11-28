@@ -1,9 +1,10 @@
 # Template file for 'portfolio'
-_githash=210bc64eb9ae2db682026ba65dae7b8a8045962c # tip of master branch as of 2021-10-01
+_githash=c340540cce1bd7c743d793d6fab42df74e980da7 # tip of master branch as of 2021-11-28
 _gitshort=${_githash:0:7}
+_gitrev=342
 
 pkgname=portfolio
-version=0.9.12
+version=0.9.12r${_gitrev}
 revision=1
 build_style=meson
 hostmakedepends="gettext-devel glib-devel"
@@ -12,7 +13,7 @@ maintainer="Jami Kettunen <jami.kettunen@protonmail.com>"
 license="GPL-3.0-or-later"
 homepage="https://github.com/tchx84/Portfolio"
 distfiles="${homepage}/archive/${_githash}.tar.gz>$pkgname-${_gitshort}.tar.gz"
-checksum=25bbedf8237441a4ef3355931ca3176b4b39c9d73641ee9f359370b9ed0db401
+checksum=2f0612e4f1b597ccd636a495fb230a00ffb9389e1cfb376ae4fe21a46cfe61bb
 wrksrc="Portfolio-${_githash}"
 
 post_install() {
