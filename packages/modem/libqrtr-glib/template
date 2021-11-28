@@ -1,9 +1,10 @@
 # Template file for 'libqrtr-glib'
-_githash=bfc4af90f271c05b29a7fb5269f0859b092a2cf8 # tip of master branch as of 2021-11-14
+_githash=b3ede6cd86aa7cb3fa96f04661d49f4aba56e82b # tip of master branch as of 2021-11-28
 _gitshort=${_githash:0:7}
+_gitrev=91
 
 pkgname=libqrtr-glib
-version=1.3.0
+version=1.3.0r${_gitrev}
 revision=1
 build_style=meson
 configure_args="$(vopt_bool doc gtk_doc)"
@@ -16,7 +17,7 @@ license="LGPL-2.1-or-later"
 homepage="https://gitlab.freedesktop.org/mobile-broadband/libqrtr-glib"
 distfiles="https://gitlab.freedesktop.org/mobile-broadband/$pkgname/-/archive/${_githash}/$pkgname-${_githash}.tar.gz>$pkgname-${_gitshort}.tar.gz"
 wrksrc="$pkgname-${_githash}"
-checksum=c4467cd84b29b028050efd7c0831b298c06abe177d7575af7bdb8a5614debfc5
+checksum=fb06a5768e7822c7b5d854afb43d3e0fc0dc40926bfffffbca428e34f548b537
 
 build_options="gir doc"
 build_options_default="gir"
