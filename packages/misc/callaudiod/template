@@ -1,9 +1,10 @@
 # Template file for 'callaudiod'
-_githash=c9550e17e6e26802dda23c6070d100aca0cc2810 # tip of master branch as of 2021-11-04
+_githash=47ba7d298233945f0c85b03e33b51213e654ed5f # tip of master branch as of 2021-11-28
 _gitshort=${_githash:0:7}
+_gitrev=64
 
 pkgname=callaudiod
-version=0.1.1
+version=0.1.1r${_gitrev}
 revision=1
 build_style=meson
 hostmakedepends="pkg-config glib-devel"
@@ -14,7 +15,7 @@ license="LGPL-3.0-or-later"
 homepage="https://gitlab.com/mobian1/callaudiod"
 distfiles="$homepage/-/archive/${_githash}/$pkgname-${_githash}.tar.gz>$pkgname-${_gitshort}.tar.gz"
 wrksrc="$pkgname-${_githash}"
-checksum=f711d8448cfb413de99565196b134821861200ada25bdbf5d8a64990648c7590
+checksum=4198d66cf60b997a38f5a88d232265309d80687658bc2a083e870eb18a7866ad
 
 libcallaudio_package() {
 	short_desc+=" - shared-libraries"
