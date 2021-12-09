@@ -1,0 +1,11 @@
+# Template file for 'unudhcpd'
+pkgname=unudhcpd
+version=0.1
+revision=1
+build_style=meson
+short_desc="Very basic DHCP server that issues only 1 IP address to any client"
+maintainer="Jami Kettunen <jami.kettunen@somainline.org>"
+license="GPL-3.0-or-later"
+homepage="https://gitlab.com/postmarketOS/unudhcpd"
+distfiles="${homepage}/-/archive/${version}/${pkgname}-${version}.tar.gz"
+checksum=201698260f4e6567f7cc20bdeb393cbe02229068f8bbb4416325311024fbaa89
