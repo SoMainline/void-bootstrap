@@ -1,0 +1,16 @@
+# Template file for 'pil-squasher'
+_githash=843950ff8445cb02ee543ec751ab42112d39a8e0 # tip of master branch as of 2021-12-10
+_gitshort=${_githash:0:7}
+_gitrev=3
+
+pkgname=pil-squasher
+version=0.0.1r${_gitrev}
+revision=1
+build_style=gnu-makefile
+short_desc="Convert split firmware mdt + bXX files into an mbn file"
+maintainer="Jami Kettunen <jami.kettunen@somainline.org>"
+license="custom:None"
+homepage="https://github.com/andersson/pil-squasher"
+distfiles="${homepage}/archive/${_githash}.tar.gz>${pkgname}-${_gitshort}.tar.gz"
+wrksrc="${pkgname}-${_githash}"
+checksum=b3d626f35c5d6573754c983d3114e129011d4c95bc6c5bfd76e0dec8e9368d4a
