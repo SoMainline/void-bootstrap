@@ -73,7 +73,7 @@ base_pkgs=(
 )
 
 extra_build_pkgs=(
-	usbd # USB gadget setup
+	unudhcpd usbd # USB gadget setup
 	libmbim libqrtr-glib libqmi ModemManager # Cellular
 	qrtr-ns pd-mapper rmtfs tqftpserv diag-router # Modem/WLAN
 	gpsd-pds # GPS
@@ -83,7 +83,7 @@ extra_build_pkgs=(
 	#linuxconsoletools # (e.g. fftest)
 )
 extra_install_pkgs=(
-	usbd
+	unudhcpd usbd
 	libqmi ModemManager
 	qrtr-ns pd-mapper rmtfs tqftpserv diag-router
 	gpsd-pds
