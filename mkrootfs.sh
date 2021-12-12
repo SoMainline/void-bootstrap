@@ -99,7 +99,7 @@ config_prep() {
 	. xbps-env.sh
 }
 check_deps() {
-	runtime_deps=($backend wget xz mkfs.ext4 $sudo)
+	runtime_deps=($backend wget xz mkfs.ext4 $sudo patch)
 	[ "$img_compress" = "gz" ] && runtime_deps+=(gzip)
 	if [ "$qemu_arch" ]; then
 		runtime_deps+=(qemu-$qemu_arch-static)
