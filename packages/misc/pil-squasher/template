@@ -4,7 +4,7 @@ _gitshort=${_githash:0:7}
 _gitrev=3
 
 pkgname=pil-squasher
-version=0.0.1r${_gitrev}
+version=0.0.0r${_gitrev}
 revision=1
 build_style=gnu-makefile
 short_desc="Convert split firmware mdt + bXX files into an mbn file"
