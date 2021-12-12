@@ -1,4 +1,4 @@
 git=true
 version="${_githash}"
-site="$homepage/commits/bullseye.atom"
+site="https://github.com/waydroid/waydroid/commits/bullseye.atom"
 pattern='<id>\K.*commit\/\K.*(?=<\/id>)'
