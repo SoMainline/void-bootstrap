@@ -1,7 +1,7 @@
 # Template file for 'purism-chatty'
-_githash=20854fa427a57d44199d874872e3f798d3dd60e8 # tip of master branch as of 2021-11-28
+_githash=73caf3d97281a6595c8d6f552415caee8303d561 # tip of master branch as of 2021-12-12
 _gitshort=${_githash:0:7}
-_gitrev=2728
+_gitrev=2779
 _githash_libgd=c7c7ff4e05d3fe82854219091cf116cce6b19de0
 
 pkgname=purism-chatty
@@ -22,7 +22,7 @@ distfiles="
 "
 wrksrc="chatty-${_githash}"
 checksum="
-	62301b03a011ff37e9103b997fe121e19aada0a65ff26b4dcf6c5395a76d9676
+	13f2daf4e84d3754898176cf2503d62b1fa522d29deca82eb857e40b891061df
 	7e6389d73ce06b195381cff2cfb17e986e8e9f60a725581e769e5e4d6cac5209
 "
 
