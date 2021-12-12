@@ -1,16 +1,11 @@
 # Template file for 'mobile-config-firefox'
 pkgname=mobile-config-firefox
-version=2.2.0
+version=3.0.0
 revision=1
 build_style=gnu-makefile
-make_install_args="DISTRO=VoidLinux"
 short_desc="Firefox tweaks for mobile and privacy"
 maintainer="Jami Kettunen <jami.kettunen@somainline.org>"
 license="GPL-3.0-or-later"
 homepage="https://gitlab.com/postmarketOS/mobile-config-firefox"
 distfiles="${homepage}/-/archive/${version}/${pkgname}-${version}.tar.gz"
-checksum=d4d73856d8139f312f0b5cc3622eacb087dddbaa82627e24dda39f1e5a81a73e
-
-post_extract() {
-	cp ${FILESDIR}/distro_links.html src/homepage
-}
+checksum=7821edce47cd0fe02639e76ae8145ed28924771d409fca012c42e49057288fb7
