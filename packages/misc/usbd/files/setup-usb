@@ -14,7 +14,8 @@ MANUFACTURER="$(echo $DT_MODEL | cut -d' ' -f1)" # e.g. "OnePlus"
 PRODUCT="$DT_MODEL"
 CONTROLLER="$(ls /sys/class/udc/)" # e.g. "a800000.dwc3"
 IFACE="usb0"
-IP_ADDR_SPACE="172.16.42.1/24"
+IP_DEVICE=172.16.42.1
+IP_HOST=172.16.42.2
 [ -r /etc/sv/usbd/conf ] && . /etc/sv/usbd/conf
 
 # Runtime vars
@@ -55,11 +56,10 @@ setup_boot() {
 	ln -s $CONFIG_DIR $GADGET_DIR/os_desc/$CONFIG_NAME
 }
 usb_reset() {
-	local dhcpd_pid=$(pgrep -f "dhcpd.*$IFACE")
-	[ -n "$dhcpd_pid" ] && kill -INT $dhcpd_pid
-	[ -e /tmp/dhcpd.leases ] && rm /tmp/dhcpd.leases
+	local unudhcpd_pid=$(pgrep -f "unudhcpd.*$IFACE")
+	[ -n "$unudhcpd_pid" ] && kill -INT $unudhcpd_pid
 	if ip addr show $IFACE | grep -q UP; then
-		ip addr del $IP_ADDR_SPACE dev $IFACE
+		ip addr del $IP_DEVICE/24 dev $IFACE
 		ip link set $IFACE down
 	fi
 
@@ -71,10 +71,9 @@ usb_rndis() {
 	ln -s $GADGET_DIR/functions/rndis.$IFACE $CONFIG_DIR/f1
 	echo "$CONTROLLER" > $GADGET_DIR/UDC
 
-	ip addr add $IP_ADDR_SPACE dev $IFACE
+	ip addr add $IP_DEVICE/24 dev $IFACE
 	ip link set $IFACE up
-	touch /tmp/dhcpd.leases
-	dhcpd -4 -q -cf /etc/dhcpd-$IFACE.conf -lf /tmp/dhcpd.leases $IFACE
+	unudhcpd -i $IFACE -s $IP_DEVICE -c $IP_HOST
 }
 
 # Script
