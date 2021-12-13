@@ -79,7 +79,7 @@ extra_build_pkgs=(
 	gpsd-pds # GPS
 	neard # NFC
 
-	reboot-mode soctemp # Extra tools
+	reboot-mode soctemp pil-squasher # Extra tools
 	#linuxconsoletools # (e.g. fftest)
 )
 extra_install_pkgs=(
@@ -89,7 +89,7 @@ extra_install_pkgs=(
 	gpsd-pds
 	neard neard-tests
 
-	reboot-mode soctemp
+	reboot-mode soctemp pil-squasher
 	#linuxconsoletools
 )
 #void_packages="https://github.com/SoMainline/void-packages.git"
