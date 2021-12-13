@@ -69,7 +69,7 @@ base_pkgs=(
 
 	zsh zsh-completions zsh-autosuggestions # Shell
 	#zsh-history-substring-search zsh-syntax-highlighting
-	git htop neovim neofetch psmisc wget curl conspy xtools xxd ripgrep strace tree abootimg # Some tools
+	git htop neovim neofetch psmisc wget curl conspy xtools xxd ripgrep strace tree abootimg jq # Some tools
 )
 
 extra_build_pkgs=(
