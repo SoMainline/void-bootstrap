@@ -1,7 +1,7 @@
 # Template file for 'unudhcpd'
 pkgname=unudhcpd
 version=0.1
-revision=1
+revision=2
 build_style=meson
 short_desc="Very basic DHCP server that issues only 1 IP address to any client"
 maintainer="Jami Kettunen <jami.kettunen@somainline.org>"
