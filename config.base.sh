@@ -4,7 +4,7 @@ users=(
 	'somainline:$5$/UjnRD0B7cDi5Ffh$LqUT25x224Zqb3R2kN7atvRbo.gVr2QXSS9hDGn/EgA:::SoMainline'
 )
 users_shell_default="/bin/zsh"
-users_groups_common+=(
+users_groups_common=(
 	wheel # sudo
 	video input storage bluetooth network
 	socklog # svlogtail
@@ -69,7 +69,13 @@ base_pkgs=(
 
 	zsh zsh-completions zsh-autosuggestions # Shell
 	#zsh-history-substring-search zsh-syntax-highlighting
-	git htop neovim neofetch psmisc wget curl conspy xtools xxd ripgrep strace tree abootimg jq # Some tools
+
+	# Some tools
+	git htop neovim neofetch psmisc wget curl conspy xtools xxd ripgrep strace tree
+	abootimg android-tools jq man-pages-posix binutils
+
+	# Extended terminal definitions for proper support on ie. alacritty
+	alacritty-terminfo foot-terminfo
 )
 
 extra_build_pkgs=(
