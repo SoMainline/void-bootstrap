@@ -22,8 +22,8 @@ bindkey '^[[Z' reverse-menu-complete
 HISTFILE="$HOME/.cache/zsh_history"
 HISTSIZE=4096
 SAVEHIST=4096
-setopt hist_ignore_dups  # ignore duplicated commands
-setopt hist_ignore_space # ignore commands that start with space
+setopt histignorealldups # ignore ALL duplicated commands
+setopt hist_ignore_space # don't save commands starting with a space in history
 
 # Aliases
 ##########
@@ -33,6 +33,12 @@ alias \
 	grep='grep --color' \
 	egrep='grep -E' \
 	'..'='cd ..'
+
+# Misc
+#######
+
+# for some reason "man" defaults to "more" under zsh by default
+export MANPAGER=less
 
 # Prompt
 #########
