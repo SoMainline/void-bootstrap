@@ -1,14 +1,14 @@
 # Template file for 'libqmi'
-_githash=430b678d0356d01fc6b001ee8bdfbe8960e01c2d # tip of master branch as of 2021-11-14
+_githash=91d4d5e2394917ad492721ec227eb4be0b376cae # tip of master branch as of 2022-01-29
 _gitshort=${_githash:0:7}
 
 pkgname=libqmi
 version=1.31.2
-revision=1
+revision=2
 build_style=meson
-configure_args="$(vopt_bool doc gtk_doc)"
 build_helper=gir
-hostmakedepends="pkg-config $(vopt_if doc gtk-doc)"
+configure_args="$(vopt_bool doc gtk_doc) $(vopt_bool doc man)"
+hostmakedepends="pkg-config $(vopt_if doc 'gtk-doc help2man')"
 makedepends="glib-devel libgudev-devel bash-completion
  $(vopt_if mbim libmbim-devel) $(vopt_if qrtr libqrtr-glib-devel)"
 short_desc="QMI modem protocol helper library (with QRTR support [git ${_gitshort}])"
@@ -17,9 +17,10 @@ license="GPL-2.0-or-later, LGPL-2.1-or-later"
 homepage="http://www.freedesktop.org/wiki/Software/libqmi/"
 distfiles="https://gitlab.freedesktop.org/mobile-broadband/$pkgname/-/archive/${_githash}/$pkgname-${_githash}.tar.gz>$pkgname-${_gitshort}.tar.gz"
 wrksrc="$pkgname-${_githash}"
-checksum=7a94423e3c1670d726526b3895299c3fd1d697832390c690840c76a60b732284
+checksum=90a35a9c71845de040fc10960a97ccb666c01cbdd99a5c458a9ff9e320d1299d
 
 build_options="gir doc mbim qrtr"
+# FIXME: help2man doc build fails due to "help2man: can't get `"--help-all"' info from .../build/src/qmicli/qmicli"!
 build_options_default="gir mbim qrtr"
 # FIXME: cross-compile fails with doc enabled!
 
