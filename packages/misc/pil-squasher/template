@@ -5,12 +5,17 @@ _gitrev=3
 
 pkgname=pil-squasher
 version=0.0.0r${_gitrev}
-revision=1
+revision=2
 build_style=gnu-makefile
 short_desc="Convert split firmware mdt + bXX files into an mbn file"
 maintainer="Jami Kettunen <jami.kettunen@somainline.org>"
-license="custom:None"
+license="BSD-3-Clause"
 homepage="https://github.com/andersson/pil-squasher"
 distfiles="${homepage}/archive/${_githash}.tar.gz>${pkgname}-${_gitshort}.tar.gz"
 wrksrc="${pkgname}-${_githash}"
 checksum=b3d626f35c5d6573754c983d3114e129011d4c95bc6c5bfd76e0dec8e9368d4a
+
+post_install() {
+	head -29 < pil-squasher.c | tail -28 | cut -c 4- > LICENSE
+	vlicense LICENSE
+}
