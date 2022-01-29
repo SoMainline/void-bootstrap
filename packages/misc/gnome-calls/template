@@ -1,6 +1,8 @@
 # Template file for 'gnome-calls'
+_githash_libcall_ui=8efceacfc01962787638b41fa56ef6674ffe5b4e
+
 pkgname=gnome-calls
-version=41.1
+version=42.beta.1
 revision=1
 build_style=meson
 hostmakedepends="glib-devel gettext vala pkg-config wayland-devel
@@ -12,10 +14,20 @@ short_desc="Phone dialer and call handler"
 maintainer="Jami Kettunen <jami.kettunen@somainline.org>"
 license="GPL-3.0-or-later"
 homepage="https://gitlab.gnome.org/GNOME/calls"
-distfiles="$homepage/-/archive/${version}/calls-${version}.tar.gz"
+distfiles="
+    $homepage/-/archive/${version}/calls-${version}.tar.gz
+    https://gitlab.gnome.org/World/Phosh/libcall-ui/-/archive/${_githash_libcall_ui}/${_githash_libcall_ui}.tar.gz
+"
 wrksrc="calls-${version}"
-checksum=8b9a217f9f33fea314b33ee373d893177595faa97b38248769b50b07c238ab3f
+checksum="
+    b55a1ef5d2f1e23d8488fcc1ee60acc5606d98d28c6c4728e88fffcbfa4fb26d
+    7fecb23cfa2ef793a67b2562d6fc92458233814e7a82ac5ead5604cede018a50
+"
 # Checking depends on a wayland session
 make_check=no
 
 LDFLAGS+="-lssl -lcrypto"
+
+pre_configure() {
+	cp -r ../libcall-ui-${_githash_libcall_ui}/. subprojects/libcall-ui
+}
