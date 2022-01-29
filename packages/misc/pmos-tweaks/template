@@ -1,6 +1,6 @@
 # Template file for 'pmos-tweaks'
 pkgname=pmos-tweaks
-version=0.8.1
+version=0.9.0
 revision=1
 build_style=meson
 makedepends="libhandy1-devel"
@@ -12,7 +12,7 @@ license="GPL-3.0-or-later"
 homepage="https://gitlab.com/postmarketOS/postmarketos-tweaks"
 distfiles="${homepage}/-/archive/${version}/postmarketos-tweaks-${version}.tar.gz"
 wrksrc="postmarketos-tweaks-${version}"
-checksum=a689626efea7adacc10970074a4cd049f582061ee925ff9f28901ec95208b680
+checksum=04c346b322cb7fd66aae3e572c48f2ceef8f8541b161dd8c3e1af6022272234a
 _ymldir="usr/share/postmarketos-tweaks"
 
 post_install() {
