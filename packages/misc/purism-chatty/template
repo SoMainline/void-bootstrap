@@ -1,11 +1,11 @@
 # Template file for 'purism-chatty'
-_githash=73caf3d97281a6595c8d6f552415caee8303d561 # tip of master branch as of 2021-12-12
+_githash=5b8d32644f5c906e41a92b88191550ff20748d84 # tip of master branch as of 2021-12-12
 _gitshort=${_githash:0:7}
-_gitrev=2779
+_gitrev=2850
 _githash_libgd=c7c7ff4e05d3fe82854219091cf116cce6b19de0
 
 pkgname=purism-chatty
-version=0.5.0r${_gitrev}
+version=0.6.0r${_gitrev}
 revision=1
 build_style=meson
 hostmakedepends="pkg-config git gettext-devel gettext-devel-tools glib-devel"
@@ -17,12 +17,12 @@ maintainer="Jami Kettunen <jami.kettunen@somainline.org>"
 license="GPL-3.0-or-later"
 homepage="https://source.puri.sm/Librem5/chatty"
 distfiles="
-	${homepage}/-/archive/${_githash}/$pkgname-${_githash}.tar.gz>$pkgname-${_gitshort}.tar.gz
-	https://gitlab.gnome.org/GNOME/libgd/-/archive/${_githash_libgd}/${_githash_libgd}.tar.gz>libgd-${_githash_libgd:0:7}.tar.gz
+	${homepage}/-/archive/${_githash}/$pkgname-${_githash}.tar.gz
+	https://gitlab.gnome.org/GNOME/libgd/-/archive/${_githash_libgd}/${_githash_libgd}.tar.gz
 "
 wrksrc="chatty-${_githash}"
 checksum="
-	13f2daf4e84d3754898176cf2503d62b1fa522d29deca82eb857e40b891061df
+	179fa8137bbe7f00735e11a2dded943c7eff095558cf7784dcbb555c6bc490e1
 	7e6389d73ce06b195381cff2cfb17e986e8e9f60a725581e769e5e4d6cac5209
 "
 
