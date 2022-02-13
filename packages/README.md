@@ -51,7 +51,6 @@ Based on the idea of [`nvoid`](https://github.com/not-void/nvoid) alternative `x
 * [`sofia-sip`](misc/sofia-sip): Latest release of [freeswitch/sofia-sip](https://github.com/freeswitch/sofia-sip)
 * [`feedbackd`](misc/feedbackd): Git version of [Librem5/feedbackd](https://source.puri.sm/Librem5/feedbackd)
 * [`gnome-calls`](misc/gnome-calls): Latest release of [GNOME/calls](https://gitlab.gnome.org/GNOME/calls)
-* [`libphonenumber`](misc/libphonenumber): Latest release of [google/libphonenumber](https://github.com/google/libphonenumber)
 * [`purism-chatty`](misc/purism-chatty): Git version of [Librem5/chatty](https://source.puri.sm/Librem5/chatty)
 * [`neard`](misc/neard): Latest release of [linux-nfc/neard](https://github.com/linux-nfc/neard)
 * [`unudhcpd`](misc/unudhcpd): Latest release of [postmarketOS/unudhcpd](https://gitlab.com/postmarketOS/unudhcpd)
