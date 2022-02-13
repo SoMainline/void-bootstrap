@@ -39,7 +39,6 @@ Based on the idea of [`nvoid`](https://github.com/not-void/nvoid) alternative `x
 * [`diag-router`](modem/qcom/diag-router): Git version of [andersson/diag](https://github.com/andersson/diag)
 * [`gpsd-pds`](modem/gpsd-pds): GPSD with [PDS patch for Qualcomm SoCs](https://gitlab.com/gpsd/gpsd/-/merge_requests/139)
 ### Miscellaneous
-* [`reboot-mode`](misc/reboot-mode): Latest release of [postmarketOS/reboot-mode](https://gitlab.com/postmarketOS/reboot-mode)
 * [`soctemp`](misc/soctemp): Standalone Python testing tool for [Qualcomm TSENS](https://cateee.net/lkddb/web-lkddb/QCOM_TSENS.html)
 * [`usbd`](misc/usbd): Standalone daemon for configuring USB modes via [ConfigFS](https://www.kernel.org/doc/html/latest/usb/gadget_configfs.html) & starting `dhcpd` for an [RNDIS connection](https://cateee.net/lkddb/web-lkddb/USB_CONFIGFS_RNDIS.html) to the device
 * [`pmos-tweaks`](misc/pmos-tweaks): Latest release of [postmarketOS/postmarketos-tweaks](https://gitlab.com/postmarketOS/postmarketos-tweaks)
