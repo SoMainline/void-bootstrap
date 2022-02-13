@@ -72,7 +72,7 @@ base_pkgs=(
 
 	# Some tools
 	git htop neovim neofetch psmisc wget curl conspy xtools xxd ripgrep strace tree
-	abootimg android-tools jq man-pages-posix binutils
+	abootimg android-tools jq man-pages-posix binutils reboot-mode
 
 	# Extended terminal definitions for proper support on ie. alacritty
 	alacritty-terminfo foot-terminfo
@@ -85,7 +85,7 @@ extra_build_pkgs=(
 	gpsd-pds # GPS
 	neard # NFC
 
-	reboot-mode soctemp pil-squasher # Extra tools
+	soctemp pil-squasher # Extra tools
 	#linuxconsoletools # (e.g. fftest)
 )
 extra_install_pkgs=(
@@ -95,7 +95,7 @@ extra_install_pkgs=(
 	gpsd-pds
 	neard neard-tests
 
-	reboot-mode soctemp pil-squasher
+	soctemp pil-squasher
 	#linuxconsoletools
 )
 #void_packages="https://github.com/SoMainline/void-packages.git"
