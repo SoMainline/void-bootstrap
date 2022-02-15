@@ -51,7 +51,6 @@ Based on the idea of [`nvoid`](https://github.com/not-void/nvoid) alternative `x
 * [`feedbackd`](misc/feedbackd): Git version of [Librem5/feedbackd](https://source.puri.sm/Librem5/feedbackd)
 * [`gnome-calls`](misc/gnome-calls): Latest release of [GNOME/calls](https://gitlab.gnome.org/GNOME/calls)
 * [`purism-chatty`](misc/purism-chatty): Git version of [Librem5/chatty](https://source.puri.sm/Librem5/chatty)
-* [`neard`](misc/neard): Latest release of [linux-nfc/neard](https://github.com/linux-nfc/neard)
 * [`unudhcpd`](misc/unudhcpd): Latest release of [postmarketOS/unudhcpd](https://gitlab.com/postmarketOS/unudhcpd)
 * [`pil-squasher`](misc/pil-squasher): Git version of [andersson/pil-squasher](https://github.com/andersson/pil-squasher)
 ### Waydroid
