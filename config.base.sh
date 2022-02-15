@@ -65,6 +65,7 @@ base_pkgs=(
 	# TODO: check that fake-hwclock works properly
 	bluez # Bluetooth
 	NetworkManager # Networking
+	neard # NFC
 	crda # WLAN
 
 	zsh zsh-completions zsh-autosuggestions # Shell
@@ -83,7 +84,6 @@ extra_build_pkgs=(
 	libmbim libqrtr-glib libqmi ModemManager # Cellular
 	qrtr-ns pd-mapper rmtfs tqftpserv diag-router # Modem/WLAN
 	gpsd-pds # GPS
-	neard # NFC
 
 	soctemp pil-squasher # Extra tools
 	#linuxconsoletools # (e.g. fftest)
@@ -93,7 +93,6 @@ extra_install_pkgs=(
 	libqmi ModemManager
 	qrtr-ns pd-mapper rmtfs tqftpserv diag-router
 	gpsd-pds
-	neard neard-tests
 
 	soctemp pil-squasher
 	#linuxconsoletools
@@ -111,7 +110,7 @@ enable_sv=(
 	pd-mapper rmtfs tqftpserv diag-router # Modem/WLAN
 	NetworkManager # Networking
 	gpsd-pds # GPS
-	neard # NFC
+	neard seeld # NFC
 )
 disable_sv=(
 	agetty-tty{2..6} # We don't need more than 1 active tty on embedded devices
