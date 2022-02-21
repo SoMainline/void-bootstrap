@@ -45,7 +45,6 @@ Based on the idea of [`nvoid`](https://github.com/not-void/nvoid) alternative `x
 * [`portfolio`](misc/portfolio): Git version of [tchx84/Portfolio](https://github.com/tchx84/Portfolio)
 * [`mesa`](misc/mesa): Git version of [SoMainline/mesa](https://github.com/SoMainline/mesa) with full support for `freedreno`
 * [`megapixels`](misc/megapixels): Latest release of [martijnbraam/megapixels](https://git.sr.ht/~martijnbraam/megapixels)
-* [`mobile-config-firefox`](misc/mobile-config-firefox): Latest release of [postmarketOS/mobile-config-firefox](https://gitlab.com/postmarketOS/mobile-config-firefox)
 * [`callaudiod`](misc/callaudiod): Git version of [mobian1/callaudiod](https://gitlab.com/mobian1/callaudiod)
 * [`sofia-sip`](misc/sofia-sip): Latest release of [freeswitch/sofia-sip](https://github.com/freeswitch/sofia-sip)
 * [`feedbackd`](misc/feedbackd): Git version of [Librem5/feedbackd](https://source.puri.sm/Librem5/feedbackd)
