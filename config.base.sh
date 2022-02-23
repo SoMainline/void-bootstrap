@@ -110,7 +110,7 @@ enable_sv=(
 	pd-mapper rmtfs tqftpserv diag-router # Modem/WLAN
 	NetworkManager # Networking
 	gpsd-pds # GPS
-	neard seeld # NFC
+	neard # NFC
 )
 disable_sv=(
 	agetty-tty{2..6} # We don't need more than 1 active tty on embedded devices
