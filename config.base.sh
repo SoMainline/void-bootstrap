@@ -134,6 +134,9 @@ overlays=(
 	# Set hostname on boot based on board DT compatible
 	gen-hostname
 
+	# Some NFC testing scripts
+	neard-tests
+
 	# SoMainline user configs etc.
 	# NOTE: Make sure this is the last one or else config.gnome.sh breaks!
 	somainline
