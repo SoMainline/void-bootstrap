@@ -1,0 +1,67 @@
+From f0777bb6d56912d32366d89fa6030ee44d3c5273 Mon Sep 17 00:00:00 2001
+From: Jami Kettunen <jami.kettunen@protonmail.com>
+Date: Thu, 24 Feb 2022 02:22:48 +0200
+Subject: [PATCH] manager: Fix complete_command_cb() compile errors
+
+Under Void Linux the following were seen with GCC 10.2:
+
+  ../src/cad-manager.c: In function 'complete_command_cb':
+  ../src/cad-manager.c:51:13: error: a label can only be part of a statement and a declaration is not a statement
+     51 |             CallAudioMode new_audio_mode = GPOINTER_TO_UINT(op->value);
+        |             ^~~~~~~~~~~~~
+  ../src/cad-manager.c:65:13: error: a label can only be part of a statement and a declaration is not a statement
+     65 |             CallAudioSpeakerState new_speaker_state = GPOINTER_TO_UINT(op->value);
+        |             ^~~~~~~~~~~~~~~~~~~~~
+  ../src/cad-manager.c:73:13: error: a label can only be part of a statement and a declaration is not a statement
+     73 |             CallAudioMicState new_mic_state = GPOINTER_TO_UINT(op->value);
+        |             ^~~~~~~~~~~~~~~~~
+
+Upstream MR: https://gitlab.com/mobian1/callaudiod/-/merge_requests/19
+---
+ src/cad-manager.c | 9 ++++++---
+ 1 file changed, 6 insertions(+), 3 deletions(-)
+
+diff --git a/src/cad-manager.c b/src/cad-manager.c
+index 1cdafcb..d6770eb 100644
+--- a/src/cad-manager.c
++++ b/src/cad-manager.c
+@@ -47,7 +47,7 @@ static void complete_command_cb(CadOperation *op)
+         CadManager *manager = cad_manager_get_default();
+ 
+         switch (op->type) {
+-        case CAD_OPERATION_SELECT_MODE:
++        case CAD_OPERATION_SELECT_MODE: {
+             CallAudioMode new_audio_mode = GPOINTER_TO_UINT(op->value);
+             call_audio_dbus_call_audio_complete_select_mode(op->object, op->invocation, op->success);
+             if (manager->audio_mode != new_audio_mode) {
+@@ -61,7 +61,8 @@ static void complete_command_cb(CadOperation *op)
+                 g_object_notify_by_pspec(G_OBJECT(manager), props[PROP_MIC_STATE]);
+             }
+             break;
+-        case CAD_OPERATION_ENABLE_SPEAKER:
++	}
++        case CAD_OPERATION_ENABLE_SPEAKER: {
+             CallAudioSpeakerState new_speaker_state = GPOINTER_TO_UINT(op->value);
+             call_audio_dbus_call_audio_complete_enable_speaker(op->object, op->invocation, op->success);
+             if (manager->speaker_state != new_speaker_state) {
+@@ -69,7 +70,8 @@ static void complete_command_cb(CadOperation *op)
+                 g_object_notify_by_pspec(G_OBJECT(manager), props[PROP_SPEAKER_STATE]);
+             }
+             break;
+-        case CAD_OPERATION_MUTE_MIC:
++	}
++        case CAD_OPERATION_MUTE_MIC: {
+             CallAudioMicState new_mic_state = GPOINTER_TO_UINT(op->value);
+             call_audio_dbus_call_audio_complete_mute_mic(op->object, op->invocation, op->success);
+             if (manager->mic_state != new_mic_state) {
+@@ -77,6 +79,7 @@ static void complete_command_cb(CadOperation *op)
+                 g_object_notify_by_pspec(G_OBJECT(manager), props[PROP_MIC_STATE]);
+             }
+             break;
++	}
+         default:
+             g_critical("unknown operation %d", op->type);
+             break;
+-- 
+2.35.1
+
