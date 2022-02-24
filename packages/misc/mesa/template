@@ -1,11 +1,12 @@
 # Template file for 'mesa'
 # NOTE: Keep 2 commits behind tip!
-_githash=f767a5b0aaa72945e404f89ba502748172d900cf # tip of main branch as of 2022-01-29
+_githash=c35a8490e6ad14ec03640da315c356b69088ac18 # tip of main branch as of 2022-02-24
 _gitshort=${_githash:0:7}
+_gitrev=150200
 
 pkgname=mesa
-version=22.0.0
-revision=5
+version=22.1.0r${_gitrev}
+revision=1
 wrksrc="mesa-${_githash}"
 build_style=meson
 configure_args="-Dglvnd=true -Dshared-glapi=enabled -Dgbm=enabled -Degl=enabled
@@ -27,7 +28,7 @@ license="MIT, LGPL-2.1-or-later"
 homepage="https://www.mesa3d.org/"
 #changelog="https://docs.mesa3d.org/relnotes/${version}.html"
 distfiles="https://github.com/SoMainline/mesa/archive/${_githash}/${_githash}.tar.gz>$pkgname-${_gitshort}.tar.gz"
-checksum=bbd3eadacbd2be7173100db7b04c9b9ee026280958192b6b12479715cf5edf3b
+checksum=df93aefb82e86bdb32a10b5939aeb44a4bfe4cfe5651d2a1f681b4f6c107e2a4
 
 # only use llvmpipe on targets where it's supported and reliable
 # especially on big endian it's all kinds of broken, and e.g. on
