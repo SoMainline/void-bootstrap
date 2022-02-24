@@ -1,10 +1,11 @@
 # Template file for 'libqmi'
-_githash=91d4d5e2394917ad492721ec227eb4be0b376cae # tip of master branch as of 2022-01-29
+_githash=f5cd264032bc80d81fca4b0e387ee17e8265f6f0 # tip of master branch as of 2022-02-24
 _gitshort=${_githash:0:7}
+_gitrev=2125
 
 pkgname=libqmi
-version=1.31.2
-revision=2
+version=1.31.2r${_gitrev}
+revision=1
 build_style=meson
 build_helper=gir
 configure_args="$(vopt_bool doc gtk_doc) $(vopt_bool doc man)"
@@ -17,7 +18,7 @@ license="GPL-2.0-or-later, LGPL-2.1-or-later"
 homepage="http://www.freedesktop.org/wiki/Software/libqmi/"
 distfiles="https://gitlab.freedesktop.org/mobile-broadband/$pkgname/-/archive/${_githash}/$pkgname-${_githash}.tar.gz>$pkgname-${_gitshort}.tar.gz"
 wrksrc="$pkgname-${_githash}"
-checksum=90a35a9c71845de040fc10960a97ccb666c01cbdd99a5c458a9ff9e320d1299d
+checksum=5b9b0b70e603003776b96257abb58e873ca9da25bba899f03987d08ee92b86a5
 
 build_options="gir doc mbim qrtr"
 # FIXME: help2man doc build fails due to "help2man: can't get `"--help-all"' info from .../build/src/qmicli/qmicli"!
