@@ -1,9 +1,10 @@
 # Template file for 'libmbim'
-_githash=181c60ca07fb097470f0bbfc8995e6b21afdb4a4 # tip of master branch as of 2022-01-29
+_githash=54c82ad802fda6c118c6f747f14ddb659be99aa6 # tip of master branch as of 2022-02-21
 _gitshort=${_githash:0:7}
+_gitrev=990
 
 pkgname=libmbim
-version=1.27.5
+version=1.27.5r${_gitrev}
 revision=1
 build_style=meson
 build_helper=gir
@@ -16,7 +17,7 @@ license="GPL-2.0-or-later, LGPL-2.1-or-later"
 homepage="https://www.freedesktop.org/wiki/Software/libmbim/"
 distfiles="https://gitlab.freedesktop.org/mobile-broadband/$pkgname/-/archive/${_githash}/$pkgname-${_githash}.tar.gz"
 wrksrc="$pkgname-${_githash}"
-checksum=7237241915e7d28ab469cbaa782ec94ff62edd61688add717f56649ff3dfda8a
+checksum=d044d0185a21930a96d37f3be652b7723b274a55658b6e212cb23a3ddc30e5d6
 
 build_options="gir doc"
 # FIXME: help2man doc build fails due to "help2man: can't get `"--help-all"' info from .../build/src/mbimcli/mbimcli"!
