@@ -1,10 +1,11 @@
 # Template file for 'ModemManager'
-_githash=789ff2d822308e2483c262e644c42a4e79d169b8 # tip of master branch as of 2022-01-29
+_githash=c615be77fd0ce88b73285816266e112b45825637 # tip of master branch as of 2022-02-21
 _gitshort=${_githash:0:7}
+_gitrev=8029
 
 pkgname=ModemManager
-version=1.19.0
-revision=3
+version=1.19.1r${_gitrev}
+revision=1
 build_style=gnu-configure
 build_helper="gir"
 configure_args="--disable-static --with-polkit=permissive
@@ -24,7 +25,7 @@ license="GPL-2.0-or-later"
 homepage="https://www.freedesktop.org/wiki/Software/ModemManager/"
 distfiles="https://gitlab.freedesktop.org/mobile-broadband/$pkgname/-/archive/${_githash}/$pkgname-${_githash}.tar.gz>$pkgname-${_gitshort}.tar.gz"
 wrksrc="$pkgname-${_githash}"
-checksum=d4a16a228b639e214579d05426df2059271afd258927ca463109e6954fe09114
+checksum=167d2f9642a4688ef87c74022a158dfa57527d2837cf1b37658abc2024a44040
 
 build_options="gir"
 build_options_default="gir"
