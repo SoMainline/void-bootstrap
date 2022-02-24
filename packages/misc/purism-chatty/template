@@ -1,11 +1,11 @@
 # Template file for 'purism-chatty'
-_githash=5b8d32644f5c906e41a92b88191550ff20748d84 # tip of master branch as of 2021-12-12
+_githash=6f38c7afdf910170654d21e535c2bd882688c4a5 # tip of master branch as of 2022-02-24
 _gitshort=${_githash:0:7}
-_gitrev=2850
+_gitrev=2884
 _githash_libgd=c7c7ff4e05d3fe82854219091cf116cce6b19de0
 
 pkgname=purism-chatty
-version=0.6.0r${_gitrev}
+version=0.6.1r${_gitrev}
 revision=1
 build_style=meson
 hostmakedepends="pkg-config git gettext-devel gettext-devel-tools glib-devel"
@@ -22,7 +22,7 @@ distfiles="
 "
 wrksrc="chatty-${_githash}"
 checksum="
-	179fa8137bbe7f00735e11a2dded943c7eff095558cf7784dcbb555c6bc490e1
+	8604039ba509f24f598b0b955de36e0eaee0358a8f985118cf393e5225cf73c7
 	7e6389d73ce06b195381cff2cfb17e986e8e9f60a725581e769e5e4d6cac5209
 "
 
