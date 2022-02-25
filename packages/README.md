@@ -52,6 +52,7 @@ Based on the idea of [`nvoid`](https://github.com/not-void/nvoid) alternative `x
 * [`purism-chatty`](misc/purism-chatty): Git version of [Librem5/chatty](https://source.puri.sm/Librem5/chatty)
 * [`unudhcpd`](misc/unudhcpd): Latest release of [postmarketOS/unudhcpd](https://gitlab.com/postmarketOS/unudhcpd)
 * [`pil-squasher`](misc/pil-squasher): Git version of [andersson/pil-squasher](https://github.com/andersson/pil-squasher)
+* [`qcom-fw-setup`](misc/qcom-fw-setup): Git version of [JamiKettunen/qcom-fw-setup](https://github.com/JamiKettunen/qcom-fw-setup)
 ### Waydroid
 * [`libglibutil`](waydroid/libglibutil): Latest release of [sailfishos/libglibutil](https://github.com/sailfishos/libglibutil)
 * [`libgbinder`](waydroid/libgbinder): Latest release of [mer-hybris/libgbinder](https://github.com/mer-hybris/libgbinder)
