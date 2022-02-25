@@ -136,6 +136,9 @@ overlays=(
 	# Set hostname on boot based on board DT compatible
 	gen-hostname
 
+	# Setup firmware on initial boot
+	qcom-fw-setup-oneshot
+
 	# Some NFC testing scripts
 	neard-tests
 
