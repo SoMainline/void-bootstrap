@@ -1,4 +1,3 @@
-git=true
-version="${_githash}"
-site='https://source.puri.sm/Librem5/chatty/-/commits/master?format=atom'
-pattern='<id>\K.*commit\/\K.*(?=<\/id>)'
+site="${homepage}/-/tags?format=atom"
+pattern='tags/v\K.*(?=")'
+ignore='*.beta*'

@@ -1,12 +1,8 @@
 # Template file for 'purism-chatty'
-_githash=6f38c7afdf910170654d21e535c2bd882688c4a5 # tip of master branch as of 2022-02-24
-_gitshort=${_githash:0:7}
-_gitrev=2884
-_githash_libgd=c7c7ff4e05d3fe82854219091cf116cce6b19de0
-
 pkgname=purism-chatty
-version=0.6.1r${_gitrev}
+version=0.6.2
 revision=1
+_libgd_commit=c7c7ff4e05d3fe82854219091cf116cce6b19de0
 build_style=meson
 hostmakedepends="pkg-config git gettext-devel gettext-devel-tools glib-devel"
 makedepends="evolution-data-server-devel libfeedback-devel libphonenumber-devel
@@ -16,18 +12,19 @@ short_desc="XMPP and SMS messaging via libpurple and Modemmanager"
 maintainer="Jami Kettunen <jami.kettunen@somainline.org>"
 license="GPL-3.0-or-later"
 homepage="https://source.puri.sm/Librem5/chatty"
+wrksrc=chatty-v${version}
 distfiles="
-	${homepage}/-/archive/${_githash}/$pkgname-${_githash}.tar.gz
-	https://gitlab.gnome.org/GNOME/libgd/-/archive/${_githash_libgd}/${_githash_libgd}.tar.gz
+	${homepage}/-/archive/v${version}/chatty-v${version}.tar.gz
+	https://gitlab.gnome.org/GNOME/libgd/-/archive/${_libgd_commit}/${_libgd_commit}.tar.gz>libgd-${_libgd_commit}.tar.gz
 "
-wrksrc="chatty-${_githash}"
 checksum="
-	8604039ba509f24f598b0b955de36e0eaee0358a8f985118cf393e5225cf73c7
+	b4fe064cdb62be3fc620c0554abfbcccedeb24c81812e3e3bd0ee82a9020c2b9
 	7e6389d73ce06b195381cff2cfb17e986e8e9f60a725581e769e5e4d6cac5209
 "
 
 pre_configure() {
-	cp -r ../libgd-${_githash_libgd}/. subprojects/libgd
+	rmdir subprojects/libgd
+	mv ../libgd-${_libgd_commit} subprojects/libgd
 
 	if [ "$CROSS_BUILD" ]; then
 		vsed -i src/purple/meson.build -e "s/purple_plugdir =.*/purple_plugdir = '\/usr\/${XBPS_CROSS_TRIPLET}\/usr\/lib\/purple-2'/"
