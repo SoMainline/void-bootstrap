@@ -1,7 +1,7 @@
 # Template file for 'qcom-fw-setup'
-_githash=fc5c05e3b0090a5f535a0a3ea03f518cc682c7ce
+_githash=690f00abe368486581e68ac32810baa41f699db4
 _gitshort=${_githash:0:7}
-_gitrev=8
+_gitrev=10
 
 pkgname=qcom-fw-setup
 version=0r${_gitrev}
@@ -17,4 +17,4 @@ maintainer="Jami Kettunen <jami.kettunen@protonmail.com>"
 license="GPL-2.0-only"
 homepage="https://github.com/JamiKettunen/qcom-fw-setup"
 distfiles="${homepage}/archive/${_githash}.tar.gz"
-checksum=20c3cb661b26352d532ffc1abdff7a1ad306e1e498ad15135c093d9675862969
+checksum=f8f84eb2c756c0ebde92e1d2b8f7dd888908841311a74d3eb8c2485ef8ac8f81
