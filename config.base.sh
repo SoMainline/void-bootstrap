@@ -64,7 +64,7 @@ base_pkgs=(
 	fake-hwclock chrony # Time & date
 	# TODO: check that fake-hwclock works properly
 	bluez # Bluetooth
-	NetworkManager # Networking
+	NetworkManager avahi # Networking
 	neard # NFC
 	crda # WLAN
 
@@ -110,7 +110,7 @@ enable_sv=(
 
 	usbd rndis-tethering # USB gadget setup
 	pd-mapper rmtfs tqftpserv diag-router # Modem/WLAN
-	NetworkManager # Networking
+	NetworkManager avahi-daemon # Networking
 	gpsd-pds # GPS
 	neard # NFC
 )
