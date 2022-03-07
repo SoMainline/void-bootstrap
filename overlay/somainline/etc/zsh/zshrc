@@ -43,7 +43,7 @@ export MANPAGER=less
 # Prompt
 #########
 [ $EUID -eq 0 ] && PROMPT_COLOR='red' || PROMPT_COLOR='cyan'
-PROMPT="%F{$PROMPT_COLOR}%n%f %F{yellow}%1~%f %(!.#.$) "
+PROMPT="%F{$PROMPT_COLOR}%m%f %F{yellow}%1~%f %(!.#.$) "
 if [[ "$TTY" = "/dev/tty"* ]]; then
 	RPROMPT='%(?.%F{green}OK.%F{red}%?)%f'
 else
