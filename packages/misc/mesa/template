@@ -1,18 +1,15 @@
 # Template file for 'mesa'
-# NOTE: Keep 2 commits behind tip!
-_githash=c35a8490e6ad14ec03640da315c356b69088ac18 # tip of main branch as of 2022-02-24
-_gitshort=${_githash:0:7}
-_gitrev=150200
-
 pkgname=mesa
-version=22.1.0r${_gitrev}
+version=22.2.0r152486
 revision=1
-wrksrc="mesa-${_githash}"
+_commit=6eb114fd7988db8605fd6317f1eaccb1689a31a9 # tip(-2) of main branch as of 2022-04-21
+wrksrc="mesa-${_commit}"
 build_style=meson
 configure_args="-Dglvnd=true -Dshared-glapi=enabled -Dgbm=enabled -Degl=enabled
  -Dosmesa=true -Dgles1=enabled -Dgles2=enabled -Dglx=dri -Ddri3=enabled
  -Dlmsensors=enabled -Dplatforms=x11,wayland
- -Dllvm=enabled -Db_lto=false -Dcpp_std=gnu++14"
+ -Dllvm=enabled -Db_lto=false -Dcpp_std=gnu++14
+ --buildtype debugoptimized"
 hostmakedepends="gettext flex llvm pkg-config python3-Mako glslang
  wayland-protocols wayland-devel"
 makedepends="elfutils-devel expat-devel libXdamage-devel libXvMC-devel
@@ -22,13 +19,13 @@ makedepends="elfutils-devel expat-devel libXdamage-devel libXvMC-devel
  libXrandr-devel libglvnd-devel libzstd-devel libxml2-devel lua53-devel
  libarchive-devel"
 depends="libglvnd"
-short_desc="Graphics library similar to SGI's OpenGL (SoMainline fork [git ${_gitshort}])"
+short_desc="Graphics library similar to SGI's OpenGL (SoMainline fork [git ${_commit:0:7}])"
 maintainer="Jami Kettunen <jami.kettunen@somainline.org>"
 license="MIT, LGPL-2.1-or-later"
 homepage="https://www.mesa3d.org/"
 #changelog="https://docs.mesa3d.org/relnotes/${version}.html"
-distfiles="https://github.com/SoMainline/mesa/archive/${_githash}/${_githash}.tar.gz>$pkgname-${_gitshort}.tar.gz"
-checksum=df93aefb82e86bdb32a10b5939aeb44a4bfe4cfe5651d2a1f681b4f6c107e2a4
+distfiles="https://github.com/SoMainline/mesa/archive/${_commit}/${_commit}.tar.gz"
+checksum=5220d19589621b5a2b5c38f4c5bd0ce4b6f45ab9c96b0300a14badb8dc9f901e
 
 # only use llvmpipe on targets where it's supported and reliable
 # especially on big endian it's all kinds of broken, and e.g. on

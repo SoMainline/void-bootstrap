@@ -1,4 +1,2 @@
-git=true
-version="${_githash}"
 site='https://github.com/SoMainline/mesa/commits/main.atom'
-pattern='<id>\K.*commit\/\K.*(?=<\/id>)'
+git_index=3
