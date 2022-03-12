@@ -1,11 +1,9 @@
 # Template file for 'ModemManager'
-_githash=c615be77fd0ce88b73285816266e112b45825637 # tip of master branch as of 2022-02-21
-_gitshort=${_githash:0:7}
-_gitrev=8029
-
 pkgname=ModemManager
-version=1.19.1r${_gitrev}
+version=1.19.1r8098
 revision=1
+_commit=1e08f9ca2c07ed2e080c76f66f50250e62e3bc31 # tip of master branch as of 2022-04-21
+wrksrc="ModemManager-${_commit}"
 build_style=gnu-configure
 build_helper="gir"
 configure_args="--disable-static --with-polkit=permissive
@@ -19,13 +17,12 @@ makedepends="libglib-devel libgudev-devel polkit-devel libqmi-devel
  python3-gobject-devel python3-dbus-devel"
 depends="hicolor-icon-theme ppp"
 checkdepends="dbus"
-short_desc="Mobile broadband modem management service [git ${_gitshort}]"
+short_desc="Mobile broadband modem management service [git ${_commit:0:7}]"
 maintainer="Jami Kettunen <jami.kettunen@somainline.org>"
 license="GPL-2.0-or-later"
 homepage="https://www.freedesktop.org/wiki/Software/ModemManager/"
-distfiles="https://gitlab.freedesktop.org/mobile-broadband/$pkgname/-/archive/${_githash}/$pkgname-${_githash}.tar.gz>$pkgname-${_gitshort}.tar.gz"
-wrksrc="$pkgname-${_githash}"
-checksum=167d2f9642a4688ef87c74022a158dfa57527d2837cf1b37658abc2024a44040
+distfiles="https://gitlab.freedesktop.org/mobile-broadband/ModemManager/-/archive/${_commit}.tar.gz"
+checksum=3fc33b71b3a859497a1bb98e4a1f33ffb7e1f0eb9f68863fae1d284c33c8cdd3
 
 build_options="gir"
 build_options_default="gir"
