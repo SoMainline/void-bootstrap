@@ -1,28 +1,31 @@
 # Template file for 'libmbim'
-_githash=54c82ad802fda6c118c6f747f14ddb659be99aa6 # tip of master branch as of 2022-02-21
-_gitshort=${_githash:0:7}
-_gitrev=990
-
 pkgname=libmbim
-version=1.27.5r${_gitrev}
+version=1.27.6r1009
 revision=1
+_commit=548190f40c2ed612595391464eb3a1cb44769dfc # tip of master branch as of 2022-04-21
+wrksrc="libmbim-${_commit}"
 build_style=meson
 build_helper=gir
-configure_args="$(vopt_bool doc gtk_doc) $(vopt_bool doc man)"
-hostmakedepends="pkg-config $(vopt_if doc 'gtk-doc help2man')"
+# $(vopt_bool doc gtk_doc)
+configure_args="$(vopt_bool doc man)"
+# gtk-doc
+hostmakedepends="pkg-config $(vopt_if doc 'help2man python3')"
 makedepends="glib-devel libgudev-devel bash-completion"
-short_desc="MBIM modem protocol helper library [git ${_gitshort}]"
+short_desc="MBIM modem protocol helper library [git ${_commit:0:7}]"
 maintainer="Jami Kettunen <jami.kettunen@protonmail.com>"
 license="GPL-2.0-or-later, LGPL-2.1-or-later"
 homepage="https://www.freedesktop.org/wiki/Software/libmbim/"
-distfiles="https://gitlab.freedesktop.org/mobile-broadband/$pkgname/-/archive/${_githash}/$pkgname-${_githash}.tar.gz"
-wrksrc="$pkgname-${_githash}"
-checksum=d044d0185a21930a96d37f3be652b7723b274a55658b6e212cb23a3ddc30e5d6
+distfiles="https://gitlab.freedesktop.org/mobile-broadband/libmbim/-/archive/${_commit}.tar.gz"
+checksum=1df736f214ea339472a31028b25d9b70cb8aa6c16e80a567ca244d461347524e
 
 build_options="gir doc"
 # FIXME: help2man doc build fails due to "help2man: can't get `"--help-all"' info from .../build/src/mbimcli/mbimcli"!
 build_options_default="gir"
 # FIXME: cross-compile fails with doc enabled!
+
+#pre_configure() {
+#	vsed 's/--help-all/--help/' -i docs/man/meson.build
+#}
 
 libmbim-devel_package() {
 	depends="${sourcepkg}-${version}_${revision}"

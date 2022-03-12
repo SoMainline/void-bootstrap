@@ -1,4 +1,1 @@
-git=true
-version="${_githash}"
-site='https://gitlab.freedesktop.org/mobile-broadband/libmbim/-/commits/main?format=atom'
-pattern='<id>\K.*commit\/\K.*(?=<\/id>)'
+site="${distfiles%/-*}/-/commits/main?format=atom"
