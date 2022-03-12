@@ -1,7 +1,7 @@
 #backend="chroot"
 
 users=(
-	'somainline:$5$/UjnRD0B7cDi5Ffh$LqUT25x224Zqb3R2kN7atvRbo.gVr2QXSS9hDGn/EgA:::SoMainline'
+	'somainline:$5$/UjnRD0B7cDi5Ffh$LqUT25x224Zqb3R2kN7atvRbo.gVr2QXSS9hDGn/EgA::::SoMainline'
 )
 users_shell_default="/bin/zsh"
 users_groups_common=(
