@@ -1,0 +1,18 @@
+Combines the following upstream commits on master branch:
+
+https://gitlab.com/gpsd/gpsd/-/commit/dce87c37
+https://gitlab.com/gpsd/gpsd/-/commit/c7ba1724
+---
+diff --git a/SConscript b/SConscript
+index 59ab092dd7e27326326fa891c09a3e414e44b4fb..f3237a3e09d8438f947092316864cbef920dc679 100644
+--- a/SConscript
++++ b/SConscript
+@@ -1496,7 +1496,7 @@ if not cleaning and not helping and config.env['python']:
+                                        'import sys',
+                                        '"%d.%d" % sys.version_info[0:2]')
+ 
+-        if 3 > int(sysver[0]) or 6 > int(sysver[2]):
++        if tuple(map(int, sysver.split("."))) < (3, 6):
+             config.env['aiogps'] = False
+             announce("WARNING: Python%s too old (need 3.6): "
+                      "gps/aiogps.py will not be installed" %
