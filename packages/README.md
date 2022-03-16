@@ -40,6 +40,7 @@ Based on the idea of [`nvoid`](https://github.com/not-void/nvoid) alternative `x
 * [`ModemManager`](modem/ModemManager): Git version of [ModemManager](https://gitlab.freedesktop.org/mobile-broadband/ModemManager)
 #### Qualcomm modem
 * [`qrtr-ns`](modem/qcom/qrtr-ns): Git version of [andersson/qrtr](https://github.com/andersson/qrtr)
+* [`qmi-ping`](modem/qcom/qmi-ping): Git version of [andersson/qmi-ping](https://github.com/andersson/qmi-ping)
 * [`rmtfs`](modem/qcom/rmtfs): Git version of [andersson/rmtfs](https://github.com/andersson/rmtfs)
 * [`pd-mapper`](modem/qcom/pd-mapper): Git version of [andersson/pd-mapper](https://github.com/andersson/pd-mapper)
 * [`tqftpserv`](modem/qcom/tqftpserv): Git version of [andersson/tqftpserv](https://github.com/andersson/tqftpserv)
