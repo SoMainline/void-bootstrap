@@ -7,7 +7,6 @@ pkgname=waydroid
 version=1.2.0r${_gitrev}
 revision=1
 wrksrc="waydroid-${_githash}"
-build_style=meta
 depends="python3 python3-requests python3-gbinder lxc dnsmasq"
 short_desc="A container-based approach to boot a full Android system [git ${_gitshort}]"
 maintainer="Jami Kettunen <jami.kettunen@somainline.org>"
