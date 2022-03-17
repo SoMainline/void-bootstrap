@@ -17,7 +17,3 @@ homepage="https://github.com/erfanoabdi/gbinder-python"
 distfiles="${homepage}/archive/refs/tags/droidian/bullseye/${version}-${_rev}.tar.gz"
 checksum="ec77b600cfb47e1d9afef7709160b69490acc8712a73b7a62719884a734df20c"
 #python_version=3
-
-post_install() {
-	vlicense LICENSE
-}
