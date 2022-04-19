@@ -48,6 +48,21 @@ ignorepkg=(
 
 	nvi # We'll replace this crappy editor in base_pkgs
 )
+noextract=(
+	# Drop some FW that are double-signed by QCOM & OEM on retail hardware
+	/usr/lib/firmware/qcom/a530_zap.*
+	/usr/lib/firmware/qcom/sdm845/a630_zap.mbn
+	/usr/lib/firmware/qcom/sdm845/adsp.mbn
+	/usr/lib/firmware/qcom/sdm845/cdsp.mbn
+	/usr/lib/firmware/qcom/sdm845/mba.mbn
+	/usr/lib/firmware/qcom/sdm845/modem.mbn
+	/usr/lib/firmware/qcom/sdm845/wlanmdsp.mbn
+	/usr/lib/firmware/qcom/sm8250/a650_zap.mbn
+	/usr/lib/firmware/qcom/sm8250/adsp.mbn
+	/usr/lib/firmware/qcom/sm8250/cdsp.mbn
+	/usr/lib/firmware/qcom/venus-*
+	/usr/lib/firmware/qcom/vpu-*
+)
 rm_pkgs=(
 	nvi pciutils btrfs-progs xfsprogs
 )
@@ -63,6 +78,8 @@ base_pkgs=(
 	#haveged
 	fake-hwclock chrony # Time & date
 	# TODO: check that fake-hwclock works properly
+	# TODO: does linux-firmware-network cause QCA BT hypervisor faults?!
+	linux-firmware-qualcomm # Firmware
 	bluez # Bluetooth
 	NetworkManager avahi # Networking
 	neard # NFC
