@@ -1,21 +1,16 @@
 # Template file for 'callaudiod'
-_githash=4a92e48fc1eee40088d802eead4c2445b0cebc02 # tip of master branch as of 2022-02-24
-_gitshort=${_githash:0:7}
-_gitrev=85
-
 pkgname=callaudiod
-version=0.1.3r${_gitrev}
+version=0.1.4
 revision=1
 build_style=meson
 hostmakedepends="pkg-config glib-devel"
 makedepends="alsa-lib-devel pulseaudio-devel glib-devel"
-short_desc="Call audio routing daemon [git ${_gitshort}]"
+short_desc="Call audio routing daemon"
 maintainer="Jami Kettunen <jami.kettunen@somainline.org>"
-license="LGPL-3.0-or-later"
+license="GPL-3.0-or-later"
 homepage="https://gitlab.com/mobian1/callaudiod"
-distfiles="$homepage/-/archive/${_githash}/$pkgname-${_githash}.tar.gz"
-wrksrc="$pkgname-${_githash}"
-checksum=81d6255ef812258220be25c9af638a1523ff10c92a0aa0547d1d5da4e4afa00e
+distfiles="https://gitlab.com/mobian1/callaudiod/-/archive/${version}/callaudiod-${version}.tar.gz"
+checksum=a1d561d801c003a796ba3648d0d95d36ecff8d261a724a22e0d78e6576a14bb0
 
 libcallaudio_package() {
 	short_desc+=" - shared-libraries"
