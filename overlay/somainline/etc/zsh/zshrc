@@ -17,6 +17,9 @@ bindkey '^[[3;5~' kill-word
 # Shift + Tab reverse completion
 bindkey '^[[Z' reverse-menu-complete
 
+# Ctrl + R history search
+bindkey '^R' history-incremental-search-backward
+
 # History
 ##########
 HISTFILE="$HOME/.cache/zsh_history"
@@ -44,7 +47,7 @@ export MANPAGER=less
 #########
 [ $EUID -eq 0 ] && PROMPT_COLOR='red' || PROMPT_COLOR='cyan'
 PROMPT="%F{$PROMPT_COLOR}%m%f %F{yellow}%1~%f %(!.#.$) "
-if [[ "$TTY" = "/dev/tty"* ]]; then
+if [ "$TERM" = "linux" ]; then
 	RPROMPT='%(?.%F{green}OK.%F{red}%?)%f'
 else
 	RPROMPT='%(?.%F{green}√.%F{red}%?)%f'
