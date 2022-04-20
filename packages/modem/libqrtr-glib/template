@@ -1,22 +1,19 @@
 # Template file for 'libqrtr-glib'
-_githash=be86b6769502f0ebf020ba8129f0d65b52d42b3e # tip of master branch as of 2022-02-21
-_gitshort=${_githash:0:7}
-_gitrev=104
-
 pkgname=libqrtr-glib
-version=1.3.0r${_gitrev}
+version=1.3.0r104
 revision=1
+_commit=be86b6769502f0ebf020ba8129f0d65b52d42b3e # tip of master branch as of 2022-02-21
+wrksrc="libqrtr-glib-${_commit}"
 build_style=meson
-configure_args="$(vopt_bool doc gtk_doc)"
+#configure_args="$(vopt_bool doc gtk_doc)"
 build_helper=gir
 hostmakedepends="pkg-config $(vopt_if doc gtk-doc)"
 makedepends="glib-devel"
-short_desc="Qualcomm IPC Router protocol helper library [git ${_gitshort}]"
+short_desc="Qualcomm IPC Router protocol helper library [git ${_commit:0:7}]"
 maintainer="Jami Kettunen <jami.kettunen@somainline.org>"
 license="LGPL-2.1-or-later"
 homepage="https://gitlab.freedesktop.org/mobile-broadband/libqrtr-glib"
-distfiles="https://gitlab.freedesktop.org/mobile-broadband/$pkgname/-/archive/${_githash}/$pkgname-${_githash}.tar.gz>$pkgname-${_gitshort}.tar.gz"
-wrksrc="$pkgname-${_githash}"
+distfiles="https://gitlab.freedesktop.org/mobile-broadband/libqrtr-glib/-/archive/${_commit}.tar.gz"
 checksum=cdd2f48c04f269f397ab42d4e0ff2cb274177bfff5b061f6df033679698b822c
 
 build_options="gir doc"
@@ -33,8 +30,8 @@ libqrtr-glib-devel_package() {
 		if [ "$build_option_gir" ]; then
 			vmove usr/share/gir-1.0
 		fi
-		if [ "$build_option_doc" ]; then
-			vmove usr/share/gtk-doc
-		fi
+		#if [ "$build_option_doc" ]; then
+		#	vmove usr/share/gtk-doc
+		#fi
 	}
 }

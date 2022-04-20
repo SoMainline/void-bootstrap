@@ -1,4 +1,1 @@
-git=true
-version="${_githash}"
-site='https://gitlab.freedesktop.org/mobile-broadband/libqrtr-glib/-/commits/main?format=atom'
-pattern='<id>\K.*commit\/\K.*(?=<\/id>)'
+site="$homepage/-/commits/main?format=atom"
