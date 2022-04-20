@@ -1,14 +1,14 @@
 # Template file for 'portfolio'
 pkgname=portfolio
-version=0.9.13
+version=0.9.14
 revision=1
+wrksrc="Portfolio-${version}"
 build_style=meson
 hostmakedepends="gettext-devel glib-devel"
 short_desc="Minimalist file manager for mobile Linux"
 maintainer="Jami Kettunen <jami.kettunen@protonmail.com>"
 license="GPL-3.0-or-later"
 homepage="https://github.com/tchx84/Portfolio"
-changelog="${homepage}/blob/master/CHANGELOG.md"
-distfiles="${homepage}/archive/refs/tags/v0.9.13.tar.gz"
-checksum=8f20ffbbfbec0a59e10e36d70ad97ba963ed4a3634358c495d9b13c297747197
-wrksrc="Portfolio-${version}"
+changelog="https://github.com/tchx84/Portfolio/blob/master/CHANGELOG.md"
+distfiles="https://github.com/tchx84/Portfolio/archive/refs/tags/v${version}.tar.gz"
+checksum=8c567da07597c8b7f9616a17ae4ea685b7ded4383a73d47b25ca9ae0dd3ac4bb
