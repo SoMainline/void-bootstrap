@@ -86,7 +86,7 @@ extra_build_pkgs=(
 	qrtr-ns pd-mapper rmtfs tqftpserv diag-router # Modem/WLAN
 	gpsd-pds # GPS
 
-	soctemp pil-squasher # Extra tools
+	soctemp pil-squasher qmi-ping # Extra tools
 	#linuxconsoletools # (e.g. fftest)
 	buffyboard # TTY on-screen touch enabled keyboard
 )
@@ -97,7 +97,7 @@ extra_install_pkgs=(
 	qrtr-ns pd-mapper rmtfs tqftpserv diag-router
 	gpsd-pds
 
-	soctemp pil-squasher
+	soctemp pil-squasher qmi-ping
 	#linuxconsoletools
 	buffyboard
 )
