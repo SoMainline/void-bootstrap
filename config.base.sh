@@ -88,6 +88,7 @@ extra_build_pkgs=(
 
 	soctemp pil-squasher # Extra tools
 	#linuxconsoletools # (e.g. fftest)
+	buffyboard # TTY on-screen touch enabled keyboard
 )
 extra_install_pkgs=(
 	unudhcpd usbd
@@ -98,6 +99,7 @@ extra_install_pkgs=(
 
 	soctemp pil-squasher
 	#linuxconsoletools
+	buffyboard
 )
 #void_packages="https://github.com/SoMainline/void-packages.git"
 #void_packages_branch="somainline"
@@ -113,6 +115,7 @@ enable_sv=(
 	NetworkManager avahi-daemon # Networking
 	gpsd-pds # GPS
 	neard # NFC
+	buffyboard # TTY on-screen touch enabled keyboard
 )
 disable_sv=(
 	agetty-tty{2..6} # We don't need more than 1 active tty on embedded devices
