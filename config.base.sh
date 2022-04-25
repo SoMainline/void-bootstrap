@@ -90,7 +90,7 @@ base_pkgs=(
 	# Some tools
 	git htop neovim neofetch psmisc wget curl conspy xtools xxd ripgrep strace tree
 	abootimg android-tools jq man-pages-posix binutils reboot-mode libinput evtest
-	upower atop powertop
+	i2c-tools upower atop powertop
 
 	# Extended terminal definitions for proper support on ie. alacritty
 	alacritty-terminfo foot-terminfo
