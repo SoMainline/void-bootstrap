@@ -6,6 +6,8 @@ _commit=be86b6769502f0ebf020ba8129f0d65b52d42b3e # tip of master branch as of 20
 wrksrc="libqrtr-glib-${_commit}"
 build_style=meson
 #configure_args="$(vopt_bool doc gtk_doc)"
+# FIXME: cross-compile fails with doc enabled!
+configure_args="-Dgtk_doc=false"
 build_helper=gir
 hostmakedepends="pkg-config $(vopt_if doc gtk-doc)"
 makedepends="glib-devel"
@@ -18,7 +20,6 @@ checksum=cdd2f48c04f269f397ab42d4e0ff2cb274177bfff5b061f6df033679698b822c
 
 build_options="gir doc"
 build_options_default="gir"
-# FIXME: cross-compile fails with doc enabled!
 
 libqrtr-glib-devel_package() {
 	depends="$makedepends $sourcepkg-${version}_$revision"
