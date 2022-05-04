@@ -140,7 +140,7 @@ disable_sv=(
 )
 
 overlays=(
-	# Mount debugfs at /d
+	# Mount debugfs at /sys/kernel/d, symlinked from /d
 	debugfs
 
 	# Allow running "dmesg" & "ping" without root
