@@ -2,6 +2,7 @@
 
 base_pkgs+=(
 	firefox mobile-config-firefox # 192M
+	dejavu-fonts-ttf # for proper font rendering in ff :)
 )
 extra_build_pkgs+=(
 	mesa
