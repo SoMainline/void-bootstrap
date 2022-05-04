@@ -143,6 +143,9 @@ overlays=(
 	# Mount debugfs at /sys/kernel/d, symlinked from /d
 	debugfs
 
+	# Mount tracefs at /sys/kernel/tracing, symlinked from /t
+	tracefs
+
 	# Allow running "dmesg" & "ping" without root
 	dmesg-noroot
 	ping-network-group
