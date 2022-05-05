@@ -61,16 +61,15 @@ noextract=(
 	/usr/lib/firmware/qcom/sm8250/cdsp.mbn
 	/usr/lib/firmware/qcom/venus-*
 	/usr/lib/firmware/qcom/vpu-*
-)
-rm_pkgs=(
-	nvi pciutils btrfs-progs xfsprogs
-)
-noextract=(
+
 	# No rootfs encryption setup -> avoid extra runit stage
 	/etc/crypttab
 
 	# No need for raid -> avoid extra runit stage with additional spam about 4096 block size
 	/usr/bin/dmraid
+)
+rm_pkgs=(
+	nvi pciutils btrfs-progs xfsprogs
 )
 base_pkgs=(
 	socklog-void elogind dbus-elogind # Main
