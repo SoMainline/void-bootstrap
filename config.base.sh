@@ -92,6 +92,9 @@ base_pkgs=(
 
 	# Extended terminal definitions for proper support on ie. alacritty
 	alacritty-terminfo foot-terminfo kitty-terminfo
+
+	kmscon
+	libdrm-devel
 )
 
 extra_build_pkgs=(
