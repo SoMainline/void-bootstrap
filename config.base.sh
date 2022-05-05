@@ -49,7 +49,7 @@ ignorepkg=(
 )
 noextract=(
 	# Drop some FW that are double-signed by QCOM & OEM on retail hardware
-	/usr/lib/firmware/qcom/a530_zap.*
+	"/usr/lib/firmware/qcom/a530_zap.*"
 	/usr/lib/firmware/qcom/sdm845/a630_zap.mbn
 	/usr/lib/firmware/qcom/sdm845/adsp.mbn
 	/usr/lib/firmware/qcom/sdm845/cdsp.mbn
@@ -59,8 +59,8 @@ noextract=(
 	/usr/lib/firmware/qcom/sm8250/a650_zap.mbn
 	/usr/lib/firmware/qcom/sm8250/adsp.mbn
 	/usr/lib/firmware/qcom/sm8250/cdsp.mbn
-	/usr/lib/firmware/qcom/venus-*
-	/usr/lib/firmware/qcom/vpu-*
+	"/usr/lib/firmware/qcom/venus-*"
+	"/usr/lib/firmware/qcom/vpu-*"
 
 	# No rootfs encryption setup -> avoid extra runit stage
 	/etc/crypttab
