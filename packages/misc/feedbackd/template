@@ -1,24 +1,21 @@
 # Template file for 'feedbackd'
-_githash=b2a8061cdc7be4fa76f7fa976c67bac4f5a0055c # tip of master branch as of 2021-11-04
-_gitshort=${_githash:0:7}
-_gitrev=163
-
 pkgname=feedbackd
-version=0.0.0r${_gitrev}
+version=0.0.0r171
 revision=1
+_commit=5a3e5013447a78b04b1330c16b5a038764c9b6d9 # tip of master branch as of 2022-05-07
+wrksrc="feedbackd-${_commit}"
 build_style=meson
 build_helper=gir
 hostmakedepends="vala glib-devel pkg-config"
 makedepends="gsound-devel libgudev-devel json-glib-devel"
 depends="dbus"
 checkdepends="dbus"
-short_desc="Daemon to provide haptic feedback on events [git ${_gitshort}]"
+short_desc="Daemon to provide haptic feedback on events [git ${_commit:0:7}]"
 maintainer="Jami Kettunen <jami.kettunen@somainline.org>"
 license="GPL-3.0-or-later"
 homepage="https://source.puri.sm/Librem5/feedbackd"
-distfiles="$homepage/-/archive/${_githash}/$pkgname-${_githash}.tar.gz>$pkgname-${_gitshort}.tar.gz"
-wrksrc="$pkgname-${_githash}"
-checksum=39c65e958e55c6ee764712ec3dc8d3a238befb6c93aca19a7bd307bf75135439
+distfiles="https://source.puri.sm/Librem5/feedbackd/-/archive/${_commit}/$pkgname-${_commit}.tar.gz"
+checksum=88a12c91aee981fcb658d3453c0940549ff3eb90624c6d184eb8df2061c4312b
 
 system_groups="feedbackd"
 
