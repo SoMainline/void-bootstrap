@@ -7,7 +7,7 @@ base_pkgs+=(
 extra_build_pkgs+=(
 	mesa
 	portfolio pmos-tweaks
-	megapixels callaudiod sofia-sip gnome-calls purism-chatty
+	megapixels callaudiod feedbackd sofia-sip gnome-calls purism-chatty
 )
 extra_install_pkgs+=(
 	mesa-vulkan-freedreno mesa-vulkan-overlay-layer mesa-tools
