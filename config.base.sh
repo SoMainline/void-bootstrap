@@ -92,7 +92,7 @@ base_pkgs=(
 	i2c-tools upower atop powertop
 
 	# Extended terminal definitions for proper support on ie. alacritty
-	alacritty-terminfo foot-terminfo
+	alacritty-terminfo foot-terminfo kitty-terminfo
 )
 
 extra_build_pkgs=(
