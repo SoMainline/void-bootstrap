@@ -1,7 +1,7 @@
 #backend="chroot"
 
 users=(
-	'somainline:$5$/UjnRD0B7cDi5Ffh$LqUT25x224Zqb3R2kN7atvRbo.gVr2QXSS9hDGn/EgA::::SoMainline'
+	'somainline:somainline::::SoMainline'
 )
 users_shell_default="/bin/zsh"
 users_groups_common=(
@@ -10,8 +10,7 @@ users_groups_common=(
 	socklog # svlogtail
 	users
 )
-users_pw_encryption="" # unset if already hashed
-users_pw_default="" # disable pass login for e.g. root
+users_pw_default="" # disable pass login for root
 users_sudo_askpass=false
 #permit_root_login=true
 hostname="somainline"
