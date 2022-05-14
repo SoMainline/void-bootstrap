@@ -15,6 +15,11 @@ extra_install_pkgs+=(
 	megapixels gnome-calls purism-chatty
 )
 unset overlays[-1] # drop somainline overlay to apply it after others
-overlays+=(ui-gnome pipewire-audio somainline)
+overlays+=(
+	ui-gnome
+	pipewire-audio
+	qcom_spmi_haptics-feedbackd
+	somainline
+)
 unset enable_sv[-1] # drop buffyboard sv to avoid input issues in GNOME
 img_name_format="${img_name_format/-base/-gnome}"
