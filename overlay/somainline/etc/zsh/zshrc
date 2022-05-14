@@ -43,6 +43,12 @@ alias \
 # for some reason "man" defaults to "more" under zsh by default
 export MANPAGER=less
 
+# Don't consider any special character part of a word. Allows ctrl+w'ing
+# up to the previous `/` separator, for example. See also:
+# https://github.com/ohmyzsh/ohmyzsh/issues/8743
+# https://github.com/ohmyzsh/ohmyzsh/commit/50dc4ab3574f4e265dff816d8d9a0195cd260152
+WORDCHARS=''
+
 # Prompt
 #########
 [ $EUID -eq 0 ] && PROMPT_COLOR='red' || PROMPT_COLOR='cyan'
