@@ -19,6 +19,7 @@ Docs: https://docs.voidlinux.org/xbps
 Service management (via runit)
 ------------------------------
 Docs: https://docs.voidlinux.org/config/services
+runit FAQ: http://smarden.org/runit/faq.html
 
 Build configs (under SoMainline/void-bootstrap)
 -----------------------------------------------
