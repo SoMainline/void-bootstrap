@@ -26,7 +26,7 @@ dns=(
 #mirror="???"
 img_name_format="somainline-%a-base-rootfs-$(date +'%Y-%m-%d--%H-%M').img"
 img_size="3G"
-img_compress="xz"
+#img_compress="xz"
 work_dir="work"
 
 #repos=(???)
