@@ -21,6 +21,10 @@ Service management (via runit)
 Docs: https://docs.voidlinux.org/config/services
 runit FAQ: http://smarden.org/runit/faq.html
 
+Service logging (via socklog/svlogtail)
+---------------------------------------
+Docs: https://docs.voidlinux.org/config/services/logging.html#socklog
+
 Build configs (under SoMainline/void-bootstrap)
 -----------------------------------------------
 Reference: config.sh
