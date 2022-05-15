@@ -1,19 +1,24 @@
 # Template file for 'qmi-ping'
-_githash=16624da254b4721fdff9f89d2b29cb9cfacdd5f3 # tip of master branch as of 2022-03-17
-_gitshort=${_githash:0:7}
-_gitrev=7
-
 pkgname=qmi-ping
-version=0r${_gitrev}
-revision=1
+version=0r7
+revision=2
+_commit=16624da254b4721fdff9f89d2b29cb9cfacdd5f3 # tip of master branch as of 2022-05-15
+wrksrc="qmi-ping-${_commit}"
 build_style=gnu-makefile
-make_use_env=1
+# FIXME: honor CFLAGS & LDFLAGS!
+#make_use_env=1
+# FIXME: uppercase PREFIX!
 make_install_args="prefix=/usr"
 makedepends="qrtr-ns-devel"
-short_desc="Ping QMI services via QRTR [git ${_gitshort}]"
+short_desc="Ping QMI services via QRTR [git ${_commit:0:7}]"
 maintainer="Jami Kettunen <jami.kettunen@protonmail.com>"
 license="BSD-3-Clause"
 homepage="https://github.com/andersson/qmi-ping"
-distfiles="https://github.com/andersson/qmi-ping/archive/${_githash}.tar.gz>$pkgname-${_gitshort}.tar.gz"
-wrksrc="$pkgname-${_githash}"
+distfiles="https://github.com/andersson/qmi-ping/archive/${_commit}.tar.gz"
 checksum=d0f79aa48659304b9d4f8a1de1f03a7a11482744abbe2dbe6ef0d1c35ddba628
+
+LDFLAGS+=" -lqrtr"
+
+post_install() {
+	vlicense LICENSE
+}
