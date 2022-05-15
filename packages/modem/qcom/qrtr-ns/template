@@ -1,29 +1,29 @@
 # Template file for 'qrtr-ns'
-_githash=9dc7a88548c27983e06465d3fbba2ba27d4bc050 # tip of master branch as of 2021-05-30
-_gitshort=${_githash:0:7}
-_gitrev=93
-
 pkgname=qrtr-ns
-version=1.0r${_gitrev}
+version=1.0r93
 revision=1
+_commit=9dc7a88548c27983e06465d3fbba2ba27d4bc050 # tip of master branch as of 2022-05-15
+wrksrc="qrtr-${_commit}"
 build_style=gnu-makefile
+# FIXME: uppercase PREFIX!
 make_install_args="prefix=/usr"
-short_desc="Userspace reference for net/qrtr in the Linux kernel [git ${_gitshort}]"
+short_desc="Userspace reference for net/qrtr in the Linux kernel [git ${_commit:0:7}]"
 maintainer="Jami Kettunen <jami.kettunen@protonmail.com>"
 license="BSD-3-Clause"
 homepage="https://github.com/andersson/qrtr"
-distfiles="https://github.com/andersson/qrtr/archive/${_githash}.tar.gz>qrtr-${_gitshort}.tar.gz"
-wrksrc="qrtr-${_githash}"
+distfiles="https://github.com/andersson/qrtr/archive/${_commit}.tar.gz"
 checksum=756ac22024207ec21b6bf034fba97b82b80adb859c626ac84213850fe5e136dd
 
 post_install() {
-	rm -rf $DESTDIR/usr/lib/systemd/
-	vsv $pkgname
 	vlicense LICENSE
+	vsv qrtr-ns
+
+	# FIXME: this should be optional to package, e.g. USE_SYSTEMD make variable...
+	rm -rf $DESTDIR/usr/lib/systemd
 }
 
 qrtr-ns-devel_package() {
-	depends="$makedepends $sourcepkg-${version}_$revision"
+	depends="${sourcepkg}-${version}_${revision}"
 	short_desc+=" - development files"
 	pkg_install() {
 		vmove usr/include
