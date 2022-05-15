@@ -1,6 +1,6 @@
 # Template file for 'purism-chatty'
 pkgname=purism-chatty
-version=0.6.3
+version=0.6.4
 revision=1
 _libgd_commit=c7c7ff4e05d3fe82854219091cf116cce6b19de0
 wrksrc="chatty-v$version"
@@ -17,7 +17,7 @@ homepage="https://source.puri.sm/Librem5/chatty"
 distfiles="https://source.puri.sm/Librem5/chatty/-/archive/v${version}/chatty-v${version}.tar.gz
 	https://gitlab.gnome.org/GNOME/libgd/-/archive/${_libgd_commit}/${_libgd_commit}.tar.gz>libgd-${_libgd_commit}.tar.gz
 "
-checksum="6a6fb1452a067a7633deda3e63c461e5360f2293a394e120f29fe204a84b41d1
+checksum="6e845bc0417b7414e5ce0a9487029be578deb1925886b5cab5feed38402fdd82
  7e6389d73ce06b195381cff2cfb17e986e8e9f60a725581e769e5e4d6cac5209"
 
 pre_configure() {
