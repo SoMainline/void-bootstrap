@@ -1,7 +1,8 @@
 # Template file for 'pmos-tweaks'
 pkgname=pmos-tweaks
-version=0.11.0
+version=0.12.0
 revision=1
+wrksrc="postmarketos-tweaks-${version}"
 build_style=meson
 makedepends="libhandy1-devel"
 hostmakedepends="pkg-config"
@@ -11,8 +12,7 @@ maintainer="Jami Kettunen <jami.kettunen@protonmail.com>"
 license="GPL-3.0-or-later"
 homepage="https://gitlab.com/postmarketOS/postmarketos-tweaks"
 distfiles="${homepage}/-/archive/${version}/postmarketos-tweaks-${version}.tar.gz"
-wrksrc="postmarketos-tweaks-${version}"
-checksum=82e6494a7434ad1b94c5bf762a7ae9f758bf2f1cc82dbd05de8c64af2738a241
+checksum=7a9267a7d0db9f46729ea0a0d385adc394ea4b20282ec584b2228acdcf3ef75e
 
 _ymldir="usr/share/postmarketos-tweaks"
 _vmove_yml() { vmove ${_ymldir}/$1.yml; }
@@ -41,5 +41,13 @@ pmos-tweaks-pinephone_package() {
 	depends="${sourcepkg}>=${version}_${revision}"
 	pkg_install() {
 		_vmove_yml pinephone
+	}
+}
+
+pmos-tweaks-sxmo_package() {
+	short_desc+=" - Sxmo (X11) entries"
+	depends="${sourcepkg}>=${version}_${revision}"
+	pkg_install() {
+		_vmove_yml sxmo-x11
 	}
 }
