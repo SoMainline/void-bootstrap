@@ -1,3 +1,3 @@
 site="$homepage/-/tags?format=atom"
 pattern='<id>\K.*tags\/\K.*(?=<\/id>)'
-# TODO: ignore alpha & beta tags!
+ignore='*alpha* *beta* *rc*'
