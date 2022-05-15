@@ -1,25 +1,28 @@
 # Template file for 'tqftpserv'
-_githash=783425b550de2a359db6aa3b41577c3fbaae5903 # tip of master branch as of 2021-05-30
-_gitshort=${_githash:0:7}
-_gitrev=12
-
 pkgname=tqftpserv
-version=1.0r${_gitrev}
+version=1.0r12
 revision=1
+_commit=783425b550de2a359db6aa3b41577c3fbaae5903 # tip of master branch as of 2022-05-15
+wrksrc="tqftpserv-${_commit}"
 build_style=gnu-makefile
+# FIXME: honor CFLAGS & LDFLAGS!
+#make_use_env=1
+# FIXME: uppercase PREFIX!
 make_install_args="prefix=/usr"
 makedepends="qrtr-ns-devel"
-short_desc="Trivial File Transfer Protocol server over AF_QIPCRTR [git ${_gitshort}]"
+short_desc="Trivial File Transfer Protocol server over AF_QIPCRTR [git ${_commit:0:7}]"
 maintainer="Jami Kettunen <jami.kettunen@protonmail.com>"
 license="BSD-3-Clause"
 homepage="https://github.com/andersson/tqftpserv"
-distfiles="https://github.com/andersson/$pkgname/archive/${_githash}.tar.gz>$pkgname-${_gitshort}.tar.gz"
-wrksrc="$pkgname-${_githash}"
+distfiles="https://github.com/andersson/tqftpserv/archive/${_commit}.tar.gz"
 checksum=1b7120d3bc612aa49105e8babb2054ac064bd58f3096adcbbc3c3c905a332c34
-LDFLAGS="-lqrtr" # these get lost from the Makefile somehow
+
+LDFLAGS+=" -lqrtr"
 
 post_install() {
-	rm -rf $DESTDIR/usr/lib/systemd/
-	vsv $pkgname
 	vlicense LICENSE
+	vsv tqftpserv
+
+	# FIXME: this should be optional to package, e.g. USE_SYSTEMD make variable...
+	rm -rf $DESTDIR/usr/lib/systemd/
 }
