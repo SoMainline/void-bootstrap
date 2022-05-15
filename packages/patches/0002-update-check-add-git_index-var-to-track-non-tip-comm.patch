@@ -13,7 +13,7 @@ diff --git a/Manual.md b/Manual.md
 index 2a0cccd5e7..dd58173c12 100644
 --- a/Manual.md
 +++ b/Manual.md
-@@ -871,7 +871,8 @@ first match is compared with the current `version`. `git` is
+@@ -875,7 +875,8 @@ first match is compared with the current `version`. `git` is
  automatically set if either `_commit` or `_githash` are set and can be
  unset if needed in an `update` file. when set `version` automatically
  gets the value of `${_commit}${_githash}` and `pattern` defaults to
@@ -27,7 +27,7 @@ diff --git a/common/xbps-src/shutils/update_check.sh b/common/xbps-src/shutils/u
 index 1d9b4f799b..c8a48ebdc0 100644
 --- a/common/xbps-src/shutils/update_check.sh
 +++ b/common/xbps-src/shutils/update_check.sh
-@@ -187,7 +187,11 @@ update_check() {
+@@ -190,7 +190,11 @@ update_check() {
      tr _ . |
      {
          if [ -n "$git" ]; then

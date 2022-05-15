@@ -12,7 +12,7 @@ diff --git a/Manual.md b/Manual.md
 index 8ec755499b..2a0cccd5e7 100644
 --- a/Manual.md
 +++ b/Manual.md
-@@ -865,6 +865,14 @@ versions.  Example: `ignore="*b*"`
+@@ -869,6 +869,14 @@ versions.  Example: `ignore="*b*"`
  - `version` is the version number used to compare against
  upstream versions. Example: `version=${version//./_}`
  
@@ -57,7 +57,7 @@ index 0a624274f5..1d9b4f799b 100644
      fi
  
      if ! type curl >/dev/null 2>&1; then
-@@ -178,7 +185,13 @@ update_check() {
+@@ -181,7 +188,13 @@ update_check() {
          fetchedurls[$url]=yes
      done |
      tr _ . |
@@ -72,7 +72,7 @@ index 0a624274f5..1d9b4f799b 100644
      {
          grep . || echo "NO VERSION found for $original_pkgname" 1>&2
      } |
-@@ -200,10 +213,15 @@ update_check() {
+@@ -203,10 +216,15 @@ update_check() {
              esac
          done
          if $consider; then
