@@ -1,6 +1,6 @@
 # Template file for 'libglibutil'
 pkgname=libglibutil
-version=1.0.62
+version=1.0.63
 revision=1
 build_style=gnu-makefile
 make_use_env=1
@@ -14,7 +14,7 @@ maintainer="Jami Kettunen <jami.kettunen@somainline.org>"
 license="BSD-3-Clause"
 homepage="https://github.com/sailfishos/libglibutil"
 distfiles="https://github.com/sailfishos/libglibutil/archive/refs/tags/${version}.tar.gz"
-checksum=611e154181459943b9e946e7e41268c940b53bfdd2fce1d7cbfde77190c73832
+checksum=c88ed8a1a7641e1ebe3a61db6e54deb999f84d1bbf15526cd0d1b2c7820c903e
 
 libglibutil-devel_package() {
 	depends="${sourcepkg}>=${version}_${revision} glib-devel"
