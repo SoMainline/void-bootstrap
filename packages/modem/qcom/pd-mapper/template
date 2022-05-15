@@ -1,26 +1,28 @@
 # Template file for 'pd-mapper'
-_githash=9d78fc0c6143c4d1b7198c57be72a6699ce764c4 # tip of master branch as of 2022-02-24
-_gitshort=${_githash:0:7}
-_gitrev=14
-
 pkgname=pd-mapper
-version=1.0r${_gitrev}
+version=1.0r14
 revision=1
+_commit=9d78fc0c6143c4d1b7198c57be72a6699ce764c4 # tip of master branch as of 2022-05-15
+wrksrc="pd-mapper-${_commit}"
 build_style=gnu-makefile
+# FIXME: honor CFLAGS & LDFLAGS!
+#make_use_env=1
+# FIXME: uppercase PREFIX!
 make_install_args="prefix=/usr"
 makedepends="qrtr-ns-devel"
-short_desc="Qualcomm Protection Domain mapper [git ${_gitshort}]"
+short_desc="Qualcomm Protection Domain mapper [git ${_commit:0:7}]"
 maintainer="Jami Kettunen <jami.kettunen@protonmail.com>"
 license="BSD-3-Clause"
 homepage="https://github.com/andersson/pd-mapper"
-distfiles="https://github.com/andersson/$pkgname/archive/${_githash}.tar.gz>$pkgname-${_gitshort}.tar.gz"
-wrksrc="$pkgname-${_githash}"
+distfiles="https://github.com/andersson/pd-mapper/archive/${_commit}.tar.gz"
 checksum=bdc0068390edb0196277d39f26aa8760215339c5bffcb4839cdb177fc1fed0c0
 
 LDFLAGS+=" -lqrtr"
 
 post_install() {
-	rm -rf $DESTDIR/usr/lib/systemd/
-	vsv $pkgname
 	vlicense LICENSE
+	vsv pd-mapper
+
+	# FIXME: this should be optional to package, e.g. USE_SYSTEMD make variable...
+	rm -rf $DESTDIR/usr/lib/systemd/
 }
