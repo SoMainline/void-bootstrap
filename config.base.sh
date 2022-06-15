@@ -69,7 +69,7 @@ noextract=(
 	/usr/bin/dmraid
 )
 rm_pkgs=(
-	nvi pciutils btrfs-progs xfsprogs
+	nvi btrfs-progs xfsprogs
 )
 base_pkgs=(
 	socklog-void elogind dbus-elogind # Main
