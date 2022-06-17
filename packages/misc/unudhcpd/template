@@ -7,5 +7,5 @@ short_desc="Very basic DHCP server that only issues 1 IP address to any client"
 maintainer="Jami Kettunen <jami.kettunen@somainline.org>"
 license="GPL-3.0-or-later"
 homepage="https://gitlab.com/postmarketOS/unudhcpd"
-distfiles="${homepage}/-/archive/${version}/${pkgname}-${version}.tar.gz"
+distfiles="https://gitlab.com/postmarketOS/unudhcpd/-/archive/${version}/unudhcpd-${version}.tar.gz"
 checksum=c404424a65e6341ef04300e7408a2edad1481ce8841f541e20e058800e7b5485
