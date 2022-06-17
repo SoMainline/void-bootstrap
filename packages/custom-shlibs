@@ -7,7 +7,3 @@ libsofia-sip-ua.so.0 libsofia-sip-1.13.6_1
 libfeedback-0.0.so.0 libfeedback-0.0.0r163_1
 libglibutil.so.1 libglibutil-1.0.56_1
 libgbinder.so.1 libgbinder-1.1.13_1
-libmutter-8.so.0 mutter-bgr-40.0_1
-libmutter-clutter-8.so.0 mutter-bgr-40.0_1
-libmutter-cogl-8.so.0 mutter-bgr-40.0_1
-libmutter-cogl-pango-8.so.0 mutter-bgr-40.0_1
