@@ -61,11 +61,6 @@ Based on the idea of [`nvoid`](https://github.com/not-void/nvoid) alternative `x
 * [`unudhcpd`](misc/unudhcpd): Latest release of [postmarketOS/unudhcpd](https://gitlab.com/postmarketOS/unudhcpd)
 * [`pil-squasher`](misc/pil-squasher): Git version of [andersson/pil-squasher](https://github.com/andersson/pil-squasher)
 * [`qcom-fw-setup`](misc/qcom-fw-setup): Git version of [JamiKettunen/qcom-fw-setup](https://github.com/JamiKettunen/qcom-fw-setup)
-### Waydroid
-* [`libglibutil`](waydroid/libglibutil): Latest release of [sailfishos/libglibutil](https://github.com/sailfishos/libglibutil)
-* [`libgbinder`](waydroid/libgbinder): Latest release of [mer-hybris/libgbinder](https://github.com/mer-hybris/libgbinder)
-* [`python3-gbinder`](waydroid/python3-gbinder): Latest release of [erfanoabdi/gbinder-python](https://github.com/erfanoabdi/gbinder-python)
-* [`waydroid`](waydroid/waydroid): Git version of [waydroid](https://github.com/waydroid/waydroid)
 
 ## To-Do
 * Rename `mesa` to `mesa-somainline`
