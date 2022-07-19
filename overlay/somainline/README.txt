@@ -10,7 +10,7 @@ Activate reverse RNDIS tethering for internet on-device:
 
 Users
 -----
-somainline:somainline
+somainline:som
 
 Package management (via xbps)
 -----------------------------
