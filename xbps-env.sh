@@ -21,7 +21,7 @@ setup_xbps_static() {
 	cmd_exists xbps-uhelper && return 0
 	[ -e xbps-static ] || mkdir xbps-static
 
-	local checksums="$(wget "$mirror/static/sha256sums.txt" -t 3 -qO -)" checksum=""
+	local checksums="$(wget "$mirror/static/sha256sums.txt.old.1" -t 3 -qO -)" checksum=""
 	local xbps_tarball="xbps-static-latest.${host_arch}-musl.tar.xz"
 	local fetch=true
 
