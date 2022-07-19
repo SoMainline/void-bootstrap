@@ -1,7 +1,7 @@
 #backend="chroot"
 
 users=(
-	'somainline:somainline::::SoMainline'
+	'somainline:som::::SoMainline'
 )
 users_shell_default="/bin/zsh"
 users_groups_common=(
