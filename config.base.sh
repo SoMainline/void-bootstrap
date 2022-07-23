@@ -67,6 +67,9 @@ noextract=(
 
 	# No need for raid -> avoid extra runit stage with additional spam about 4096 block size
 	/usr/bin/dmraid
+
+	# systemd is not an init system choice on Void so these are rather pointless
+	"/usr/lib/systemd/*"
 )
 rm_pkgs=(
 	nvi btrfs-progs xfsprogs
