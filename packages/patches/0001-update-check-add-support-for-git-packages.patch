@@ -1,4 +1,4 @@
-From 4909ce345e37f65a11c51cdf69d99f91d96297ea Mon Sep 17 00:00:00 2001
+From e4cd4abd48d5713b4ef22d9b0cda8312611dbfc1 Mon Sep 17 00:00:00 2001
 From: Jami Kettunen <jami.kettunen@protonmail.com>
 Date: Mon, 31 May 2021 01:02:35 +0300
 Subject: [PATCH 1/2] update-check: add support for git packages.
@@ -9,10 +9,10 @@ Subject: [PATCH 1/2] update-check: add support for git packages.
  2 files changed, 31 insertions(+), 5 deletions(-)
 
 diff --git a/Manual.md b/Manual.md
-index 8ec755499b..2a0cccd5e7 100644
+index c24be6e90a..8f6887c85c 100644
 --- a/Manual.md
 +++ b/Manual.md
-@@ -869,6 +869,14 @@ versions.  Example: `ignore="*b*"`
+@@ -839,6 +839,14 @@ versions.  Example: `ignore="*b*"`
  - `version` is the version number used to compare against
  upstream versions. Example: `version=${version//./_}`
  
@@ -28,10 +28,10 @@ index 8ec755499b..2a0cccd5e7 100644
  detecting directory containing one version of sources in url,
  then searching new version in adjacent directories.
 diff --git a/common/xbps-src/shutils/update_check.sh b/common/xbps-src/shutils/update_check.sh
-index 0a624274f5..1d9b4f799b 100644
+index ec53ed9f38..7fe2ed6de1 100644
 --- a/common/xbps-src/shutils/update_check.sh
 +++ b/common/xbps-src/shutils/update_check.sh
-@@ -1,17 +1,24 @@
+@@ -1,7 +1,7 @@
  # vim: set ts=4 sw=4 et:
  
  update_check() {
@@ -39,7 +39,8 @@ index 0a624274f5..1d9b4f799b 100644
 +    local i p url pkgurlname rx found_version consider git
      local update_override=$XBPS_SRCPKGDIR/$XBPS_TARGET_PKG/update
      local original_pkgname=$pkgname
-     local urlpfx urlsfx
+     local pkgname=$sourcepkg
+@@ -9,10 +9,17 @@ update_check() {
      local -A fetchedurls
  
      if [ -r $update_override ]; then
@@ -57,7 +58,7 @@ index 0a624274f5..1d9b4f799b 100644
      fi
  
      if ! type curl >/dev/null 2>&1; then
-@@ -181,7 +188,13 @@ update_check() {
+@@ -182,7 +189,13 @@ update_check() {
          fetchedurls[$url]=yes
      done |
      tr _ . |
@@ -72,7 +73,7 @@ index 0a624274f5..1d9b4f799b 100644
      {
          grep . || echo "NO VERSION found for $original_pkgname" 1>&2
      } |
-@@ -203,10 +216,15 @@ update_check() {
+@@ -204,10 +217,15 @@ update_check() {
              esac
          done
          if $consider; then
@@ -92,5 +93,5 @@ index 0a624274f5..1d9b4f799b 100644
          fi
      done
 -- 
-2.35.3
+2.37.2
 
