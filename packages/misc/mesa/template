@@ -1,6 +1,6 @@
 # Template file for 'mesa'
 pkgname=mesa
-version=22.1.branchpoint.r4465.gfd3f6e6b53c # git describe --tags ${_commit}
+version=22.2.0r156867
 revision=1
 _commit=fd3f6e6b53c16e5def392d2097e4787b10b0d733 # main~2 as of 2022-07-19
 wrksrc="mesa-${_commit}"
