@@ -1,8 +1,8 @@
 # Template file for 'feedbackd'
 pkgname=feedbackd
-version=0.0.0r171
+version=0.0.0r177
 revision=1
-_commit=5a3e5013447a78b04b1330c16b5a038764c9b6d9 # tip of master branch as of 2022-05-07
+_commit=2e081602f627505e566cc0bdb6cd96c7642d8b65 # tip of master branch as of 2022-09-11
 wrksrc="feedbackd-${_commit}"
 build_style=meson
 build_helper=gir
@@ -15,7 +15,7 @@ maintainer="Jami Kettunen <jami.kettunen@somainline.org>"
 license="GPL-3.0-or-later"
 homepage="https://source.puri.sm/Librem5/feedbackd"
 distfiles="https://source.puri.sm/Librem5/feedbackd/-/archive/${_commit}/$pkgname-${_commit}.tar.gz"
-checksum=88a12c91aee981fcb658d3453c0940549ff3eb90624c6d184eb8df2061c4312b
+checksum=10ef197f76423ea58ab0df37d1a9b7f82f29b9c0a77d97d0ee13acb433006ddb
 
 system_groups="feedbackd"
 
