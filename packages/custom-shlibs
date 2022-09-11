@@ -5,3 +5,9 @@ libqrtr.so.1 qrtr-ns-1.0r93_1
 libcallaudio-0.1.so.0 libcallaudio-0.1.1_1
 libsofia-sip-ua.so.0 libsofia-sip-1.13.6_1
 libfeedback-0.0.so.0 libfeedback-0.0.0r163_1
+libmozjs-102.so.0 mozjs102-102.2.0_1
+libmutter-clutter-11.so.0 mutter-43.beta.r29285_1
+libmutter-cogl-11.so.0 mutter-43.beta.r29285_1
+libmutter-11.so.0 mutter-43.beta.r29285_1
+libmutter-cogl-pango-11.so.0 mutter-43.beta.r29285_1
+libgcr-4.so.0.0.0 gcr4-3.92.0_1
