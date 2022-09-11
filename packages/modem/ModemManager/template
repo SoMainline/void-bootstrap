@@ -1,8 +1,8 @@
 # Template file for 'ModemManager'
 pkgname=ModemManager
-version=1.19.1r8111
+version=1.19.1r8276
 revision=1
-_commit=5fbe7c0c82fb225d001c4aa0ceaacbc3fd30c986 # tip of master branch as of 2022-05-15
+_commit=61e540c8d9bfde58333eb46e81fc825c5651764c # tip of main branch as of 2022-09-11
 wrksrc="ModemManager-${_commit}"
 build_style=gnu-configure
 build_helper="gir"
@@ -22,7 +22,7 @@ maintainer="Jami Kettunen <jami.kettunen@somainline.org>"
 license="GPL-2.0-or-later"
 homepage="https://www.freedesktop.org/wiki/Software/ModemManager/"
 distfiles="https://gitlab.freedesktop.org/mobile-broadband/ModemManager/-/archive/${_commit}.tar.gz"
-checksum=f3f7c66509ada1b6d7f050cc3a7ca99e2621fd0dd48fea24384db6e984b57e59
+checksum=92b02c8c2de1d6bedf3366bab0784f0ac35a134e3a5a219c755b426947ebd0f9
 
 build_options="gir"
 build_options_default="gir"
