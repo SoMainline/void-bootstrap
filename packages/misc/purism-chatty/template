@@ -1,9 +1,10 @@
 # Template file for 'purism-chatty'
 pkgname=purism-chatty
-version=0.6.4
+version=0.6.7
 revision=1
 _libgd_commit=c7c7ff4e05d3fe82854219091cf116cce6b19de0
-wrksrc="chatty-v$version"
+build_wrksrc="chatty-v$version"
+create_wrksrc=yes
 build_style=meson
 hostmakedepends="pkg-config git gettext-devel gettext-devel-tools glib-devel
  itstool"
@@ -15,15 +16,16 @@ maintainer="Jami Kettunen <jami.kettunen@somainline.org>"
 license="GPL-3.0-or-later"
 homepage="https://source.puri.sm/Librem5/chatty"
 distfiles="https://source.puri.sm/Librem5/chatty/-/archive/v${version}/chatty-v${version}.tar.gz
-	https://gitlab.gnome.org/GNOME/libgd/-/archive/${_libgd_commit}/${_libgd_commit}.tar.gz>libgd-${_libgd_commit}.tar.gz
-"
-checksum="6e845bc0417b7414e5ce0a9487029be578deb1925886b5cab5feed38402fdd82
+ https://gitlab.gnome.org/GNOME/libgd/-/archive/${_libgd_commit}/${_libgd_commit}.tar.gz>libgd-${_libgd_commit}.tar.gz"
+checksum="e6e168819f29beec63b108f25fc9a9da647efc82086babfd2eb8d9c0ae8c6d95
  7e6389d73ce06b195381cff2cfb17e986e8e9f60a725581e769e5e4d6cac5209"
 
-pre_configure() {
-	rmdir subprojects/libgd
-	mv ../libgd-${_libgd_commit} subprojects/libgd
+post_extract() {
+	rmdir ${build_wrksrc}/subprojects/libgd
+	mv libgd-${_libgd_commit} ${build_wrksrc}/subprojects/libgd
+}
 
+pre_configure() {
 	if [ "$CROSS_BUILD" ]; then
 		vsed -i src/purple/meson.build -e "s/purple_plugdir =.*/purple_plugdir = '\/usr\/${XBPS_CROSS_TRIPLET}\/usr\/lib\/purple-2'/"
 	fi
