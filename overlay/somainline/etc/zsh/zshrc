@@ -49,6 +49,11 @@ export MANPAGER=less
 # https://github.com/ohmyzsh/ohmyzsh/commit/50dc4ab3574f4e265dff816d8d9a0195cd260152
 WORDCHARS=''
 
+# make e.g. 'gsettings' work over SSH
+if [ -z "$DISPLAY" ] && (pgrep -x Xwayland || pgrep -x Xorg) >/dev/null; then
+	export DISPLAY=:0
+fi
+
 # Prompt
 #########
 [ $EUID -eq 0 ] && PROMPT_COLOR='red' || PROMPT_COLOR='cyan'
