@@ -102,7 +102,7 @@ extra_build_pkgs=(
 	qcom-fw-setup # Firmware
 	libmbim libqrtr-glib libqmi ModemManager # Cellular
 	qrtr-ns pd-mapper rmtfs tqftpserv diag-router # Modem/WLAN
-	gpsd-pds # GPS
+	#gpsd-pds # GPS
 
 	soctemp pil-squasher qmi-ping # Extra tools
 	#linuxconsoletools # (e.g. fftest)
@@ -113,7 +113,7 @@ extra_install_pkgs=(
 	qcom-fw-setup
 	libqmi ModemManager
 	qrtr-ns pd-mapper rmtfs tqftpserv diag-router
-	gpsd-pds
+	#gpsd-pds
 
 	soctemp pil-squasher qmi-ping
 	#linuxconsoletools
@@ -131,7 +131,7 @@ enable_sv=(
 	usbd rndis-tethering # USB gadget setup
 	pd-mapper rmtfs tqftpserv diag-router # Modem/WLAN
 	NetworkManager avahi-daemon # Networking
-	gpsd-pds # GPS
+	#gpsd-pds # GPS
 	neard # NFC
 	#buffyboard # TTY on-screen touch enabled keyboard
 	# FIXME: the following is spammed with no keyboard visible on minimal simplefb tree (alpine .config)
