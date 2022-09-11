@@ -4,9 +4,11 @@ base_pkgs+=(
 	Vulkan-Tools # vkcube, ...
 	firefox mobile-config-firefox # 192M
 	dejavu-fonts-ttf # for proper font rendering in ff :)
+	noto-fonts-emoji # for emoji keyboard on gnome shell mobile
 )
 extra_build_pkgs+=(
 	mesa
+	mutter gnome-shell # gnome shell mobile
 	portfolio pmos-tweaks
 	megapixels callaudiod feedbackd sofia-sip gnome-calls purism-chatty
 )
