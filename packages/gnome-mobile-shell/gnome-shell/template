@@ -1,0 +1,40 @@
+# Template file for 'gnome-shell'
+pkgname=gnome-shell
+version=43.1+git20221218
+revision=1
+_branch=mobile-shell-devel
+_commit=9cf9605343d8138b56a70a0fb302734c432eec96
+_gvc_commit=8e7a5a4c3e51007ce6579292642517e3d3eb9c50 # master 2022-09-11
+build_style=meson
+build_helper=gir
+configure_args="-Dsystemd=false -Dtests=false"
+hostmakedepends="gobject-introspection libxslt pkg-config python3 sassc
+ asciidoc perl glib-devel gettext gjs-devel gtk-update-icon-cache"
+makedepends="gnome-control-center-devel at-spi2-atk-devel
+ evolution-data-server-devel mutter-devel gsettings-desktop-schemas-devel
+ polkit-devel startup-notification-devel ibus-devel gnome-desktop-devel
+ NetworkManager-devel pulseaudio-devel gtk4-devel gnome-autoar-devel gjs-devel
+ gnome-bluetooth-devel pipewire-devel gstreamer1-devel gcr4-devel"
+depends="elogind gnome-control-center gsettings-desktop-schemas upower
+ gstreamer1-pipewire gst-plugins-good1"
+checkdepends="xvfb-run mesa-dri $depends"
+short_desc="GNOME core user interface (with mobile-friendly patches [git ${_commit:0:7}])"
+maintainer="Jami Kettunen <jami.kettunen@somainline.org>"
+license="GPL-2.0-or-later"
+homepage="https://wiki.gnome.org/Projects/GnomeShell"
+distfiles="https://gitlab.gnome.org/verdre/gnome-shell/-/archive/${_commit}.tar.gz
+ https://gitlab.gnome.org/GNOME/libgnome-volume-control/-/archive/${_gvc_commit}.tar.gz"
+checksum="4d83cdcfea7b6e31d38fa7f9a591e0c7393821b2c819559d0e7f58d02633935d
+ 758bc452a6c5e34bbadafbe6623d80d4f7cb7b76e1afce1eab3c466ccd279d73"
+
+post_extract() {
+	mv gnome-shell-${_commit}/* .
+	rmdir subprojects/gvc
+	mv libgnome-volume-control-${_gvc_commit} subprojects/gvc
+}
+
+do_check() {
+	mkdir /tmp/gnome-shell-xdg
+	XDG_RUNTIME_DIR=/tmp xvfb-run ninja -C build test
+	rm -rf /tmp/gnome-shell-xdg
+}
