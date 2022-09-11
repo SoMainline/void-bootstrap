@@ -17,6 +17,7 @@ extra_install_pkgs+=(
 unset overlays[-1] # drop somainline overlay to apply it after others
 overlays+=(
 	ui-gnome
+	firefox-wayland
 	pipewire-audio
 	qcom_spmi_haptics-feedbackd
 	somainline
