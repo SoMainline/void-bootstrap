@@ -2,6 +2,7 @@
 last-panel='info-overview'
 
 [org/gnome/desktop/interface]
+color-scheme='prefer-dark'
 gtk-theme='Adwaita-dark'
 show-battery-percentage=true
 
@@ -9,12 +10,18 @@ show-battery-percentage=true
 disable-external=true
 
 [org/gnome/desktop/wm/preferences]
-button-layout='appmenu:minimize,maximize,close'
+button-layout='appmenu:close'
 resize-with-right-button=true
+
+[org/gnome/gedit/preferences/editor]
+editor-font='Source Code Pro 12'
+scheme='builder-dark'
+use-default-font=false
 
 [org/gnome/mutter]
 attach-modal-dialogs=false
 center-new-windows=true
+experimental-features=['scale-monitor-framebuffer']
 
 [org/gnome/settings-daemon/plugins/power]
 power-button-action='interactive'
