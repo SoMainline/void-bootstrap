@@ -1,0 +1,25 @@
+# Template file for 'qcom-debugcc'
+pkgname=qcom-debugcc
+version=0r15
+revision=1
+_commit=79d8caba44135b7470dddaee3cfb93bd73b89c5e
+wrksrc="debugcc-${_commit}"
+build_style=gnu-makefile
+# TODO: configure_args="prefix=/usr" when install rule exists
+short_desc="Clock subsystem debugging tools for various Qualcomm SoCs (git ${_commit:0:7})"
+maintainer="Jami Kettunen <jami.kettunen@somainline.org>"
+license="BSD-3-Clause"
+homepage="https://github.com/andersson/debugcc"
+distfiles="https://github.com/andersson/debugcc/archive/${_commit}.tar.gz"
+checksum=14e6cfd9bdb7a849defaf3fed0afe2976537c31a8e2f04dbf02e3585fe40d3fc
+
+post_extract() {
+	# FIXME: create softlinks for SoC binaries
+	vsed 's/ln -f/ln -sf/g' -i Makefile
+}
+
+do_install() {
+	vbin debugcc
+	vcopy *-debugcc usr/bin
+	vlicense LICENSE
+}
