@@ -22,5 +22,5 @@ overlays+=(
 	qcom_spmi_haptics-feedbackd
 	somainline
 )
-unset enable_sv[-1] # drop buffyboard sv to avoid input issues in GNOME
+enable_sv=("${enable_sv[@]/buffyboard}") # drop buffyboard sv to avoid input issues in GNOME
 img_name_format="${img_name_format/-base/-gnome}"
