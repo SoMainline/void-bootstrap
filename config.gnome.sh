@@ -1,6 +1,7 @@
 . config.base.sh
 
 base_pkgs+=(
+	Vulkan-Tools # vkcube, ...
 	firefox mobile-config-firefox # 192M
 	dejavu-fonts-ttf # for proper font rendering in ff :)
 )
