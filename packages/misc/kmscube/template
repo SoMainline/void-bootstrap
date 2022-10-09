@@ -1,0 +1,21 @@
+# Template file for 'kmscube'
+pkgname=kmscube
+version=0.0.1r159
+revision=1
+_commit=3bf6ee1a02334386d87cfe356c3bfb0b24e1fed8
+wrksrc="kmscube-${_commit}"
+build_style=meson
+configure_args="-Dgstreamer=enabled"
+hostmakedepends="pkg-config"
+makedepends="libdrm-devel libgbm-devel libglvnd-devel gstreamer1-devel
+ gst-plugins-base1-devel"
+short_desc="Example KMS/GBM/EGL application (git ${_commit:0:7})"
+maintainer="Jami Kettunen <jami.kettunen@somainline.org>"
+license=MIT
+homepage="https://gitlab.freedesktop.org/mesa/kmscube"
+distfiles="https://gitlab.freedesktop.org/mesa/kmscube/-/archive/${_commit}.tar.gz"
+checksum=e81eec2e07457c7f865f143701e23266a479cd599048713dedc9c9025d7406ff
+
+post_install() {
+	vlicense COPYING
+}
