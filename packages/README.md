@@ -61,6 +61,7 @@ Based on the idea of [`nvoid`](https://github.com/not-void/nvoid) alternative `x
 * [`unudhcpd`](misc/unudhcpd): Latest release of [postmarketOS/unudhcpd](https://gitlab.com/postmarketOS/unudhcpd)
 * [`pil-squasher`](misc/pil-squasher): Git version of [andersson/pil-squasher](https://github.com/andersson/pil-squasher)
 * [`qcom-fw-setup`](misc/qcom-fw-setup): Git version of [JamiKettunen/qcom-fw-setup](https://github.com/JamiKettunen/qcom-fw-setup)
+* [`kmscube`](misc/kmscube): Git version of [mesa/kmscube](https://gitlab.freedesktop.org/mesa/kmscube)
 
 ## To-Do
 * Rename `mesa` to `mesa-somainline`
