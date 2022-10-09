@@ -103,6 +103,7 @@ extra_build_pkgs=(
 	libmbim libqrtr-glib libqmi ModemManager # Cellular
 	qrtr-ns pd-mapper rmtfs tqftpserv diag-router # Modem/WLAN
 	#gpsd-pds # GPS
+	kmscube # GPU testing
 
 	soctemp pil-squasher qmi-ping qcom-debugcc # Extra tools
 	#linuxconsoletools # (e.g. fftest)
@@ -114,6 +115,7 @@ extra_install_pkgs=(
 	libqmi ModemManager
 	qrtr-ns pd-mapper rmtfs tqftpserv diag-router
 	#gpsd-pds
+	kmscube
 
 	soctemp pil-squasher qmi-ping qcom-debugcc
 	#linuxconsoletools
