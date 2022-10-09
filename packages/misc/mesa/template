@@ -1,21 +1,20 @@
 # Template file for 'mesa'
 pkgname=mesa
-version=22.2.0r156867
+version=22.3.0r160956
 revision=1
-_commit=fd3f6e6b53c16e5def392d2097e4787b10b0d733 # main~2 as of 2022-07-19
+_commit=1711b32a60f0f2fd3636f8a0af014bac537cd41c # jami/rebase-2022-10-09~2 as of 2022-09-29
 wrksrc="mesa-${_commit}"
 build_style=meson
 configure_args="-Dglvnd=true -Dshared-glapi=enabled -Dgbm=enabled -Degl=enabled
  -Dosmesa=true -Dgles1=enabled -Dgles2=enabled -Dglx=dri -Ddri3=enabled
- -Dlmsensors=enabled -Dplatforms=x11,wayland
- -Dllvm=enabled -Db_lto=false -Dcpp_std=gnu++14
- --buildtype debugoptimized"
+ -Dlmsensors=enabled -Dplatforms=x11$(vopt_if wayland ,wayland)
+ -Dllvm=enabled -Db_lto=false -Dcpp_std=gnu++14 --buildtype debugoptimized"
 hostmakedepends="gettext flex llvm pkg-config python3-Mako glslang
- wayland-protocols wayland-devel"
+ $(vopt_if wayland 'wayland-protocols wayland-devel')"
 makedepends="elfutils-devel expat-devel libXdamage-devel libXvMC-devel
  libXxf86vm-devel libatomic-devel libdrm-devel libffi-devel libva-devel
  libvdpau-devel libxshmfence-devel ncurses-devel zlib-devel
- wayland-devel wayland-protocols llvm libsensors-devel
+ $(vopt_if wayland 'wayland-devel wayland-protocols') llvm libsensors-devel
  libXrandr-devel libglvnd-devel libzstd-devel libxml2-devel lua53-devel
  libarchive-devel"
 depends="libglvnd"
@@ -25,13 +24,16 @@ license="MIT, LGPL-2.1-or-later"
 homepage="https://www.mesa3d.org/"
 #changelog="https://docs.mesa3d.org/relnotes/${version}.html"
 distfiles="https://github.com/SoMainline/mesa/archive/${_commit}.tar.gz"
-checksum=b9836105d744a1a039225392ca347f8646533e3c3c6d48f2624370d04d5cabfd
+checksum=ea89058e41ab738dfb14bb0330ced55a12909b7f6f92a917d00d7e91495a47f9
+
+build_options="wayland"
+build_options_default="wayland"
 
 # only use llvmpipe on targets where it's supported and reliable
 # especially on big endian it's all kinds of broken, and e.g. on
 # 32-bit powerpc it does not work at all, so fall back to softpipe
 case "$XBPS_TARGET_MACHINE" in
-	x86_64*|aarch64*|ppc64le*|arm*) ;;
+	i686*|x86_64*|aarch64*|ppc64le*|arm*) ;;
 	*) configure_args+=" -Ddraw-use-llvm=false" ;;
 esac
 
@@ -147,10 +149,10 @@ if [ "$_have_opencl" ]; then
 fi
 
 if [ "$_have_hwdec" ]; then
-	configure_args+=" -Dgallium-vdpau=enabled -Dgallium-va=enabled -Dgallium-xvmc=enabled"
+	configure_args+=" -Dgallium-vdpau=enabled -Dgallium-va=enabled"
 	subpackages+=" mesa-vaapi mesa-vdpau mesa-XvMC"
 else
-	configure_args+=" -Dgallium-vdpau=disabled -Dgallium-va=disabled -Dgallium-xvmc=disabled"
+	configure_args+=" -Dgallium-vdpau=disabled -Dgallium-va=disabled"
 fi
 
 # empty values introduced by leading comma are not allowed; the whole enumeration can be empty
@@ -371,7 +373,7 @@ mesa-vulkan-freedreno_package() {
 	short_desc="Mesa Freedreno Vulkan driver"
 	pkg_install() {
 		vmove "usr/share/vulkan/icd.d/freedreno_icd*.json"
-		vmove "usr/lib/libvulkan_freedreno.so" # lib64?
+		vmove "usr/lib/libvulkan_freedreno.so"
 	}
 }
 
