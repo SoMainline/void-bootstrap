@@ -1,34 +1,34 @@
-From e4cd4abd48d5713b4ef22d9b0cda8312611dbfc1 Mon Sep 17 00:00:00 2001
+From ca884fb6c6a40163e1059c4282d74f6140ff001c Mon Sep 17 00:00:00 2001
 From: Jami Kettunen <jami.kettunen@protonmail.com>
 Date: Mon, 31 May 2021 01:02:35 +0300
 Subject: [PATCH 1/2] update-check: add support for git packages.
 
 ---
- Manual.md                               |  8 +++++++
- common/xbps-src/shutils/update_check.sh | 28 ++++++++++++++++++++-----
- 2 files changed, 31 insertions(+), 5 deletions(-)
+ Manual.md                               |  8 ++++++
+ common/xbps-src/shutils/update_check.sh | 36 +++++++++++++++++++++----
+ 2 files changed, 39 insertions(+), 5 deletions(-)
 
 diff --git a/Manual.md b/Manual.md
-index c24be6e90a..8f6887c85c 100644
+index fa552f65ba..a0b6883352 100644
 --- a/Manual.md
 +++ b/Manual.md
-@@ -839,6 +839,14 @@ versions.  Example: `ignore="*b*"`
+@@ -842,6 +842,14 @@ versions.  Example: `ignore="*b*"`
  - `version` is the version number used to compare against
  upstream versions. Example: `version=${version//./_}`
  
 +- `git` can be set to treat the `site` as feed of commits for the
 +project; in this case results are not sorted by version and only the
 +first match is compared with the current `version`. `git` is
-+automatically set if either `_commit` or `_githash` are set and can be
-+unset if needed in an `update` file. when set `version` automatically
-+gets the value of `${_commit}${_githash}` and `pattern` defaults to
-+`<id>\K.*commit\/\K.*(?=<\/id>)`.
++automatically set if either `_commit` or `_githash` are set; when set
++`version` automatically gets the value of `${_commit}${_githash}` and
++`pattern` defaults to `<id>\K.*commit\/\K.*(?=<\/id>)`. `site` is
++guessed for GitHub and GitLab with `_branch` defaulting to `main`.
 +
  - `single_directory` can be set to disable
  detecting directory containing one version of sources in url,
  then searching new version in adjacent directories.
 diff --git a/common/xbps-src/shutils/update_check.sh b/common/xbps-src/shutils/update_check.sh
-index ec53ed9f38..7fe2ed6de1 100644
+index 85e419cb81..c146e86836 100644
 --- a/common/xbps-src/shutils/update_check.sh
 +++ b/common/xbps-src/shutils/update_check.sh
 @@ -1,7 +1,7 @@
@@ -40,25 +40,29 @@ index ec53ed9f38..7fe2ed6de1 100644
      local update_override=$XBPS_SRCPKGDIR/$XBPS_TARGET_PKG/update
      local original_pkgname=$pkgname
      local pkgname=$sourcepkg
-@@ -9,10 +9,17 @@ update_check() {
-     local -A fetchedurls
- 
-     if [ -r $update_override ]; then
-+        if [ -n "${_commit}${_githash}" ]; then
-+            git=yes
-+        fi
-         . $update_override
-         if [ "$XBPS_UPDATE_CHECK_VERBOSE" ]; then
-             echo "using $XBPS_TARGET_PKG/update overrides" 1>&2
+@@ -19,6 +19,21 @@ update_check() {
          fi
-+        if [ -n "$git" ]; then
-+            version=${_commit}${_githash}
-+            : ${pattern:='<id>\K.*commit\/\K.*(?=<\/id>)'}
-+        fi
+         return 0
      fi
++    if [ -n "${_commit}${_githash}" ]; then
++        : ${pattern:='<id>\K.*commit\/\K.*(?=<\/id>)'}
++        version=${_commit}${_githash}
++        git=yes
++        if [ -z "$site" ]; then
++            : ${_branch:=main}
++            distfiles=(${distfiles[@]})
++            distfiles="${distfiles[0]}"
++            case "$distfiles" in
++                *//gitlab.*|*//source.puri.sm/*)
++                    site="${distfiles%/-/*}/commits/${_branch}?format=atom" ;;
++                *github.com*) site="${distfiles%/archive/*}/commits/${_branch}.atom" ;;
++            esac
++        fi
++    fi
  
      if ! type curl >/dev/null 2>&1; then
-@@ -182,7 +189,13 @@ update_check() {
+         echo "ERROR: cannot find \`curl' executable!"
+@@ -192,7 +207,13 @@ update_check() {
          fetchedurls[$url]=yes
      done |
      tr _ . |
@@ -73,7 +77,7 @@ index ec53ed9f38..7fe2ed6de1 100644
      {
          grep . || echo "NO VERSION found for $original_pkgname" 1>&2
      } |
-@@ -204,10 +217,15 @@ update_check() {
+@@ -214,10 +235,15 @@ update_check() {
              esac
          done
          if $consider; then
@@ -93,5 +97,5 @@ index ec53ed9f38..7fe2ed6de1 100644
          fi
      done
 -- 
-2.37.2
+2.38.1
 
