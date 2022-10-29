@@ -58,11 +58,6 @@ fi
 #########
 [ $EUID -eq 0 ] && PROMPT_COLOR='red' || PROMPT_COLOR='cyan'
 PROMPT="%F{$PROMPT_COLOR}%m%f %F{yellow}%1~%f %(!.#.$) "
-if [ "$TERM" = "linux" ]; then
-	RPROMPT='%(?.%F{green}OK.%F{red}%?)%f'
-else
-	RPROMPT='%(?.%F{green}√.%F{red}%?)%f'
-fi
 
 # Completions + suggestions
 ############################
