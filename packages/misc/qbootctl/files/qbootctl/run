@@ -1,0 +1,8 @@
+#!/bin/sh
+# Mark current boot as successful on Qualcomm A/B boards, without this after ~7
+# reboots A/B devices automatically switch to the inactive slot causing confusion
+# and usually a soft-bricked device requiring computer access.
+if grep -q 'qcom,' /proc/device-tree/compatible 2>/dev/null && [ -e /dev/disk/by-partlabel/xbl_a ]; then
+	qbootctl -m
+fi
+exec chpst -b qbootctl pause
