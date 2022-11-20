@@ -66,3 +66,5 @@ PROMPT="%F{$PROMPT_COLOR}%m%f %F{yellow}%1~%f %(!.#.$) "
 autoload -Uz compinit
 compinit
 zstyle ':completion:*' menu select
+# pick up new binaries from PATH automagically after shell startup
+zstyle ':completion:*' rehash true
