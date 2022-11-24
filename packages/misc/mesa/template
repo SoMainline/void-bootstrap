@@ -1,8 +1,8 @@
 # Template file for 'mesa'
 pkgname=mesa
-version=22.2.r4273.g0c4080d9ab4
+version=22.3.r1141.g6f58c71b5eb
 revision=1
-_commit=0c4080d9ab4196594230b3c50f3eef48f6f33ecb # main~2 as of 2022-10-25
+_commit=6f58c71b5eb6644a294b23b6d493e2c61bb2e34b # main~2 as of 2022-11-24
 wrksrc="mesa-${_commit}"
 build_style=meson
 configure_args="-Dglvnd=true -Dshared-glapi=enabled -Dgbm=enabled -Degl=enabled
@@ -24,7 +24,7 @@ license="MIT, LGPL-2.1-or-later"
 homepage="https://www.mesa3d.org/"
 #changelog="https://docs.mesa3d.org/relnotes/${version}.html"
 distfiles="https://github.com/SoMainline/mesa/archive/${_commit}.tar.gz"
-checksum=3fd383750a22a68180ef903d77ade38d245d16aeb3f6ad37d96e6dadfba34bd8
+checksum=4d61d6f717b7891b550e92e87637c909c433e92bfaea32d05a37836b2fcab91e
 
 build_options="wayland"
 build_options_default="wayland"
