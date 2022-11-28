@@ -5,6 +5,7 @@ base_pkgs+=(
 	firefox mobile-config-firefox # 192M
 	dejavu-fonts-ttf # for proper font rendering in ff :)
 	noto-fonts-emoji # for emoji keyboard on gnome shell mobile
+	waydroid
 )
 extra_build_pkgs+=(
 	mesa
@@ -31,5 +32,7 @@ overlays=(
 enable_sv=(
 	# drop buffyboard sv to avoid potential input issues in GNOME (https://gitlab.com/cherrypicker/buffyboard/-/issues/21)
 	"${enable_sv[@]/buffyboard}"
+
+	waydroid-container
 )
 img_name_format="${img_name_format/-base/-gnome}"
