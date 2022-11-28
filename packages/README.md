@@ -65,6 +65,7 @@ Based on the idea of [`nvoid`](https://github.com/not-void/nvoid) alternative `x
 * [`pil-squasher`](misc/pil-squasher): Git version of [andersson/pil-squasher](https://github.com/andersson/pil-squasher)
 * [`qcom-fw-setup`](misc/qcom-fw-setup): Git version of [JamiKettunen/qcom-fw-setup](https://github.com/JamiKettunen/qcom-fw-setup)
 * [`kmscube`](misc/kmscube): Git version of [mesa/kmscube](https://gitlab.freedesktop.org/mesa/kmscube)
+* [`qbootctl`](misc/qbootctl): Latest release of [sdm845-mainline/qbootctl](https://gitlab.com/sdm845-mainline/qbootctl)
 
 ## To-Do
 * Rename `mesa` to `mesa-somainline`
