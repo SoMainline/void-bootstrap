@@ -135,8 +135,8 @@ enable_sv=(
 	NetworkManager avahi-daemon # Networking
 	#gpsd-pds # GPS
 	neard # NFC
-	#buffyboard # TTY on-screen touch enabled keyboard
-	# FIXME: the following is spammed with no keyboard visible on minimal simplefb tree (alpine .config)
+	buffyboard # TTY on-screen touch enabled keyboard
+	# TODO: does it still have no keyboard visible with the following spammed on minimal simplefb tree (alpine .config)?
 	#[Warn]  (66.514, +31)    indev_pointer_proc: X is 0 which is greater than hor. res      (in lv_indev.c line #349)
 	#[Warn]  (66.515, +1)     indev_pointer_proc: Y is 0 which is greater than hor. res      (in lv_indev.c line #352)
 )
