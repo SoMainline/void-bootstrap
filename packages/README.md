@@ -67,6 +67,7 @@ Based on the idea of [`nvoid`](https://github.com/not-void/nvoid) alternative `x
 * [`kmscube`](misc/kmscube): Git version of [mesa/kmscube](https://gitlab.freedesktop.org/mesa/kmscube)
 * [`qbootctl`](misc/qbootctl): Latest release of [sdm845-mainline/qbootctl](https://gitlab.com/sdm845-mainline/qbootctl)
 * [`buffyboard`](misc/buffyboard): Latest release of [cherrypicker/buffyboard](https://gitlab.com/cherrypicker/buffyboard)
+* [`qcom-debugcc`](misc/qcom-debugcc): Git version of [andersson/qcom-debugcc](https://github.com/andersson/debugcc)
 
 ## To-Do
 * Rename `mesa` to `mesa-somainline`
