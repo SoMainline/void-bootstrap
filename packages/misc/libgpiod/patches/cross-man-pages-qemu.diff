@@ -1,0 +1,16 @@
+diff --git a/configure.ac b/configure.ac
+index dc945ef..624464b 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -237,10 +237,7 @@ then
+ fi
+ AM_COND_IF([HAS_DOXYGEN], [AC_CONFIG_FILES([Doxyfile])])
+ 
+-if test "x$cross_compiling" = xno
+-then
+-	AC_CHECK_PROG([has_help2man], [help2man], [true], [false])
+-fi
++AC_CHECK_PROG([has_help2man], [help2man], [true], [false])
+ AM_CONDITIONAL([WITH_MANPAGES], [test "x$has_help2man" = xtrue])
+ if test "x$has_help2man" = xfalse
+ then

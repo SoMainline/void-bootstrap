@@ -1,0 +1,36 @@
+# Template file for 'libgpiod'
+pkgname=libgpiod
+version=1.6.3
+revision=1
+build_style=gnu-configure
+build_helper="qemu"
+configure_args="--disable-static --enable-tools --disable-bindings-cxx
+ --disable-bindings-python"
+hostmakedepends="automake autoconf-archive libtool pkg-config help2man"
+short_desc="C library and tools for interacting with the GPIO character device"
+maintainer="Jami Kettunen <jami.kettunen@somainline.org>"
+license="GPL-2.0-or-later"
+homepage="https://git.kernel.org/pub/scm/libs/libgpiod/libgpiod.git"
+distfiles="${homepage}/snapshot/libgpiod-${version}.tar.gz"
+checksum=eb446070be1444fd7d32d32bbca53c2f3bbb0a21193db86198cf6050b7a28441
+
+pre_configure() {
+	autoreconf -fi
+}
+
+libgpiod-devel_package() {
+	short_desc+=" - development files"
+	depends="${sourcepkg}-${version}_${revision}"
+	pkg_install() {
+		vmove usr/lib/pkgconfig
+		vmove "usr/lib/*.so"
+		vmove usr/include
+	}
+}
+
+libgpiod-tools_package() {
+	short_desc+=" - tools"
+	pkg_install() {
+		vmove usr/bin
+	}
+}
