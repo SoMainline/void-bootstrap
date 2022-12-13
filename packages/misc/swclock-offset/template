@@ -1,0 +1,19 @@
+# Template file for 'swclock-offset'
+pkgname=swclock-offset
+version=0.2.2
+revision=1
+build_style=gnu-makefile
+short_desc="Keep system time at an offset to a read-only RTC (for Qualcomm SoCs)"
+maintainer="Jami Kettunen <jami.kettunen@somainline.org>"
+license="GPL-3.0-or-later"
+homepage="https://gitlab.com/postmarketOS/swclock-offset"
+distfiles="https://gitlab.com/postmarketOS/swclock-offset/-/archive/${version}.tar.gz"
+checksum=ca63b2a04e727e1b30328e128d5b249c2727bc1b44765099ddc31cd189f82f7c
+
+post_install() {
+	# FIXME: hardcoded sbin directory: https://gitlab.com/postmarketOS/swclock-offset/-/blob/master/Makefile
+	mv ${DESTDIR}/usr/sbin ${DESTDIR}/usr/bin
+
+	vinstall ${FILESDIR}/02-z-swclock-offset-boot.sh 644 etc/runit/core-services
+	vsv swclock-offset
+}

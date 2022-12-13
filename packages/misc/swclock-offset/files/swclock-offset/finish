@@ -1,0 +1,5 @@
+#!/bin/sh
+# save current offset between swclock and hwclock for next boot
+if grep -q 'qcom,' /proc/device-tree/compatible 2>/dev/null; then
+	swclock-offset-shutdown
+fi

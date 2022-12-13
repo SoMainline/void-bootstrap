@@ -1,0 +1,4 @@
+#!/bin/sh
+# Dummy service (to allow ./finish to exec swclock-offset-shutdown),
+# swclock-offset-boot executed in runit core-service to run it sooner
+exec chpst -b swclock-offset pause
