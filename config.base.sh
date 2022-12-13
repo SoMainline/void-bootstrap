@@ -77,8 +77,7 @@ rm_pkgs=(
 base_pkgs=(
 	socklog-void elogind dbus-elogind # Main
 	#haveged
-	fake-hwclock chrony # Time & date
-	# TODO: check that fake-hwclock works properly
+	chrony # Time & date
 	linux-firmware-{network,qualcomm} # Firmware
 	bluez # Bluetooth
 	NetworkManager avahi # Networking
@@ -98,6 +97,7 @@ base_pkgs=(
 )
 
 extra_build_pkgs=(
+	swclock-offset # Timekeeping
 	unudhcpd usbd # USB gadget setup
 	qcom-fw-setup # Firmware
 	libmbim libqrtr-glib libqmi ModemManager # Cellular
@@ -110,6 +110,7 @@ extra_build_pkgs=(
 	buffyboard # TTY on-screen touch enabled keyboard
 )
 extra_install_pkgs=(
+	swclock-offset
 	unudhcpd usbd
 	qcom-fw-setup
 	libqmi ModemManager
@@ -121,12 +122,10 @@ extra_install_pkgs=(
 	#linuxconsoletools
 	buffyboard
 )
-#void_packages="https://github.com/SoMainline/void-packages.git"
-#void_packages_branch="somainline"
-#void_packages_shallow=true
 
 enable_sv=(
-	fake-hwclock chronyd dbus bluetoothd socklog-unix nanoklogd # Main
+	chronyd dbus bluetoothd socklog-unix nanoklogd # Main
+	swclock-offset # Timekeeping
 	#haveged elogind
 	sshd
 
