@@ -105,7 +105,7 @@ extra_build_pkgs=(
 	gpsd-pds # GPS
 	kmscube # GPU testing
 
-	soctemp pil-squasher qmi-ping qcom-debugcc # Extra tools
+	soctemp pil-squasher qmi-ping qcom-debugcc libgpiod # Extra tools
 	#linuxconsoletools # (e.g. fftest)
 	buffyboard # TTY on-screen touch enabled keyboard
 )
@@ -118,7 +118,7 @@ extra_install_pkgs=(
 	gpsd-pds
 	kmscube
 
-	soctemp pil-squasher qmi-ping qcom-debugcc
+	soctemp pil-squasher qmi-ping qcom-debugcc libgpiod
 	#linuxconsoletools
 	buffyboard
 )
