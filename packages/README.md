@@ -68,6 +68,7 @@ Based on the idea of [`nvoid`](https://github.com/not-void/nvoid) alternative `x
 * [`qbootctl`](misc/qbootctl): Latest release of [sdm845-mainline/qbootctl](https://gitlab.com/sdm845-mainline/qbootctl)
 * [`buffyboard`](misc/buffyboard): Latest release of [cherrypicker/buffyboard](https://gitlab.com/cherrypicker/buffyboard)
 * [`qcom-debugcc`](misc/qcom-debugcc): Git version of [andersson/qcom-debugcc](https://github.com/andersson/debugcc)
+* [`swclock-offset`](misc/swclock-offset): Latest release of [postmarketOS/swclock-offset](https://gitlab.com/postmarketOS/swclock-offset)
 
 ## To-Do
 * Rename `mesa` to `mesa-somainline`
