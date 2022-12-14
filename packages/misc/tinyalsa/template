@@ -1,0 +1,33 @@
+# Template file for 'tinyalsa'
+pkgname=tinyalsa
+version=2.0.0
+revision=1
+build_style=meson
+short_desc="Tiny library to interface with ALSA in the Linux kernel"
+maintainer="Jami Kettunen <jami.kettunen@protonmail.com>"
+license="BSD-3-Clause"
+homepage="https://github.com/tinyalsa/tinyalsa"
+distfiles="https://github.com/tinyalsa/tinyalsa/archive/refs/tags/v${version}.tar.gz"
+checksum=573ae0b2d3480851c1d2a12503ead2beea27f92d44ed47b74b553ba947994ef1
+
+post_install() {
+	vlicense NOTICE
+}
+
+libtinyalsa_package() {
+	#depends="${sourcepkg}>=${version}_${revision}"
+	short_desc+=" - shared libraries"
+	pkg_install() {
+		vmove "usr/lib/*.so.*"
+	}
+}
+
+tinyalsa-devel_package() {
+	depends="${sourcepkg}>=${version}_${revision} lib${sourcepkg}>=${version}_${revision}"
+	short_desc+=" - development files"
+	pkg_install() {
+		vmove usr/include
+		vmove usr/lib/pkgconfig
+		vmove "usr/lib/*.so"
+	}
+}
