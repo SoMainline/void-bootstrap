@@ -101,7 +101,7 @@ extra_build_pkgs=(
 	qbootctl # Mark A/B slots as successfully booted on QCOM devices
 	unudhcpd usbd # USB gadget setup
 	qcom-fw-setup # Firmware
-	libmbim libqrtr-glib libqmi ModemManager # Cellular
+	libmbim libqrtr-glib libqmi ModemManager q6voiced # Cellular
 	qrtr-ns pd-mapper rmtfs tqftpserv diag-router # Modem/WLAN
 	gpsd-pds # GPS
 	kmscube # GPU testing
@@ -115,7 +115,7 @@ extra_install_pkgs=(
 	qbootctl
 	unudhcpd usbd
 	qcom-fw-setup
-	ModemManager
+	ModemManager q6voiced
 	qrtr-ns pd-mapper rmtfs tqftpserv diag-router
 	gpsd-pds
 	kmscube
