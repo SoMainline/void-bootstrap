@@ -69,6 +69,7 @@ Based on the idea of [`nvoid`](https://github.com/not-void/nvoid) alternative `x
 * [`buffyboard`](misc/buffyboard): Latest release of [cherrypicker/buffyboard](https://gitlab.com/cherrypicker/buffyboard)
 * [`qcom-debugcc`](misc/qcom-debugcc): Git version of [andersson/qcom-debugcc](https://github.com/andersson/debugcc)
 * [`swclock-offset`](misc/swclock-offset): Latest release of [postmarketOS/swclock-offset](https://gitlab.com/postmarketOS/swclock-offset)
+* [`libgpiod`](misc/libgpiod): Latest release of [libgpiod](https://git.kernel.org/pub/scm/libs/libgpiod/libgpiod.git)
 
 ## To-Do
 * Rename `mesa` to `mesa-somainline`
