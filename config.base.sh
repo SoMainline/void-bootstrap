@@ -170,6 +170,9 @@ overlays=(
 	# Some NFC testing scripts
 	neard-tests
 
+	# Power off sooner on critical battery levels
+	upower-critical-poweroff
+
 	# SoMainline user configs etc.
 	# NOTE: Make sure this is the last one or else config.gnome.sh breaks!
 	somainline
