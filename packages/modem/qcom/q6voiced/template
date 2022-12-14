@@ -1,0 +1,21 @@
+# Template file for 'q6voiced'
+pkgname=q6voiced
+version=0+git20221128
+revision=1
+_branch=master
+_commit=736138bfc9f7b455a96679e2d67fd922a8f16464
+build_style=meson
+hostmakedepends="pkg-config"
+makedepends="dbus-devel tinyalsa-devel"
+short_desc="Userspace daemon for the QDSP6 voice call audio driver (git ${_commit:0:7})"
+maintainer="Jami Kettunen <jami.kettunen@protonmail.com>"
+license="MIT"
+homepage="https://gitlab.com/postmarketOS/q6voiced"
+distfiles="https://gitlab.com/postmarketOS/q6voiced/-/archive/${_commit}.tar.gz"
+checksum=42a0d0d0ed107b55d4d424ec18be891fa23c8035c9d0df639a1cea19d206e889
+
+post_install() {
+	vsv q6voiced
+	vdoc README.md
+	vlicense LICENSE
+}

@@ -1,0 +1,27 @@
+From 91b36acd2593c3543024da3c3ce225d3fe25c52f Mon Sep 17 00:00:00 2001
+From: Jami Kettunen <jami.kettunen@protonmail.com>
+Date: Mon, 28 Nov 2022 04:50:10 +0200
+Subject: [PATCH] meson: Add a buildsystem for convenience
+
+TODO: upstream?
+---
+ meson.build | 7 +++++++
+ 1 file changed, 7 insertions(+)
+ create mode 100644 meson.build
+
+diff --git a/meson.build b/meson.build
+new file mode 100644
+index 0000000..20737fd
+--- /dev/null
++++ b/meson.build
+@@ -0,0 +1,7 @@
++project('q6voiced', 'c')
++dbus_dep = dependency('dbus-1', required : true)
++tinyalsa_dep = dependency('tinyalsa', required : true)
++executable(
++	'q6voiced', 'q6voiced.c', install: true,
++	dependencies: [dbus_dep, tinyalsa_dep],
++)
+-- 
+2.38.1
+
