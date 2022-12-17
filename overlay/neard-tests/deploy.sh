@@ -1,4 +1,5 @@
 #!/bin/bash
+set -e
 xbps-install -y wget neard python{,-dbus,-gobject}
 wget https://github.com/linux-nfc/neard/archive/master.tar.gz -t 3 --show-progress -qO /tmp/neard.tar.gz
 mkdir -p /usr/libexec/nfc/test
