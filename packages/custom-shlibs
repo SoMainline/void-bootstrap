@@ -7,3 +7,7 @@ libsofia-sip-ua.so.0 libsofia-sip-1.13.6_1
 libfeedback-0.0.so.0 libfeedback-0.0.0r163_1
 libgpiod.so.2 libgpiod-1.6.3_1
 libtinyalsa.so.2 libtinyalsa-2.0.0_1
+libmutter-clutter-11.so.0 mutter-43.1+git20221213_1
+libmutter-cogl-11.so.0 mutter-43.1+git20221213_1
+libmutter-11.so.0 mutter-43.1+git20221213_1
+libmutter-cogl-pango-11.so.0 mutter-43.1+git20221213_1
