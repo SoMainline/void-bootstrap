@@ -12,26 +12,26 @@ short_desc="Touch-enabled framebuffer keyboard (not only) for vampire slayers"
 maintainer="Jami Kettunen <jami.kettunen@protonmail.com>"
 license="GPL-3.0-or-later"
 homepage="https://gitlab.com/cherrypicker/buffyboard"
-distfiles="
-	https://gitlab.com/cherrypicker/buffyboard/-/archive/${version}/${pkgname}-${version}.tar.gz
-	https://github.com/lvgl/lv_drivers/archive/${_lv_drivers_commit}/lv_drivers-${_lv_drivers_commit}.tar.gz
-	https://github.com/lvgl/lvgl/archive/${_lvgl_commit}/lvgl-${_lvgl_commit}.tar.gz
-	https://gitlab.com/cherrypicker/squeek2lvgl/-/archive/${_squeek2lvgl_commit}/squeek2lvgl-${_squeek2lvgl_commit}.tar.gz
-"
-checksum="
-	936cb01609defb26d8f57cd4893d7ad54d1b019e0e735f1e2aece2b8185a4eb8
-	4605f6aa933049d21d06fc342674057bf97bc4ad343245de08317c7ff6d51289
-	ccc38659c1fa64df5de84c3fe533afeef50a826dbcd1bdc960348767c0807286
-	1c4ba6540ecb06eafabe920f1f9c2e95271382873b3f13189c27006527bfd5e7
-"
+distfiles="https://gitlab.com/cherrypicker/buffyboard/-/archive/${version}/${pkgname}-${version}.tar.gz
+ https://github.com/lvgl/lv_drivers/archive/${_lv_drivers_commit}/lv_drivers-${_lv_drivers_commit}.tar.gz
+ https://github.com/lvgl/lvgl/archive/${_lvgl_commit}/lvgl-${_lvgl_commit}.tar.gz
+ https://gitlab.com/cherrypicker/squeek2lvgl/-/archive/${_squeek2lvgl_commit}/squeek2lvgl-${_squeek2lvgl_commit}.tar.gz"
+checksum="936cb01609defb26d8f57cd4893d7ad54d1b019e0e735f1e2aece2b8185a4eb8
+ 4605f6aa933049d21d06fc342674057bf97bc4ad343245de08317c7ff6d51289
+ ccc38659c1fa64df5de84c3fe533afeef50a826dbcd1bdc960348767c0807286
+ 1c4ba6540ecb06eafabe920f1f9c2e95271382873b3f13189c27006527bfd5e7"
 
 post_extract() {
+	mv buffyboard-${version}/* .
 	rmdir lv_drivers lvgl squeek2lvgl
-	mv ../lv_drivers-${_lv_drivers_commit} lv_drivers
-	mv ../lvgl-${_lvgl_commit} lvgl
-	mv ../squeek2lvgl-${_squeek2lvgl_commit} squeek2lvgl
+	mv lv_drivers-${_lv_drivers_commit} lv_drivers
+	mv lvgl-${_lvgl_commit} lvgl
+	mv squeek2lvgl-${_squeek2lvgl_commit} squeek2lvgl
 }
 
 post_install() {
 	vsv buffyboard
 }
+
+# TODO: look into X11 issue mentioned on https://github.com/void-linux/void-packages/pull/35876 (New package: buffyboard-0.2.0)
+#       and https://gitlab.com/cherrypicker/buffyboard/-/issues/21 (Causes problems running in background while in a desktop environment)

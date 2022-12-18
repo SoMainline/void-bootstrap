@@ -1,5 +1,5 @@
 #!/bin/sh
-[ -e /dev/uinput ] || modprobe uinput || exit 1
+#[ -e /dev/uinput ] || modprobe uinput || exit 1
 [ -r conf ] && . ./conf
 if [ -z "$OPTS" ]; then
 	# match current framebuffer rotation if no OPTS specified
