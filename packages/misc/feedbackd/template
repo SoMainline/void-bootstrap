@@ -1,23 +1,33 @@
 # Template file for 'feedbackd'
 pkgname=feedbackd
-version=0.0.0r177
+version=0.0.2
 revision=1
-_commit=2e081602f627505e566cc0bdb6cd96c7642d8b65 # tip of master branch as of 2022-09-11
-wrksrc="feedbackd-${_commit}"
+_gmobile_commit=1039e7808195d4de367ce2718481641ca8af2427
 build_style=meson
 build_helper=gir
 hostmakedepends="vala glib-devel pkg-config"
 makedepends="gsound-devel libgudev-devel json-glib-devel"
 depends="dbus"
 checkdepends="dbus"
-short_desc="Daemon to provide haptic feedback on events [git ${_commit:0:7}]"
+short_desc="Daemon to provide haptic feedback on events"
 maintainer="Jami Kettunen <jami.kettunen@somainline.org>"
 license="GPL-3.0-or-later"
 homepage="https://source.puri.sm/Librem5/feedbackd"
-distfiles="https://source.puri.sm/Librem5/feedbackd/-/archive/${_commit}/$pkgname-${_commit}.tar.gz"
-checksum=10ef197f76423ea58ab0df37d1a9b7f82f29b9c0a77d97d0ee13acb433006ddb
+distfiles="https://source.puri.sm/Librem5/feedbackd/-/archive/v${version}.tar.gz
+ https://gitlab.gnome.org/guidog/gmobile/-/archive/${_gmobile_commit}.tar.gz"
+checksum="3132021120a0ffd677f204aa74b614d06d2f2bcc9b4ed6b3de64f3e654663b67
+ 44993335371a7e64fd57663f7458f1d1c7ae00f150a66c2f2f897ae21c5894a9"
 
 system_groups="feedbackd"
+
+# FIXME: parallel building broken since v0.0.2, lfb-gdbus.h generated late, missing dependency in meson
+# -> file an issue on https://source.puri.sm/Librem5/feedbackd/-/issues
+disable_parallel_build=yes
+
+pre_patch() {
+	mv feedbackd-v${version}-*/* .
+	mv gmobile-${_gmobile_commit}/* subprojects/gmobile/
+}
 
 post_install() {
 	vinstall debian/feedbackd.udev 0644 usr/lib/udev/rules.d 90-feedbackd.rules
