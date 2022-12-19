@@ -1,9 +1,9 @@
 # Template file for 'mesa'
 pkgname=mesa
-version=22.3.r1141.g6f58c71b5eb
+version=23.0+git20221128
 revision=1
-_commit=6f58c71b5eb6644a294b23b6d493e2c61bb2e34b # main~2 as of 2022-11-24
-wrksrc="mesa-${_commit}"
+_branch=main2 # tmp branch until tested as working on AOSP
+_commit=6f58c71b5eb6644a294b23b6d493e2c61bb2e34b # main2~2
 build_style=meson
 configure_args="-Dglvnd=true -Dshared-glapi=enabled -Dgbm=enabled -Degl=enabled
  -Dosmesa=true -Dgles1=enabled -Dgles2=enabled -Dglx=dri -Ddri3=enabled
@@ -116,6 +116,7 @@ if [ "$_have_arm" ]; then
 fi
 
 if [ "$_have_qcom" ]; then
+	makedepends+=" libconfig-devel ncurses-devel" # fdperf
 	_gallium_drivers+=",freedreno"
 	_vulkan_drivers+=",freedreno"
 	_tools+=",freedreno"
@@ -322,11 +323,12 @@ mesa-tools_package() {
 	short_desc="Mesa tools"
 	pkg_install() {
 		if [ "$_have_qcom" ]; then
-			vmove usr/share/freedreno
 			vmove "usr/bin/afuc-*"
 			vmove usr/bin/cffdump
 			vmove usr/bin/computerator
 			vmove usr/bin/crashdec
+			vmove usr/bin/fdperf
+			vmove usr/share/freedreno
 		fi
 	}
 }
