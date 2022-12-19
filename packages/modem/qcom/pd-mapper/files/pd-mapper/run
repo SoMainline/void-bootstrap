@@ -1,3 +1,7 @@
 #!/bin/sh
-# TODO: soft dependency on qrtr-ns!
-exec pd-mapper
+if grep -q 'qcom,' /proc/device-tree/compatible 2>/dev/null; then
+	# TODO: soft dependency on qrtr-ns!
+	exec pd-mapper
+else
+	exec chpst -b pd-mapper pause
+fi
