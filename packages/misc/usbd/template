@@ -1,6 +1,6 @@
 # Template file for 'usbd'
 pkgname=usbd
-version=2
+version=0+git20221219
 revision=1
 build_style=meta
 depends="unudhcpd" # bash iproute2

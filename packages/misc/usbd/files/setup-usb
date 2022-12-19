@@ -9,7 +9,7 @@ SERIALNUMBER="Void Linux (on kernel $(uname -r))"
 # TODO: Migrate to /etc/deviceinfo, fallback to DT
 ID_VENDOR="0x18D1" # "Google Inc."
 ID_PRODUCT="0xD001" # "Nexus 4 (fastboot)"
-DT_MODEL="$(cat /sys/firmware/devicetree/base/model)" # e.g. "OnePlus 5"
+DT_MODEL="$(cat /proc/device-tree/model)" # e.g. "OnePlus 5"
 MANUFACTURER="$(echo $DT_MODEL | cut -d' ' -f1)" # e.g. "OnePlus"
 PRODUCT="$DT_MODEL"
 CONTROLLER="$(ls /sys/class/udc/)" # e.g. "a800000.dwc3"
