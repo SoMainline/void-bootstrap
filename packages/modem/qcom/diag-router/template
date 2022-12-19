@@ -1,15 +1,13 @@
 # Template file for 'diag-router'
 pkgname=diag-router
-version=1.0r120
+version=1.0+git20220507
 revision=1
-_commit=d06e599d197790c9e84ac41a51bf124a69768c4f # tip of master branch as of 2022-05-07
-wrksrc="diag-${_commit}"
+_branch=master
+_commit=d06e599d197790c9e84ac41a51bf124a69768c4f
 build_style=gnu-makefile
 make_use_env=1
-# FIXME: uppercase PREFIX!
-make_install_args="prefix=/usr"
 makedepends="qrtr-ns-devel eudev-libudev-devel"
-short_desc="Diagnostic message routing between Qualcomm host and subsystems [git ${_commit:0:7}]"
+short_desc="Diagnostic message routing between Qualcomm host and subsystems (git ${_commit:0:7})"
 maintainer="Jami Kettunen <jami.kettunen@protonmail.com>"
 license="BSD-3-Clause"
 homepage="https://github.com/andersson/diag"
@@ -19,7 +17,4 @@ checksum=7e128c481160c25eccaf64449f129224f6657ee3846a74309481259861f9384e
 post_install() {
 	vlicense LICENSE
 	vsv diag-router
-
-	# FIXME: this should be optional to package, e.g. USE_SYSTEMD make variable...
-	rm -rf $DESTDIR/usr/lib/systemd/
 }
