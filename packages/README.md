@@ -116,6 +116,8 @@ This allows for updates with built packages always cached locally.
 * [`qcom-debugcc`](misc/qcom-debugcc): Git version of [andersson/qcom-debugcc](https://github.com/andersson/debugcc)
 * [`swclock-offset`](misc/swclock-offset): Latest release of [postmarketOS/swclock-offset](https://gitlab.com/postmarketOS/swclock-offset)
 * [`libgpiod`](misc/libgpiod): Latest release of [libgpiod](https://git.kernel.org/pub/scm/libs/libgpiod/libgpiod.git)
+* [`tinyalsa`](misc/tinyalsa): Latest release of [tinyalsa](https://github.com/tinyalsa/tinyalsa)
+* [`q6voiced`](modem/qcom/q6voiced): Latest release of [postmarketOS/q6voiced](https://gitlab.com/postmarketOS/q6voiced)
 
 ## To-Do
 * Rename `mesa` to `mesa-somainline`
