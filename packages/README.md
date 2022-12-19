@@ -104,7 +104,7 @@ This allows for updates with built packages always cached locally.
 * [`megapixels`](misc/megapixels): Latest release of [martijnbraam/megapixels](https://git.sr.ht/~martijnbraam/megapixels)
 * [`callaudiod`](misc/callaudiod): Git version of [mobian1/callaudiod](https://gitlab.com/mobian1/callaudiod)
 * [`sofia-sip`](misc/sofia-sip): Latest release of [freeswitch/sofia-sip](https://github.com/freeswitch/sofia-sip)
-* [`feedbackd`](misc/feedbackd): Git version of [Librem5/feedbackd](https://source.puri.sm/Librem5/feedbackd)
+* [`feedbackd`](misc/feedbackd): Latest release of [Librem5/feedbackd](https://source.puri.sm/Librem5/feedbackd)
 * [`gnome-calls`](misc/gnome-calls): Latest release of [GNOME/calls](https://gitlab.gnome.org/GNOME/calls)
 * [`purism-chatty`](misc/purism-chatty): Git version of [Librem5/chatty](https://source.puri.sm/Librem5/chatty)
 * [`unudhcpd`](misc/unudhcpd): Latest release of [postmarketOS/unudhcpd](https://gitlab.com/postmarketOS/unudhcpd)
