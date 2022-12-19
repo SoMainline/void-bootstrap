@@ -9,6 +9,7 @@ make_install_args="$make_build_args"
 hostmakedepends="pkg-config bc python3-pyserial libxslt xmlto asciidoc"
 makedepends="eudev-libudev-devel ntp libusb-devel ncurses-devel gtk+3-devel
  pps-tools-devel libcap-devel libbluetooth-devel qt5-devel"
+depends="qrtr-ns"
 short_desc="GPS/AIS receiver monitoring daemon (with QCOM PDS support)"
 maintainer="Jami Kettunen <jami.kettunen@somainline.org>"
 license="BSD-3-Clause"

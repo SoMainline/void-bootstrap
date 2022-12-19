@@ -1,3 +1,8 @@
 #!/bin/sh
 [ -r conf ] && . ./conf
-exec /usr/bin/gpsd -N -F /run/gpsd.sock $OPTS ${DEV:=pds://any}
+if grep -q 'qcom,' /proc/device-tree/compatible 2>/dev/null && qrtr-lookup | grep -q 'PDS'; then
+	: ${DEV:=pds://any}
+else
+	: ${DEV:=/dev/gps0}
+fi
+exec /usr/bin/gpsd -N -F /run/gpsd.sock $OPTS $DEV
