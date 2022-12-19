@@ -1,9 +1,9 @@
 # Template file for 'qcom-fw-setup'
 pkgname=qcom-fw-setup
-version=0r20
+version=0+git20221129
 revision=1
-_commit=5db0622b2e31e5fdeaf7da767ba995be6f1577a0
-wrksrc="qcom-fw-setup-${_commit}"
+_branch=master
+_commit=8297143e69feeee53e1b221b7def558f13431f91
 build_style=gnu-makefile
 depends="bash"
 checkdepends="shellcheck"
@@ -11,8 +11,8 @@ short_desc="Setup firmware automatically on Qualcomm devices (git ${_commit:0:7}
 maintainer="Jami Kettunen <jami.kettunen@protonmail.com>"
 license="GPL-2.0-only"
 homepage="https://github.com/JamiKettunen/qcom-fw-setup"
-distfiles="${homepage}/archive/${_commit}.tar.gz"
-checksum=648ea5b175ecba6015f6318e0bf27e09544cc7757bdf292f77d47aaf8779a60b
+distfiles="https://github.com/JamiKettunen/qcom-fw-setup/archive/${_commit}.tar.gz"
+checksum=c1577291f52ae3d68d85ecad2435695a9b6b7cc2b8440dbf88d30df17c57ef06
 
-# Disable check until we can pass shellcheck it at least
+# Disable check until we can pass shellcheck at least
 make_check=no
