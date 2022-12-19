@@ -2,7 +2,6 @@
 pkgname=portfolio
 version=0.9.14
 revision=1
-wrksrc="Portfolio-${version}"
 build_style=meson
 hostmakedepends="gettext-devel glib-devel"
 short_desc="Minimalist file manager for mobile Linux"
