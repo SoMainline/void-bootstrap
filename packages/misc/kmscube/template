@@ -1,9 +1,9 @@
 # Template file for 'kmscube'
 pkgname=kmscube
-version=0.0.1r159
+version=0.0.1+git20221129
 revision=1
-_commit=3bf6ee1a02334386d87cfe356c3bfb0b24e1fed8
-wrksrc="kmscube-${_commit}"
+_branch=master
+_commit=345111481d654b38a72b5c3629151dc74f7a82bc
 build_style=meson
 configure_args="-Dgstreamer=enabled"
 hostmakedepends="pkg-config"
@@ -14,7 +14,7 @@ maintainer="Jami Kettunen <jami.kettunen@somainline.org>"
 license=MIT
 homepage="https://gitlab.freedesktop.org/mesa/kmscube"
 distfiles="https://gitlab.freedesktop.org/mesa/kmscube/-/archive/${_commit}.tar.gz"
-checksum=e81eec2e07457c7f865f143701e23266a479cd599048713dedc9c9025d7406ff
+checksum=37981d7140d0079098729a0c0a61e0f710c31bb88ab3ad5383b30e3e19b75948
 
 post_install() {
 	vlicense COPYING
