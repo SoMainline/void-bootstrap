@@ -1,8 +1,7 @@
 # Template file for 'pmos-tweaks'
 pkgname=pmos-tweaks
-version=0.12.0
+version=0.13.0
 revision=1
-wrksrc="postmarketos-tweaks-${version}"
 build_style=meson
 makedepends="libhandy1-devel"
 hostmakedepends="pkg-config"
@@ -11,8 +10,8 @@ short_desc="Application for exposing extra settings easily on mobile platforms"
 maintainer="Jami Kettunen <jami.kettunen@protonmail.com>"
 license="GPL-3.0-or-later"
 homepage="https://gitlab.com/postmarketOS/postmarketos-tweaks"
-distfiles="${homepage}/-/archive/${version}/postmarketos-tweaks-${version}.tar.gz"
-checksum=7a9267a7d0db9f46729ea0a0d385adc394ea4b20282ec584b2228acdcf3ef75e
+distfiles="https://gitlab.com/postmarketOS/postmarketos-tweaks/-/archive/${version}.tar.gz"
+checksum=a30009515920b4526b5bf3d25ffadf89d562bb7d87a2e49e2a7b18ade7248a93
 
 _ymldir="usr/share/postmarketos-tweaks"
 _vmove_yml() { vmove ${_ymldir}/$1.yml; }
