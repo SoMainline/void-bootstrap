@@ -1,4 +1,5 @@
 #backend="chroot"
+sudo_timer=true
 
 users=(
 	'somainline:som::::SoMainline'
