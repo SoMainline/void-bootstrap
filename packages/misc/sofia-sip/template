@@ -13,7 +13,7 @@ distfiles="https://github.com/freeswitch/sofia-sip/archive/refs/tags/v${version}
 checksum=3e7bfe9345e7d196bb13cf2c6e758cec8d959f1b9dbbb3bd5459b004f6f65c6c
 
 pre_configure() {
-	NOCONFIGURE=1 ./autogen.sh
+	autoreconf -fi
 }
 
 sofia-sip-devel_package() {
