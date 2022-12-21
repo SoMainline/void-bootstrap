@@ -17,6 +17,7 @@ extra_install_pkgs+=(
 	mesa-vulkan-freedreno mesa-vulkan-overlay-layer mesa-tools
 	portfolio pmos-tweaks
 	megapixels gnome-calls purism-chatty
+	feedbackd
 )
 overlays=(
 	# drop somainline overlay temporarily to apply it after EVERYTHING else
