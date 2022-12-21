@@ -121,7 +121,7 @@ extra_install_pkgs=(
 	gpsd-pds
 	kmscube
 
-	soctemp pil-squasher qmi-ping qcom-debugcc libgpiod
+	soctemp pil-squasher qmi-ping qcom-debugcc libgpiod-tools
 	#linuxconsoletools
 	buffyboard
 )
