@@ -84,6 +84,7 @@ base_pkgs=(
 	NetworkManager avahi # Networking
 	neard # NFC
 	crda # WLAN
+	alsa-ucm-conf # Audio
 
 	zsh zsh-completions zsh-autosuggestions # Shell
 	#zsh-history-substring-search zsh-syntax-highlighting
