@@ -4,7 +4,7 @@ libgpsdpacket.so.29 gpsd-pds-3.23.1_1
 libqrtr.so.1 qrtr-ns-1.0+git20220515_1
 libcallaudio-0.1.so.0 libcallaudio-0.1.1_1
 libsofia-sip-ua.so.0 libsofia-sip-1.13.6_1
-libfeedback-0.0.so.0 libfeedback-0.0.2_1
+libfeedback-0.0.so.0 feedbackd-0.0.2_2
 libgpiod.so.2 libgpiod-1.6.3_1
 libtinyalsa.so.2 libtinyalsa-2.0.0_1
 libmutter-clutter-11.so.0 mutter-43.1+git20221213_1

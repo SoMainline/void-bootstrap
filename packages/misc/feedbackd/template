@@ -1,7 +1,7 @@
 # Template file for 'feedbackd'
 pkgname=feedbackd
 version=0.0.2
-revision=1
+revision=2
 _gmobile_commit=1039e7808195d4de367ce2718481641ca8af2427
 build_style=meson
 build_helper=gir
@@ -33,15 +33,7 @@ post_install() {
 	vinstall debian/feedbackd.udev 0644 usr/lib/udev/rules.d 90-feedbackd.rules
 }
 
-libfeedback_package() {
-	depends="${sourcepkg}>=${version}_${revision}"
-	short_desc+=" - shared libraries"
-	pkg_install() {
-		vmove "usr/lib/*.so.*"
-	}
-}
-
-libfeedback-devel_package() {
+feedbackd-devel_package() {
 	depends="${sourcepkg}>=${version}_${revision}"
 	short_desc+=" - development files"
 	pkg_install() {
