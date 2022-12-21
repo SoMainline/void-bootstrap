@@ -7,7 +7,7 @@ build_style=meson
 hostmakedepends="glib-devel gettext vala pkg-config wayland-devel
  evolution-data-server-devel"
 makedepends="libcallaudio-devel folks-devel libhandy1-devel libpeas-devel
- gom-devel ModemManager-devel libfeedback-devel gstreamer1-devel sofia-sip-devel"
+ gom-devel ModemManager-devel feedbackd-devel gstreamer1-devel sofia-sip-devel"
 depends="NetworkManager ModemManager callaudiod"
 short_desc="Phone dialer and call handler"
 maintainer="Jami Kettunen <jami.kettunen@somainline.org>"
