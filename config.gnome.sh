@@ -1,11 +1,11 @@
 . config.base.sh
 
 base_pkgs+=(
-	Vulkan-Tools # vkcube, ... (after merge of https://github.com/void-linux/void-packages/pull/40747)
 	firefox mobile-config-firefox # 192M
 	dejavu-fonts-ttf # for proper font rendering in ff :)
 	noto-fonts-emoji # for emoji keyboard on gnome shell mobile
-	waydroid
+	Vulkan-Tools glxinfo mesa-demos # for vkcube and other GPU tools
+	waydroid # for running Android apps
 )
 extra_build_pkgs+=(
 	mesa
