@@ -5,7 +5,7 @@ revision=1
 _libgd_commit=c7c7ff4e05d3fe82854219091cf116cce6b19de0 # 2022-09-11
 build_style=meson
 hostmakedepends="pkg-config git gettext-devel gettext-devel-tools glib-devel itstool"
-makedepends="evolution-data-server-devel libfeedback-devel libphonenumber-devel
+makedepends="evolution-data-server-devel feedbackd-devel libphonenumber-devel
  olm-devel libpurple-devel libhandy1-devel gnome-desktop-devel
  ModemManager-devel gspell-devel protobuf-devel"
 short_desc="XMPP and SMS messaging via libpurple and Modemmanager"
