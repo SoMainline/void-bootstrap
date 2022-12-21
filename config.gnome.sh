@@ -20,7 +20,7 @@ extra_install_pkgs+=(
 )
 overlays=(
 	# drop somainline overlay temporarily to apply it after EVERYTHING else
-	"${overlays[@]/somainline}"
+	${overlays[@]/somainline}
 
 	ui-gnome
 	firefox-wayland
