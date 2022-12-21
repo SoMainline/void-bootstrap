@@ -24,6 +24,12 @@ Call audio on Qualcomm devices
 Read /usr/share/doc/q6voiced/README.md
 Set Q6VOICE_CARD_NUM & Q6VOICE_DEVICE_NUM in /etc/sv/q6voiced/conf
 
+GPS on Qualcomm devices
+-----------------------
+To find satellites you must insert a SIM card and reboot the device if this
+wasn't already inserted when booting, after reboot it should take ~40 seconds
+to find something when outside with the device.
+
 Package management (via xbps)
 -----------------------------
 Docs: https://docs.voidlinux.org/xbps
