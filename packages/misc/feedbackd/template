@@ -34,6 +34,7 @@ post_install() {
 }
 
 libfeedback_package() {
+	depends="${sourcepkg}>=${version}_${revision}"
 	short_desc+=" - shared libraries"
 	pkg_install() {
 		vmove "usr/lib/*.so.*"
