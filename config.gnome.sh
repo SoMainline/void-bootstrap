@@ -24,7 +24,7 @@ overlays=(
 
 	ui-gnome
 	firefox-wayland
-	pipewire-audio
+	pulseaudio
 	qcom_spmi_haptics-feedbackd
 
 	somainline
