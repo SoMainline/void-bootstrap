@@ -1,9 +1,9 @@
 # Template file for 'qcom-fw-setup'
 pkgname=qcom-fw-setup
-version=0+git20221129
+version=0+git20221223
 revision=1
 _branch=master
-_commit=8297143e69feeee53e1b221b7def558f13431f91
+_commit=834aed406c85d68cf1145e7607ef4d5b529ba6e0
 build_style=gnu-makefile
 depends="bash"
 checkdepends="shellcheck"
@@ -12,7 +12,7 @@ maintainer="Jami Kettunen <jami.kettunen@protonmail.com>"
 license="GPL-2.0-only"
 homepage="https://github.com/JamiKettunen/qcom-fw-setup"
 distfiles="https://github.com/JamiKettunen/qcom-fw-setup/archive/${_commit}.tar.gz"
-checksum=c1577291f52ae3d68d85ecad2435695a9b6b7cc2b8440dbf88d30df17c57ef06
+checksum=14f5a683b2f44f59223e56f0556efc9934b3b2caaed883f69e4834d53ecf9836
 
 # Disable check until we can pass shellcheck at least
 make_check=no
