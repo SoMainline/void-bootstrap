@@ -58,10 +58,14 @@ noextract=(
 	!/usr/lib/firmware/qca/crbtfw21.tlv
 	!/usr/lib/firmware/qca/crnv21.bin
 
-	# A530/A540 GPU
+	# A530/A540 GPU (MSM899[68])
 	!/usr/lib/firmware/qcom/a530_pfp.fw
 	!/usr/lib/firmware/qcom/a530_pm4.fw
 	!/usr/lib/firmware/qcom/a530v3_gpmu.fw2
+
+	# A630 GPU (SDM845)
+	!/usr/lib/firmware/qcom/a630_gmu.bin
+	!/usr/lib/firmware/qcom/a630_sqe.fw
 
 	# No rootfs encryption setup -> avoid extra runit stage
 	/etc/crypttab
