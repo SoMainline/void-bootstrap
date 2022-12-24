@@ -20,10 +20,6 @@ checksum="3132021120a0ffd677f204aa74b614d06d2f2bcc9b4ed6b3de64f3e654663b67
 
 system_groups="feedbackd"
 
-# FIXME: parallel building broken since v0.0.2, lfb-gdbus.h generated late, missing dependency in meson
-# -> file an issue on https://source.puri.sm/Librem5/feedbackd/-/issues
-disable_parallel_build=yes
-
 pre_patch() {
 	mv feedbackd-v${version}-*/* .
 	mv gmobile-${_gmobile_commit}/* subprojects/gmobile/

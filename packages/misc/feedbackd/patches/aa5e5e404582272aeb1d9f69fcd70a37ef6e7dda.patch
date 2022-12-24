@@ -1,0 +1,25 @@
+From b10e699efa8485565b313c5824e7e904c6efd8ce Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Guido=20G=C3=BCnther?= <agx@sigxcpu.org>
+Date: Thu, 15 Dec 2022 17:29:28 +0100
+Subject: [PATCH] build: Add dbus sources to the lib dependency
+
+Otherwise we might fail to generate it for the executables
+---
+ src/meson.build | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/meson.build b/src/meson.build
+index 9a30fad..a75cf6d 100644
+--- a/src/meson.build
++++ b/src/meson.build
+@@ -57,6 +57,7 @@ fbd_lib = static_library(
+ )
+ 
+ fbd_dep = declare_dependency(
++  sources: generated_dbus_sources,
+   include_directories : fbd_inc,
+   link_with : fbd_lib,
+   dependencies : fbd_deps,
+-- 
+GitLab
+
