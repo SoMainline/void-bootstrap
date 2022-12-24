@@ -26,6 +26,7 @@ overlays=(
 	firefox-wayland
 	pulseaudio
 	qcom_spmi_haptics-feedbackd
+	sdm845-mainline-alsa-ucm-conf
 
 	somainline
 )
