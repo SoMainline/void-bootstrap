@@ -1,7 +1,7 @@
 # Template file for 'diag-router'
 pkgname=diag-router
 version=1.0+git20220507
-revision=1
+revision=2
 _branch=master
 _commit=d06e599d197790c9e84ac41a51bf124a69768c4f
 build_style=gnu-makefile
