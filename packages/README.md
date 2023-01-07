@@ -85,11 +85,7 @@ This allows for updates with built packages always cached locally.
 * [`libmbim`](modem/libmbim): Git version of [libmbim](https://gitlab.freedesktop.org/mobile-broadband/libmbim)
 * [`ModemManager`](modem/ModemManager): Git version of [ModemManager](https://gitlab.freedesktop.org/mobile-broadband/ModemManager)
 #### Qualcomm modem
-* [`qrtr-ns`](modem/qcom/qrtr-ns): Git version of [andersson/qrtr](https://github.com/andersson/qrtr)
 * [`qmi-ping`](modem/qcom/qmi-ping): Git version of [andersson/qmi-ping](https://github.com/andersson/qmi-ping)
-* [`rmtfs`](modem/qcom/rmtfs): Git version of [andersson/rmtfs](https://github.com/andersson/rmtfs)
-* [`pd-mapper`](modem/qcom/pd-mapper): Git version of [andersson/pd-mapper](https://github.com/andersson/pd-mapper)
-* [`tqftpserv`](modem/qcom/tqftpserv): Git version of [andersson/tqftpserv](https://github.com/andersson/tqftpserv)
 * [`diag-router`](modem/qcom/diag-router): Git version of [andersson/diag](https://github.com/andersson/diag)
 * [`gpsd-pds`](modem/gpsd-pds): GPSD with [PDS patch for Qualcomm SoCs](https://gitlab.com/gpsd/gpsd/-/merge_requests/139)
 ### [GNOME mobile shell](https://blogs.gnome.org/shell-dev/2022/09/09/gnome-shell-on-mobile-an-update/)

@@ -1,7 +1,0 @@
-#!/bin/sh
-if grep -q 'qcom,' /proc/device-tree/compatible 2>/dev/null; then
-	# TODO: soft dependency on qrtr-ns!
-	exec rmtfs -r -P -s
-else
-	exec chpst -b rmtfs pause
-fi

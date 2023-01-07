@@ -1,6 +1,0 @@
-#!/bin/sh
-if grep -q 'qcom,' /proc/device-tree/compatible 2>/dev/null; then
-	exec qrtr-ns -f 1
-else
-	exec chpst -b qrtr-ns pause
-fi
