@@ -87,7 +87,7 @@ base_pkgs=(
 	bluez # Bluetooth
 	NetworkManager avahi # Networking
 	neard # NFC
-	crda # WLAN
+	crda pd-mapper rmtfs tqftpserv # Modem/WLAN
 	alsa-ucm-conf # Audio
 
 	zsh zsh-completions zsh-autosuggestions # Shell
@@ -108,7 +108,7 @@ extra_build_pkgs=(
 	unudhcpd usbd # USB gadget setup
 	qcom-fw-setup # Firmware
 	libmbim libqrtr-glib libqmi ModemManager tinyalsa q6voiced # Cellular
-	qrtr-ns pd-mapper rmtfs tqftpserv diag-router # Modem/WLAN
+	diag-router # Modem/WLAN
 	gpsd-pds # GPS
 	kmscube # GPU testing
 
@@ -122,7 +122,7 @@ extra_install_pkgs=(
 	unudhcpd usbd
 	qcom-fw-setup
 	ModemManager q6voiced
-	qrtr-ns pd-mapper rmtfs tqftpserv diag-router
+	diag-router
 	gpsd-pds
 	kmscube
 
