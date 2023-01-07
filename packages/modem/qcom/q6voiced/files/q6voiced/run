@@ -1,12 +1,9 @@
 #!/bin/sh
-if grep -q 'qcom,' /proc/device-tree/compatible 2>/dev/null; then
-	sv check dbus >/dev/null || exit 1
-	[ -r conf ] && . ./conf
-	if [ -z "$Q6VOICE_CARD_NUM" ] || [ -z "$Q6VOICE_DEVICE_NUM" ]; then
-		exit 1
-	fi
-	# TODO: try to autodetect e.g. "VoiceMMode1" from "alsactl info output"
-	exec chpst -u nobody:audio q6voiced "hw:$Q6VOICE_CARD_NUM,$Q6VOICE_DEVICE_NUM"
-else
-	exec chpst -b q6voiced pause
+grep -q 'qcom,' /proc/device-tree/compatible || exec chpst -b q6voiced pause
+sv check dbus >/dev/null || exit 1
+[ -r conf ] && . ./conf
+if [ -z "$Q6VOICE_CARD_NUM" ] || [ -z "$Q6VOICE_DEVICE_NUM" ]; then
+	exit 1
 fi
+# TODO: try to autodetect e.g. "VoiceMMode1" from "alsactl info output"
+exec chpst -u nobody:audio q6voiced "hw:$Q6VOICE_CARD_NUM,$Q6VOICE_DEVICE_NUM"
