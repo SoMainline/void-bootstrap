@@ -1,8 +1,9 @@
 # Template file for 'purism-chatty'
 pkgname=purism-chatty
-version=0.6.7
+version=0.7.0+rc5
 revision=1
 _libgd_commit=c7c7ff4e05d3fe82854219091cf116cce6b19de0 # 2022-09-11
+_libcmatrix_commit=d532b70591b67ac3ad4861390fbb906b323c906f # 2023-01-03
 build_style=meson
 hostmakedepends="pkg-config git gettext-devel gettext-devel-tools glib-devel itstool"
 makedepends="evolution-data-server-devel feedbackd-devel libphonenumber-devel
@@ -12,14 +13,18 @@ short_desc="XMPP and SMS messaging via libpurple and Modemmanager"
 maintainer="Jami Kettunen <jami.kettunen@somainline.org>"
 license="GPL-3.0-or-later"
 homepage="https://source.puri.sm/Librem5/chatty"
-distfiles="https://source.puri.sm/Librem5/chatty/-/archive/v${version}.tar.gz
- https://gitlab.gnome.org/GNOME/libgd/-/archive/${_libgd_commit}.tar.gz"
-checksum="f782e9268aff2884ac5d86ec081f948c57b56c8a35945f5aed967e6cf15948c0
- 7e6389d73ce06b195381cff2cfb17e986e8e9f60a725581e769e5e4d6cac5209"
+changelog="https://source.puri.sm/Librem5/chatty/-/raw/master/NEWS"
+distfiles="https://source.puri.sm/Librem5/chatty/-/archive/v${version/+/_}.tar.gz
+ https://gitlab.gnome.org/GNOME/libgd/-/archive/${_libgd_commit}.tar.gz
+ https://source.puri.sm/Librem5/libcmatrix/-/archive/${_libcmatrix_commit}.tar.gz"
+checksum="c3bb2e1b9cb0d0847b4d96b5cc60889392eec778aabbe1e2dfaeeff2cdf93877
+ 7e6389d73ce06b195381cff2cfb17e986e8e9f60a725581e769e5e4d6cac5209
+ ab0ece2f539be7dc42b04bd307f42914c3a1a3c24fc8d277fc4c118f4fecf6f4"
 
 post_extract() {
-	mv chatty-v${version}*/* .
+	mv chatty-v${version/+/_}*/* .
 	mv libgd-${_libgd_commit}/* subprojects/libgd/
+	mv libcmatrix-${_libcmatrix_commit}/* subprojects/libcmatrix/
 }
 
 pre_configure() {
