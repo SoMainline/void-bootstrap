@@ -1,7 +1,7 @@
 # Template file for 'gnome-calls'
 pkgname=gnome-calls
 version=42.0
-revision=1
+revision=2
 _libcall_ui_commit=acfbb136bbf74514e0b9801ce6c1e8acf36350b6 # 2022-03-12
 build_style=meson
 hostmakedepends="glib-devel gettext vala pkg-config wayland-devel
