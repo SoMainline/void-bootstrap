@@ -1,1 +1,0 @@
-grep -q 'qcom,' /proc/device-tree/compatible || exec chpst -b tqftpserv pause
