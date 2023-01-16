@@ -1,4 +1,4 @@
-From 789d15cf339dc61ae2ace1e6937d496b17abea58 Mon Sep 17 00:00:00 2001
+From 0d0a637bc6bfc466fffd9a6046dc2fd71e355373 Mon Sep 17 00:00:00 2001
 From: Bjorn Andersson <bjorn.andersson@linaro.org>
 Date: Wed, 4 Apr 2018 04:29:09 +0000
 Subject: [PATCH] Introduce Qualcomm PDS service support
@@ -32,6 +32,7 @@ string "any".
 
 Signed-off-by: Bjorn Andersson <bjorn.andersson@linaro.org>
 Signed-off-by: Aníbal Limón <anibal.limon@linaro.org>
+(JAMI: rebased from https://gitlab.com/gpsd/gpsd/-/merge_requests/139 on top of v3.25)
 ---
  SConscript           |  11 ++
  drivers/driver_pds.c | 407 +++++++++++++++++++++++++++++++++++++++++++
@@ -45,10 +46,10 @@ Signed-off-by: Aníbal Limón <anibal.limon@linaro.org>
  create mode 100644 include/driver_pds.h
 
 diff --git a/SConscript b/SConscript
-index e9386a74c..458e3f0f8 100644
+index c7eb1b6f7..446d8fe6f 100644
 --- a/SConscript
 +++ b/SConscript
-@@ -327,6 +327,8 @@ boolopts = (
+@@ -334,6 +334,8 @@ boolopts = (
      ("tripmate",      True,  "DeLorme TripMate support"),
      ("tsip",          True,  "Trimble TSIP support"),
      ("ublox",         True,  "u-blox Protocol support"),
@@ -57,7 +58,7 @@ index e9386a74c..458e3f0f8 100644
      # Non-GPS protocols
      ("aivdm",         True,  "AIVDM support"),
      ("gpsclock",      True,  "Furuno GPSClock support"),
-@@ -1207,6 +1209,14 @@ if not cleaning and not helping:
+@@ -1237,6 +1239,14 @@ if not cleaning and not helping:
          announce("You do not have kernel CANbus available.")
          config.env["nmea2000"] = False
  
@@ -72,7 +73,7 @@ index e9386a74c..458e3f0f8 100644
      # check for C11 or better, and __STDC__NO_ATOMICS__ is not defined
      # before looking for stdatomic.h
      if ((config.CheckC11() and
-@@ -1768,6 +1778,7 @@ libgpsd_sources = [
+@@ -1804,6 +1814,7 @@ libgpsd_sources = [
      "drivers/driver_nmea0183.c",
      "drivers/driver_nmea2000.c",
      "drivers/driver_oncore.c",
@@ -494,10 +495,10 @@ index 000000000..d74aad8e6
 +
 +#endif /* of defined(PDS_ENABLE) */
 diff --git a/drivers/drivers.c b/drivers/drivers.c
-index 3de33a7bb..28e98cf12 100644
+index caaf2c7ce..ebf257433 100644
 --- a/drivers/drivers.c
 +++ b/drivers/drivers.c
-@@ -1682,6 +1682,7 @@ extern const struct gps_type_t driver_greis;
+@@ -1713,6 +1713,7 @@ extern const struct gps_type_t driver_greis;
  extern const struct gps_type_t driver_italk;
  extern const struct gps_type_t driver_navcom;
  extern const struct gps_type_t driver_nmea2000;
@@ -505,7 +506,7 @@ index 3de33a7bb..28e98cf12 100644
  extern const struct gps_type_t driver_oncore;
  extern const struct gps_type_t driver_sirf;
  extern const struct gps_type_t driver_skytraq;
-@@ -1773,6 +1774,10 @@ static const struct gps_type_t *gpsd_driver_array[] = {
+@@ -1804,6 +1805,10 @@ static const struct gps_type_t *gpsd_driver_array[] = {
      &driver_nmea2000,
  #endif  // NMEA2000_ENABLE
  
@@ -517,7 +518,7 @@ index 3de33a7bb..28e98cf12 100644
      &driver_rtcm104v2,
  #endif  // RTCM104V2_ENABLE
 diff --git a/gpsd/libgpsd_core.c b/gpsd/libgpsd_core.c
-index 9531802f1..e2ae65db6 100644
+index 47ee5d57e..dfefb3b1c 100644
 --- a/gpsd/libgpsd_core.c
 +++ b/gpsd/libgpsd_core.c
 @@ -39,6 +39,9 @@
@@ -530,7 +531,7 @@ index 9531802f1..e2ae65db6 100644
  
  // pass low-level data to devices straight through
  ssize_t gpsd_write(struct gps_device_t *session,
-@@ -403,6 +406,11 @@ void gpsd_deactivate(struct gps_device_t *session)
+@@ -378,6 +381,11 @@ void gpsd_deactivate(struct gps_device_t *session)
          (void)nmea2000_close(session);
      } else
  #endif  // NMEA2000_ENABLE
@@ -542,7 +543,7 @@ index 9531802f1..e2ae65db6 100644
      {
          // could be serial, udp://, tcp://, etc.
          gpsd_close(session);
-@@ -701,6 +709,11 @@ int gpsd_open(struct gps_device_t *session)
+@@ -676,6 +684,11 @@ int gpsd_open(struct gps_device_t *session)
          return nmea2000_open(session);
      }
  #endif  // defined(NMEA2000_ENABLE)
@@ -554,7 +555,7 @@ index 9531802f1..e2ae65db6 100644
      /* fall through to plain serial open.
       * could be a naked /dev/ppsX */
      return gpsd_serial_open(session);
-@@ -749,7 +762,8 @@ int gpsd_activate(struct gps_device_t *session, const int mode)
+@@ -724,7 +737,8 @@ int gpsd_activate(struct gps_device_t *session, const int mode)
  #ifdef NON_NMEA0183_ENABLE
      // if it's a sensor, it must be probed
      if ((SERVICE_SENSOR == session->servicetype) &&
@@ -591,10 +592,10 @@ index 000000000..3b373743d
 +#endif /* of defined(PDS_ENABLE) */
 +#endif /* of ifndef _DRIVER_PDS_H_ */
 diff --git a/include/gpsd.h b/include/gpsd.h
-index 311c6e4be..1b1434d23 100644
+index 0f6b731eb..657cd9177 100644
 --- a/include/gpsd.h
 +++ b/include/gpsd.h
-@@ -476,6 +476,7 @@ typedef enum {SOURCE_UNKNOWN,
+@@ -482,6 +482,7 @@ typedef enum {SOURCE_UNKNOWN,
                SOURCE_USB,       // potential GPS source, discoverable
                SOURCE_BLUETOOTH, // potential GPS source, discoverable
                SOURCE_CAN,       // potential GPS source, fixed CAN format
@@ -602,10 +603,10 @@ index 311c6e4be..1b1434d23 100644
                SOURCE_PTY,       // PTY: we don't require exclusive access
                SOURCE_TCP,       // TCP/IP stream: case detected but not used
                SOURCE_UDP,       // UDP stream: case detected but not used
-@@ -828,6 +829,14 @@ struct gps_device_t {
+@@ -837,6 +838,14 @@ struct gps_device_t {
              char ais_channel;
          } aivdm;
- #endif /* AIVDM_ENABLE */
+ #endif  // AIVDM_ENABLE
 +#ifdef PDS_ENABLE
 +       struct {
 +           int ready;
@@ -613,12 +614,12 @@ index 311c6e4be..1b1434d23 100644
 +           unsigned int pds_node;
 +           unsigned int pds_port;
 +       } pds;
-+#endif /* PDS_ENABLE */
++#endif  // PDS_ENABLE
      } driver;
  
      /*
 diff --git a/man/gpsd.adoc b/man/gpsd.adoc
-index 957bcb8e5..f6ed13743 100644
+index 8d45e3ae1..327e978ce 100644
 --- a/man/gpsd.adoc
 +++ b/man/gpsd.adoc
 @@ -242,6 +242,14 @@ NMEA2000 CAN data::
@@ -637,5 +638,5 @@ index 957bcb8e5..f6ed13743 100644
  (The "ais:://" source type supported in some older versions of the
  daemon has been retired in favor of the more general "tcp://".)
 -- 
-2.36.1
+2.39.0
 

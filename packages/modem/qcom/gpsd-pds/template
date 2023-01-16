@@ -1,7 +1,7 @@
 # Template file for 'gpsd-pds'
 pkgname=gpsd-pds
-version=3.24
-revision=2
+version=3.25
+revision=1
 build_style=scons
 make_build_args="dbus_export=0 gpsd_user=gpsd gpsd_group=gpsd
  sbindir=/usr/bin CC=${CC} qt_versioned=5"
@@ -16,7 +16,7 @@ license="BSD-3-Clause"
 homepage="https://gpsd.gitlab.io/gpsd/"
 changelog="https://gpsd.gitlab.io/gpsd/NEWS"
 distfiles="https://download-mirror.savannah.gnu.org/releases/gpsd/gpsd-${version}.tar.xz"
-checksum=dab45874c6da0ac604e3553b79fc228c25d6e71a32310a3467fb3bd9974e3755
+checksum=7e5e53e5ab157dce560a2f22e20322ef1136d3ebde99162def833a3306de01e5
 python_version=3	# Must be same version as scons
 system_accounts="gpsd"
 replaces="gpsd"
