@@ -1,6 +1,6 @@
 # Template file for 'sofia-sip'
 pkgname=sofia-sip
-version=1.13.9
+version=1.13.11
 revision=1
 build_style=gnu-configure
 makedepends="openssl-devel glib-devel"
@@ -10,7 +10,7 @@ maintainer="Jami Kettunen <jami.kettunen@somainline.org>"
 license="LGPL-2.1-or-later"
 homepage="https://github.com/freeswitch/sofia-sip"
 distfiles="https://github.com/freeswitch/sofia-sip/archive/refs/tags/v${version}.tar.gz"
-checksum=3e7bfe9345e7d196bb13cf2c6e758cec8d959f1b9dbbb3bd5459b004f6f65c6c
+checksum=aaebd6b480ab8fa56e02eea2d33272d8a8fc49257b1b94daa7033569f50acc6c
 
 pre_configure() {
 	autoreconf -fi
