@@ -1,6 +1,6 @@
 # Template file for 'callaudiod'
 pkgname=callaudiod
-version=0.1.6
+version=0.1.7
 revision=1
 build_style=meson
 hostmakedepends="pkg-config glib-devel"
@@ -9,8 +9,8 @@ short_desc="Call audio routing daemon"
 maintainer="Jami Kettunen <jami.kettunen@somainline.org>"
 license="GPL-3.0-or-later"
 homepage="https://gitlab.com/mobian1/callaudiod"
-distfiles="https://gitlab.com/mobian1/callaudiod/-/archive/${version}/callaudiod-${version}.tar.gz"
-checksum=bedab183fcc81a2f544e4cb49a77e8a638722422e69fa51f052443dd8041cf53
+distfiles="https://gitlab.com/mobian1/callaudiod/-/archive/${version}.tar.gz"
+checksum=59218be69df4e1d866227506e78499534248e71fe2c4b4f0978924f0d40f860e
 
 libcallaudio_package() {
 	short_desc+=" - shared-libraries"
