@@ -1,7 +1,7 @@
 # Template file for 'gnome-shell'
 pkgname=gnome-shell
 version=43.1+git20221218
-revision=1
+revision=2
 _branch=mobile-shell-devel
 _commit=9cf9605343d8138b56a70a0fb302734c432eec96
 _gvc_commit=8e7a5a4c3e51007ce6579292642517e3d3eb9c50 # master 2022-09-11
