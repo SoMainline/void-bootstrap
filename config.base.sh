@@ -164,8 +164,9 @@ overlays=(
 	dmesg-noroot
 	ping-network-group
 
-	# Let runit manage ModemManager instead of dbus
+	# Only run pd-mapper, qrtr-ns, rmtfs, tqftpserv, ModemManager & diag-router on QCOM boards
 	modemmanager-runit
+	qcom-modem-conf
 
 	# Resize flashed rootfs on partitions
 	resize-root
