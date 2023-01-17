@@ -1,7 +1,7 @@
 # Template file for 'mutter'
 pkgname=mutter
 version=43.1+git20221213
-revision=1
+revision=2
 _branch=mobile-shell-devel
 _commit=3be9031ee8233b1b09ea6b18c9c0a587d8ba6aa9
 build_helper="gir"
