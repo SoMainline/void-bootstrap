@@ -35,6 +35,7 @@ alias \
 	diff='diff --color' \
 	grep='grep --color' \
 	egrep='grep -E' \
+	devmem='sudo busybox devmem' \
 	'..'='cd ..'
 
 # Misc
