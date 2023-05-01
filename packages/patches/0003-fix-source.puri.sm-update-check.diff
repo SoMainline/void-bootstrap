@@ -2,10 +2,10 @@ diff --git a/common/xbps-src/shutils/update_check.sh b/common/xbps-src/shutils/u
 index 85e419cb81..1e6596a577 100644
 --- a/common/xbps-src/shutils/update_check.sh
 +++ b/common/xbps-src/shutils/update_check.sh
-@@ -145,7 +145,7 @@ update_check() {
+@@ -146,7 +146,7 @@ update_check() {
                  pkgurlname="$(printf %s "$url" | cut -d/ -f4,5)"
                  url="https://github.com/$pkgurlname/tags"
-                 rx='/archive/refs/tags/(v?|\Q'"$pkgname"'\E-)?\K[\d.]+(?=\.tar\.gz")';;
+                 rx='/archive/refs/tags/(v?|\Q'"$pkgname"'\E[-_])?\K[\d.]+(?=\.tar\.gz")';;
 -            *//gitlab.*|*code.videolan.org*)
 +            *//gitlab.*|*code.videolan.org*|*source.puri.sm*)
                  case "$url" in
