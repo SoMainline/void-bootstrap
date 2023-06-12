@@ -42,7 +42,7 @@ center-new-windows=true
 experimental-features=['scale-monitor-framebuffer']
 
 [org/gnome/settings-daemon/plugins/power]
-power-button-action='interactive'
+power-button-action='suspend'
 
 [org/gnome/shell]
 favorite-apps=['org.gnome.Calls.desktop', 'sm.puri.Chatty.desktop', 'firefox.desktop', 'gnome-control-center.desktop', 'org.gnome.Terminal.desktop']
