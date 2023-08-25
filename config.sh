@@ -127,6 +127,10 @@ rm_files=()
 # These should be a part of ignorepkg to avoid breaking soft-dependencies of e.g. void-base
 rm_pkgs=()
 
+# Additional void-repo-* packages to install before installing base_pkgs
+# e.g. (bootstrap debug multilib multilib-nonfree nonfree)
+extra_void_repos=()
+
 # Additional packages to install
 base_pkgs=()
 
