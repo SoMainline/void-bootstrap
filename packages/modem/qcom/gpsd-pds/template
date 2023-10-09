@@ -1,12 +1,12 @@
 # Template file for 'gpsd-pds'
 pkgname=gpsd-pds
 version=3.25
-revision=1
+revision=2
 build_style=scons
 make_build_args="dbus_export=0 gpsd_user=gpsd gpsd_group=gpsd
  sbindir=/usr/bin CC=${CC} qt_versioned=5"
 make_install_args="$make_build_args"
-hostmakedepends="pkg-config bc python3-pyserial libxslt xmlto asciidoc"
+hostmakedepends="pkg-config bc python3-pyserial python3-setuptools libxslt xmlto asciidoc"
 makedepends="eudev-libudev-devel ntp libusb-devel ncurses-devel gtk+3-devel
  pps-tools-devel libcap-devel libbluetooth-devel qt5-devel"
 depends="qrtr-ns"
