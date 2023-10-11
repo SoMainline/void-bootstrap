@@ -5,24 +5,25 @@ revision=1
 _branch=main2 # tmp branch until tested as working on AOSP
 _commit=6f58c71b5eb6644a294b23b6d493e2c61bb2e34b # main2~2
 build_style=meson
+#Disable LTO flag should be present, see https://gitlab.freedesktop.org/mesa/mesa/-/issues/6911
 configure_args="-Dglvnd=true -Dshared-glapi=enabled -Dgbm=enabled -Degl=enabled
  -Dosmesa=true -Dgles1=enabled -Dgles2=enabled -Dglx=dri -Ddri3=enabled
  -Dlmsensors=enabled -Dplatforms=x11$(vopt_if wayland ,wayland)
- -Dllvm=enabled -Db_lto=false -Dcpp_std=gnu++14 --buildtype debugoptimized"
+ -Dllvm=enabled -Db_lto=false -Dcpp_std=gnu++17"
 hostmakedepends="gettext flex llvm pkg-config python3-Mako glslang
  $(vopt_if wayland 'wayland-protocols wayland-devel')"
-makedepends="elfutils-devel expat-devel libXdamage-devel libXvMC-devel
- libXxf86vm-devel libatomic-devel libdrm-devel libffi-devel libva-devel
+makedepends="elfutils-devel expat-devel libXdamage-devel
+ libXxf86vm-devel libdrm-devel libffi-devel libva-devel
  libvdpau-devel libxshmfence-devel ncurses-devel zlib-devel
  $(vopt_if wayland 'wayland-devel wayland-protocols') llvm libsensors-devel
  libXrandr-devel libglvnd-devel libzstd-devel libxml2-devel lua53-devel
  libarchive-devel"
 depends="libglvnd"
-short_desc="Graphics library similar to SGI's OpenGL (SoMainline fork [git ${_commit:0:7}])"
+short_desc="Open source implementation of OpenGL and Vulkan (SoMainline fork [git ${_commit:0:7}])"
 maintainer="Jami Kettunen <jami.kettunen@somainline.org>"
 license="MIT, LGPL-2.1-or-later"
 homepage="https://www.mesa3d.org/"
-#changelog="https://docs.mesa3d.org/relnotes/${version}.html"
+#changelog="https://docs.mesa3d.org/relnotes.html"
 distfiles="https://github.com/SoMainline/mesa/archive/${_commit}.tar.gz"
 checksum=4d61d6f717b7891b550e92e87637c909c433e92bfaea32d05a37836b2fcab91e
 
