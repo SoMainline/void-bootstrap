@@ -1,9 +1,9 @@
 # Template file for 'mesa'
 pkgname=mesa
-version=23.0+git20221128
+version=23.3.0+git20231009
 revision=1
-_branch=main2 # tmp branch until tested as working on AOSP
-_commit=6f58c71b5eb6644a294b23b6d493e2c61bb2e34b # main2~2
+_branch=main3 # tmp branch until tested as working on AOSP
+_commit=f03500d19d94ccbc1ca59ce25746b261cd817a39 # main3~ as of 2023-10-09
 build_style=meson
 #Disable LTO flag should be present, see https://gitlab.freedesktop.org/mesa/mesa/-/issues/6911
 configure_args="-Dglvnd=true -Dshared-glapi=enabled -Dgbm=enabled -Degl=enabled
@@ -25,7 +25,7 @@ license="MIT, LGPL-2.1-or-later"
 homepage="https://www.mesa3d.org/"
 #changelog="https://docs.mesa3d.org/relnotes.html"
 distfiles="https://github.com/SoMainline/mesa/archive/${_commit}.tar.gz"
-checksum=4d61d6f717b7891b550e92e87637c909c433e92bfaea32d05a37836b2fcab91e
+checksum=49aa8435692d1d159bb33c2b2214ad7e6da83d3a479dc02107d31a831decc455
 
 build_options="wayland"
 build_options_default="wayland"
@@ -52,7 +52,6 @@ replaces="libGL>=10_1<19.2.5_2 libEGL>=10_1<19.2.5_2 libGLES>=10_1<19.2.5_2"
 _gallium_drivers=" -Dgallium-drivers=swrast"
 _vulkan_drivers=" -Dvulkan-drivers="
 # pre-gallium drivers are mostly for old ati + i915/965
-_dri_drivers=" -Ddri-drivers="
 _tools=" -Dtools="
 
 # amd and nvidia drivers on all platforms except where it makes no sense
@@ -91,7 +90,6 @@ if [ "$_have_amd" ]; then
 	_have_vulkan=yes
 	_gallium_drivers+=",r300,r600,radeonsi"
 	_vulkan_drivers+=",amd"
-	_dri_drivers+=",r100,r200"
 	subpackages+=" mesa-vulkan-radeon"
 fi
 
@@ -99,7 +97,6 @@ if [ "$_have_intel" ]; then
 	_have_vulkan=yes
 	_gallium_drivers+=",crocus,iris"
 	_vulkan_drivers+=",intel"
-	_dri_drivers+=",i915,i965"
 	subpackages+=" mesa-vulkan-intel"
 fi
 
@@ -107,8 +104,6 @@ if [ "$_have_nv" ]; then
 	_gallium_drivers+=",nouveau"
 	if [ "$_have_arm" ]; then
 		_gallium_drivers+=",tegra"
-	else
-		_dri_drivers+=",nouveau"
 	fi
 fi
 
@@ -160,10 +155,9 @@ fi
 # empty values introduced by leading comma are not allowed; the whole enumeration can be empty
 # _gallium_drivers is not affected by this problem
 _vulkan_drivers=${_vulkan_drivers/=,/=}
-_dri_drivers=${_dri_drivers/=,/=}
 _tools=${_tools/=,/=}
 
-configure_args+=" ${_vulkan_drivers} ${_dri_drivers} ${_tools}"
+configure_args+=" ${_vulkan_drivers} ${_tools}"
 
 if [ "$_have_vulkan" ]; then
 	_have_zink=yes
@@ -199,8 +193,7 @@ post_configure() {
 			\;
 	fi
 }
-
-post_install() {
+iost_install() {
 	vlicense docs/license.rst
 
 	# ensure that each eligible architecture ships its multilib icd files
