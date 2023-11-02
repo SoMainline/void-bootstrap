@@ -1,28 +1,32 @@
 # Template file for 'gnome-calls'
 pkgname=gnome-calls
-version=42.0
-revision=2
-_libcall_ui_commit=acfbb136bbf74514e0b9801ce6c1e8acf36350b6 # 2022-03-12
+version=45.0
+revision=1
+_libcall_ui_commit=38fbc6a0fbf46dd6604865d0c5c2e4f55fa52316 # 2023-10-26
 build_style=meson
+# Remove need for dbus-run-session and rst2man
+configure_args="-Dtests=false"
+# checkdepends="dbus-run-session"
 hostmakedepends="glib-devel gettext vala pkg-config wayland-devel
- evolution-data-server-devel"
+ evolution-data-server-devel python-docutils"
 makedepends="libcallaudio-devel folks-devel libhandy1-devel libpeas-devel
- gom-devel ModemManager-devel feedbackd-devel gstreamer1-devel sofia-sip-devel"
+ gom-devel ModemManager-devel feedbackd-devel gstreamer1-devel sofia-sip-devel
+ libadwaita-devel"
 depends="NetworkManager ModemManager callaudiod"
 short_desc="Phone dialer and call handler"
 maintainer="Jami Kettunen <jami.kettunen@somainline.org>"
 license="GPL-3.0-or-later"
 homepage="https://gitlab.gnome.org/GNOME/calls"
-distfiles="https://gitlab.gnome.org/GNOME/calls/-/archive/${version}.tar.gz
+distfiles="https://gitlab.gnome.org/GNOME/calls/-/archive/v${version}.tar.gz
  https://gitlab.gnome.org/World/Phosh/libcall-ui/-/archive/${_libcall_ui_commit}.tar.gz"
-checksum="7c6ce061143d195bc8cb57bb8da0ca0a9f4a753580808d19aea8a6bc32eb3a5b
- 2dacd4c16b1e9afe30cacdbbbbb1d5f1c1079cb391083191ab647f142365d66e"
+checksum="7537c662371846340555e5db0d10461e1373b916a61922d7c450382f9b15e447
+ 3bedbb4551a95b8f2b73b1a57934e8504cc1e9c2a9b5028d31ff2ba57285ea78"
 # Checking depends on a wayland session
 make_check=no
 
 LDFLAGS+="-lssl -lcrypto"
 
 post_extract() {
-	mv calls-${version}*/* .
+	mv calls-v${version}*/* .
 	mv libcall-ui-${_libcall_ui_commit}/* subprojects/libcall-ui/
 }
