@@ -87,7 +87,7 @@ base_pkgs=(
 	bluez # Bluetooth
 	NetworkManager avahi # Networking
 	neard # NFC
-	crda pd-mapper rmtfs tqftpserv # Modem/WLAN
+	pd-mapper rmtfs tqftpserv # Modem/WLAN
 	alsa-ucm-conf # Audio
 
 	zsh zsh-completions zsh-autosuggestions # Shell
